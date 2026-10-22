@@ -1,0 +1,10 @@
+inputs.level
+  = String ∈ {low, high}
+
+why:
+  inputs.level
+    declared on.workflow_dispatch.inputs.level: type: choice (line 8)
+
+accepted:
+  low
+  high

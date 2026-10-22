@@ -1,0 +1,9 @@
+# expect: none
+name: Separate run and uses steps
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make

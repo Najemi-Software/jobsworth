@@ -1,0 +1,9 @@
+# expect: none
+name: Caller supplies only declared inputs
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod
+      count: 2

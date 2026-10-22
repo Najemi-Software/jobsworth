@@ -1,0 +1,15 @@
+# expect: error local-action-sparse-miss "does not cover"
+name: A sparse list passed through a wrapper is checked
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-cached@v1
+        with:
+          sparse-checkout: |
+            src
+      - uses: ./.github/actions/greet
+        with:
+          name: world

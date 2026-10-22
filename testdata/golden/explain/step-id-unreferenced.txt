@@ -1,0 +1,13 @@
+.github/workflows/example.yml:7:13  note  step-id-unreferenced
+  step id "build" is never referenced
+
+context:
+  step           'build'                              at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :8     make                                           opaque: runner make
+  GITHUB_OUTPUT target: OPEN (runner make)   keys written: none
+  referenced ids in scope: none
+
+suppress:
+  add on line 7:    # jobsworth-ignore step-id-unreferenced
+  or in .jobsworth.yml:   rules: { step-id-unreferenced: off }

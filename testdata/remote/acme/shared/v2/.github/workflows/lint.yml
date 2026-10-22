@@ -1,0 +1,29 @@
+name: Shared lint
+on:
+  workflow_call:
+    inputs:
+      strict:
+        type: boolean
+        default: false
+      verbose:
+        type: boolean
+        default: false
+      env:
+        type: string
+        required: true
+    outputs:
+      report:
+        value: ${{ jobs.lint.outputs.report }}
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    outputs:
+      report: ${{ steps.r.outputs.report }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/notify
+        with:
+          env: ${{ inputs.env }}
+      - id: r
+        if: inputs.strict
+        run: echo "report=x" >> $GITHUB_OUTPUT

@@ -1,0 +1,17 @@
+name: Two
+on:
+  workflow_call:
+    inputs:
+      level:
+        type: string
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options: [low, high]
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.level }}

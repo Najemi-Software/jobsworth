@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "job-timeout-missing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 3,
+        "message": "job 'build' has no timeout-minutes:; the default is 360"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore job-timeout-missing",
+        "config": {
+          "job-timeout-missing": "off"
+        }
+      }
+    }
+  ]
+}

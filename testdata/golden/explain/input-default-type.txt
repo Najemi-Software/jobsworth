@@ -1,0 +1,9 @@
+.github/workflows/example.yml:5:40  error  input-default-type
+  input 'retries' has type number but its default "three" is not a number
+
+context:
+  declared       workflow_call:     retries (:5)
+
+suppress:
+  add on line 5:    # jobsworth-ignore input-default-type
+  or in .jobsworth.yml:   rules: { input-default-type: off }

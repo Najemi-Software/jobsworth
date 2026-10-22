@@ -1,0 +1,12 @@
+# expect: none
+name: A composite wrapper passing every input through checks out the root
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-cached@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

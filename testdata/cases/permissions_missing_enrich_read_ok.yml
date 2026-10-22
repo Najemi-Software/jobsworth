@@ -1,0 +1,10 @@
+# enrich
+# config: rules: { permissions-missing: warning }
+# expect: none
+name: The repository default token is read-only, so a missing permissions block is fine
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

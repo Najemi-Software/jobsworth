@@ -1,0 +1,22 @@
+# expect: none
+name: A conditional checkout under the consumer's own condition is its root
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github/workflows/data
+      - run: make release
+      - if: ${{ failure() }}
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            .github
+      - if: ${{ failure() }}
+        uses: ./.github/actions/greet
+        with:
+          name: world

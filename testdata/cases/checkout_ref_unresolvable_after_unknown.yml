@@ -1,0 +1,17 @@
+# config: rules: { checkout-ref-unresolvable: note }
+# expect: warning fetch-failed
+# expect: note checkout-ref-unresolvable
+name: A direct checkout after an unknown step is still classified
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/forbidden/checkout@v1
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - uses: ./.github/actions/greet
+        with:
+          name: world

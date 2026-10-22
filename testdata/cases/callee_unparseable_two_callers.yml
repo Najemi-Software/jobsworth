@@ -1,0 +1,8 @@
+# expect: error callee-unparseable "cannot parse"
+name: A broken callee referenced twice is reported once
+on: push
+jobs:
+  a:
+    uses: ./.github/workflows/broken.yml
+  b:
+    uses: ./.github/workflows/broken.yml

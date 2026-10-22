@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "fetch-failed",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 15,
+        "message": "acme/forbidden@v1: could not fetch (HTTP 403), skipping"
+      },
+      "context": {
+        "api_calls": [
+          {
+            "error": "",
+            "path": "/repos/acme/forbidden/commits/v1",
+            "rate_limited": false,
+            "status": 403
+          }
+        ],
+        "kind": "fetch",
+        "reference": "acme/forbidden@v1",
+        "resolution": {
+          "error": "acme/forbidden@v1: could not fetch (HTTP 403), skipping",
+          "how": "failed",
+          "name": ""
+        },
+        "token_source": "JOBSWORTH_TOKEN"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore fetch-failed",
+        "config": {
+          "fetch-failed": "off"
+        }
+      }
+    }
+  ]
+}

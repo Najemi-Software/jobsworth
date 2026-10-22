@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  expr-arity
+  contains() takes 2 argument(s), got 1
+
+context:
+  expression     contains(github.ref)   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore expr-arity
+  or in .jobsworth.yml:   rules: { expr-arity: off }

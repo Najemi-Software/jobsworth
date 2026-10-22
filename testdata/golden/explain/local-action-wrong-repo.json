@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "local-action-wrong-repo",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 15,
+        "message": "step './.github/actions/notify' uses ./.github/actions/notify, which will be loaded from acme/shared (the root checkout), not from this repository"
+      },
+      "context": {
+        "action": {
+          "job": "build",
+          "line": 10,
+          "step": "'./.github/actions/notify'",
+          "uses": "./.github/actions/notify"
+        },
+        "checkouts": [
+          {
+            "active": true,
+            "line": 7,
+            "path": "",
+            "repository": "acme/shared",
+            "target": "root",
+            "uses": "actions/checkout@v4"
+          }
+        ],
+        "kind": "checkout"
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore local-action-wrong-repo",
+        "config": {
+          "local-action-wrong-repo": "off"
+        }
+      }
+    }
+  ]
+}

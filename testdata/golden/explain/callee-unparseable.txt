@@ -1,0 +1,11 @@
+.github/workflows/broken.yml  error  callee-unparseable
+  cannot parse: yaml: yaml: line 3: did not find expected node content
+
+context:
+  file           .github/workflows/broken.yml
+  error          yaml: yaml: line 3: did not find expected node content
+  referenced by  .github/workflows/example.yml:5 (job call, uses: ./.github/workflows/broken.yml)
+  conclusion: nothing in this file was validated; fix the YAML first, then re-run check.
+
+suppress:
+  or in .jobsworth.yml:   rules: { callee-unparseable: off }

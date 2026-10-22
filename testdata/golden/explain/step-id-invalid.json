@@ -1,0 +1,53 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-id-invalid",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 13,
+        "message": "step id \"1st.step\" must match [A-Za-z_][A-Za-z0-9_-]*"
+      },
+      "context": {
+        "kind": "step",
+        "referenced_ids": null,
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 8,
+            "redirect": "GITHUB_OUTPUT",
+            "text": "echo \"a=1\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "a"
+            ]
+          }
+        ],
+        "step": {
+          "id": "1st.step",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "target": {
+          "keys": {
+            "a": "definite"
+          },
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore step-id-invalid",
+        "config": {
+          "step-id-invalid": "off"
+        }
+      }
+    }
+  ]
+}

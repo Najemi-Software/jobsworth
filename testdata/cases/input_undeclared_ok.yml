@@ -1,0 +1,14 @@
+# expect: none
+name: Every referenced input is declared
+on:
+  workflow_call:
+    inputs:
+      env: { type: string }
+      missing: { type: boolean }
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    if: inputs.env == 'x' && inputs.missing
+    steps:
+      - run: echo ok

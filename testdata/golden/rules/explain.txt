@@ -1,0 +1,63 @@
+needs-output-undeclared  family: jobs  default: error  since: 0.1  stable
+
+What it checks
+
+A job references `needs.<job>.outputs.<name>` for a needed `<job>` that declares
+no output `<name>`.
+
+Why it matters
+
+The expression evaluates to empty at runtime. For a `uses:` job the declared
+outputs are the callee's `on.workflow_call.outputs`.
+
+Example: flagged
+
+    name: Example
+    on: push
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        steps:
+          - run: echo ok
+      deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - run: echo ${{ needs.build.outputs.version }}
+
+Example: passes
+
+    name: Example
+    on: push
+    jobs:
+      build:
+        runs-on: ubuntu-latest
+        outputs:
+          version: "1"
+        steps:
+          - run: echo ok
+      deploy:
+        runs-on: ubuntu-latest
+        needs: build
+        steps:
+          - run: echo ${{ needs.build.outputs.version }}
+
+When it does not fire
+
+The needed job is a `uses:` job whose callee could not be loaded; its outputs
+are unknown and nothing is reported.
+
+Suppress
+
+`# jobsworth-ignore needs-output-undeclared` on the expression's line, or
+`rules: { needs-output-undeclared: off }` in `.jobsworth.yml`.
+
+Related
+
+`output-unused`.
+
+See also
+
+  jobsworth explain output-unused
+  jobsworth explain jobs-mergeable
+

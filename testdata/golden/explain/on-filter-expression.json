@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "on-filter-expression",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 16,
+        "message": "on.push.branches contains ${{ }}; expressions are not evaluated in on: and the pattern is taken literally"
+      },
+      "context": {
+        "expression": "github.ref",
+        "kind": "trigger",
+        "site": "",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore on-filter-expression",
+        "config": {
+          "on-filter-expression": "off"
+        }
+      }
+    }
+  ]
+}

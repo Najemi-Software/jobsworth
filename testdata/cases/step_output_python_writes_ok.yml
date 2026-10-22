@@ -1,0 +1,23 @@
+# unix
+# expect: none
+# shape: --at build 'steps.py.outputs.version' => String ∈ {1.2.3}
+name: Python and PowerShell GITHUB_OUTPUT writes are modelled
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: py
+        shell: python
+        run: |
+          import os
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write("version=1.2.3\n")
+              print("other=1", file=f)
+      - id: ps
+        shell: pwsh
+        run: |
+          "mode=prod" >> $env:GITHUB_OUTPUT
+          Add-Content $env:GITHUB_OUTPUT "arch=x64"
+      - run: echo ${{ steps.py.outputs.version }} ${{ steps.py.outputs.other }} ${{ steps.ps.outputs.mode }} ${{ steps.ps.outputs.arch }}

@@ -1,0 +1,11 @@
+.github/workflows/example.yml:11:14  warning  expr-comparison-type
+  comparing a number (from input 'count' (type number)) with the non-numeric string 'many'; GitHub coerces the string to NaN and the comparison is never true
+
+context:
+  expression     inputs.count == 'many'   at :11  (job build / step #1 / run)
+  step           job 'build' / step #1                at :11   run:
+  triggers       workflow_call
+
+suppress:
+  add on line 11:    # jobsworth-ignore expr-comparison-type
+  or in .jobsworth.yml:   rules: { expr-comparison-type: off }

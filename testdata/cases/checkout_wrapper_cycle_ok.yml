@@ -1,0 +1,12 @@
+# expect: none
+name: A wrapper cycle is a checkout of unknown shape, so nothing is reported
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-cycle-a@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

@@ -1,0 +1,10 @@
+# expect: error step-run-and-uses "both run: and uses:"
+name: A step with both run and uses
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        run: make
+      - run: make test

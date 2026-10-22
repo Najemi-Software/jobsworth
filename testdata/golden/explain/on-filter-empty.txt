@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:5  warning  on-filter-empty
+  on.push.branches is an empty list; it matches nothing and the workflow never runs on push
+
+context:
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-filter-empty
+  or in .jobsworth.yml:   rules: { on-filter-empty: off }

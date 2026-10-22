@@ -1,0 +1,14 @@
+# expect: warning input-unused "'verbose'"
+name: Fetched reusable workflow is validated and its nested local action resolves in the remote repo
+on: push
+jobs:
+  lint:
+    uses: acme/shared/.github/workflows/lint.yml@v2
+    with:
+      env: prod
+      strict: true
+  after:
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - run: echo ${{ needs.lint.outputs.report }}

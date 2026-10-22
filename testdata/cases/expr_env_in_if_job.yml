@@ -1,0 +1,11 @@
+# expect: error expr-env-in-if-job
+name: env in a job-level if
+on: push
+env:
+  DEPLOY: 'true'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: env.DEPLOY == 'true'
+    steps:
+      - run: echo deploy

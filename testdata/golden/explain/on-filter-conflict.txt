@@ -1,0 +1,9 @@
+.github/workflows/example.yml:3:3  error  on-filter-conflict
+  on.push declares both branches and branches-ignore; GitHub rejects the workflow, use one
+
+context:
+  triggers       push
+
+suppress:
+  add on line 3:    # jobsworth-ignore on-filter-conflict
+  or in .jobsworth.yml:   rules: { on-filter-conflict: off }

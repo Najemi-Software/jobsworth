@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "injection-via-input",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 11,
+        "column": 17,
+        "message": "with.name carries github.event.pull_request.title into ./.github/actions/greet, which interpolates or forwards inputs.name into a run: sink (line 10 of the callee)"
+      },
+      "context": {
+        "expression": "github.event.pull_request.title",
+        "kind": "security",
+        "site": "job build / step './.github/actions/greet' / name",
+        "step": {
+          "id": "",
+          "index": 1,
+          "job": "build",
+          "line": 9,
+          "uses": "./.github/actions/greet"
+        },
+        "triggers": [
+          "pull_request"
+        ]
+      },
+      "suppress": {
+        "line": 11,
+        "comment": "# jobsworth-ignore injection-via-input",
+        "config": {
+          "injection-via-input": "off"
+        }
+      }
+    }
+  ]
+}

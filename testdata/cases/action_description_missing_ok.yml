@@ -1,0 +1,8 @@
+# expect: none
+name: Example
+description: Example
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo hi

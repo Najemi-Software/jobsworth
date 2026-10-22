@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "expr-hashfiles-absolute",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "hashFiles(\"/etc/hosts\") names a path outside the workspace; hashFiles only matches under GITHUB_WORKSPACE and returns an empty string"
+      },
+      "context": {
+        "expression": "hashFiles('/etc/hosts')",
+        "kind": "expression",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore expr-hashfiles-absolute",
+        "config": {
+          "expr-hashfiles-absolute": "off"
+        }
+      }
+    }
+  ]
+}

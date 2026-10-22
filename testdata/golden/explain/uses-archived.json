@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "uses-archived",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 15,
+        "message": "someone/old is archived; it will receive no fixes"
+      },
+      "context": {
+        "kind": "security",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": "someone/old@v1"
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore uses-archived",
+        "config": {
+          "uses-archived": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# expect: warning bash-env-same-step "next step"
+name: Reading a variable right after writing it to $GITHUB_ENV
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "VERSION=1.2.3" >> "$GITHUB_ENV"
+          echo "building $VERSION"

@@ -1,0 +1,10 @@
+# expect: warning if-status-with-other "!cancelled()"
+name: always() combined with another condition
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+      - if: always() && github.ref == 'refs/heads/main'
+        run: echo report

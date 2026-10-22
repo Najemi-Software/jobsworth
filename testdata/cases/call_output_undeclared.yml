@@ -1,0 +1,15 @@
+# expect: error call-output-undeclared "no output 'version'"
+# expect: warning output-unused "'sha'"
+name: Workflow output references an output the job does not declare
+on:
+  workflow_call:
+    outputs:
+      v:
+        value: ${{ jobs.build.outputs.version }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      sha: x
+    steps:
+      - run: echo ok

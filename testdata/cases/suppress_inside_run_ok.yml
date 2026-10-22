@@ -1,0 +1,10 @@
+# expect: none
+name: A jobsworth-ignore inside a run script is bash and ignored
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          # jobsworth-ignore needs-unknown
+          echo "# jobsworth-ignore needs-unknown"

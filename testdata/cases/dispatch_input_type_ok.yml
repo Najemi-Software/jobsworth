@@ -1,0 +1,12 @@
+# expect: none
+name: dispatch-input-type passes
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        type: number
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

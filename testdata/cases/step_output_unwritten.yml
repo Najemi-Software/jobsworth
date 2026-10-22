@@ -1,0 +1,11 @@
+# expect: error step-output-unwritten "never writes"
+# expect: warning bash-output-unredirected
+name: Referenced output is echoed to the log instead of $GITHUB_OUTPUT
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: echo "version=1"
+      - run: echo ${{ steps.meta.outputs.version }}

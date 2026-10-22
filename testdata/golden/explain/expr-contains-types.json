@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "expr-contains-types",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "contains() searches strings and arrays, but its first argument is object{a} (from fromJSON literal); the result is always false"
+      },
+      "context": {
+        "expression": "contains(fromJSON('{\"a\":1}'), 'a')",
+        "kind": "expression",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore expr-contains-types",
+        "config": {
+          "expr-contains-types": "off"
+        }
+      }
+    }
+  ]
+}

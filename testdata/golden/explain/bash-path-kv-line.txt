@@ -1,0 +1,14 @@
+.github/workflows/example.yml:7:14  warning  bash-path-kv-line
+  step #1 writes "GOFLAGS=-mod=vendor" to $GITHUB_PATH; KEY=VALUE lines belong in $GITHUB_ENV
+
+context:
+  step           #1                                   run: at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :7     echo "GOFLAGS=-mod=vendor" >>"$GITHUB_PATH"    echo to GITHUB_PATH, no key
+  GITHUB_PATH target: closed   keys written: none
+  GITHUB_PATH line stream:
+    :7     GOFLAGS=-mod=vendor                            
+
+suppress:
+  add on line 7:    # jobsworth-ignore bash-path-kv-line
+  or in .jobsworth.yml:   rules: { bash-path-kv-line: off }

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "on-filter-no-branch",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 16,
+        "message": "on.push.branches names \"release\", which example/app does not have"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore on-filter-no-branch",
+        "config": {
+          "on-filter-no-branch": "off"
+        }
+      }
+    }
+  ]
+}

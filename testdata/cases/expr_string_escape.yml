@@ -1,0 +1,10 @@
+# expect: error expr-string-escape "double-quoted"
+# expect: error expr-string-escape "unterminated"
+name: Bad string quoting
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.ref == "main" }}
+      - run: echo ${{ github.ref == 'it's' }}

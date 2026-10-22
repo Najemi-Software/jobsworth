@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:18  note  environment-no-protection
+  job 'build' deploys to environment "staging", which has no required reviewers or branch policy, on a privileged trigger
+
+context:
+  job            'build'                              at :5
+  runs-on        ubuntu-latest
+  triggers       pull_request_target
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 7:    # jobsworth-ignore environment-no-protection
+  or in .jobsworth.yml:   rules: { environment-no-protection: off }

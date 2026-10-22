@@ -1,0 +1,10 @@
+# expect: error on-unknown-key
+name: on-unknown-key flagged
+on:
+  push:
+    branch: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

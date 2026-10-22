@@ -1,0 +1,11 @@
+# expect: error step-input-type "expression of type boolean"
+name: A step passes a boolean expression to a number input
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/typed
+        with:
+          count: ${{ github.event_name == 'push' }}

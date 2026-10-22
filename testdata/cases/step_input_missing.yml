@@ -1,0 +1,9 @@
+# expect: error step-input-missing "required input"
+name: Step omits a required action input
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet

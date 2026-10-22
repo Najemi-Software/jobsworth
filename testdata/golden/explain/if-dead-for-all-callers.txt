@@ -1,0 +1,13 @@
+.github/workflows/gated.yml:11:9  warning  if-dead-for-all-callers
+  job 'deploy' has a condition that is false for every known caller (.github/workflows/example.yml:6 (job call)=staging); it never runs
+
+context:
+  expression     inputs.env == 'prod'   at :11  (job deploy / if)
+  job            'deploy'                             at :9
+  runs-on        ubuntu-latest
+  if             inputs.env == 'prod'
+  triggers       workflow_call
+
+suppress:
+  add on line 11:    # jobsworth-ignore if-dead-for-all-callers
+  or in .jobsworth.yml:   rules: { if-dead-for-all-callers: off }

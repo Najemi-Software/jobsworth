@@ -1,0 +1,15 @@
+.github/workflows/example.yml:9:14  error  step-output-unwritten
+  steps.meta.outputs.version is referenced but step 'meta' never writes "version" to $GITHUB_OUTPUT (no $GITHUB_OUTPUT writes in the 1 statement analysed)
+
+context:
+  reference      steps.meta.outputs.version   at :9  (job build / step #2 / run)
+  producing step 'meta'                               at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :8     echo "version=1.2.3"                           echo, NO REDIRECT   ← key 'version' seen here, not written
+  GITHUB_OUTPUT target: closed   keys written: none
+  conclusion: 'version' is not among the keys written; nothing is written to GITHUB_OUTPUT.
+  see also: bash-output-unredirected fired on :8 for the same key.
+
+suppress:
+  add on line 9:    # jobsworth-ignore step-output-unwritten
+  or in .jobsworth.yml:   rules: { step-output-unwritten: off }

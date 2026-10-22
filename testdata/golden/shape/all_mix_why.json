@@ -1,0 +1,181 @@
+[
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#2"
+    },
+    "expression": "fromJSON(steps.cfg.outputs.cfg).meta.id",
+    "ok": true,
+    "shape": {
+      "kind": "number"
+    },
+    "render": "Number",
+    "why": [
+      {
+        "chain": "steps.cfg.outputs.cfg",
+        "kind": "github_output_write",
+        "line": 17,
+        "name": "cfg",
+        "step": "cfg",
+        "text": "echo 'cfg={\"name\":\"x\",\"tags\":[\"a\",\"b\"],\"meta\":{\"id\":1}}' \u003e\u003e\"$GITHUB_OUTPUT\""
+      },
+      {
+        "chain": "steps.cfg.outputs.cfg",
+        "kind": "fromjson",
+        "text": "fromJSON(String ⊂ JSON → X) = X"
+      },
+      {
+        "chain": "steps.cfg.outputs.cfg",
+        "kind": "access",
+        "shape": {
+          "fields": {
+            "id": {
+              "kind": "number"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "text": ".meta"
+      },
+      {
+        "chain": "steps.cfg.outputs.cfg",
+        "kind": "access",
+        "shape": {
+          "kind": "number"
+        },
+        "text": ".id"
+      }
+    ],
+    "error": null,
+    "line": 18,
+    "site": "job build / step #2 / run"
+  },
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#2"
+    },
+    "expression": "inputs.dry-run",
+    "ok": true,
+    "shape": {
+      "kind": "bool"
+    },
+    "render": "Bool",
+    "why": [
+      {
+        "chain": "inputs.dry-run",
+        "kind": "declared_input",
+        "line": 5,
+        "name": "dry-run",
+        "text": "declared on.workflow_dispatch.inputs.dry-run: type: boolean"
+      }
+    ],
+    "error": null,
+    "line": 18,
+    "site": "job build / step #2 / run"
+  },
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#2"
+    },
+    "expression": "runner.os",
+    "ok": true,
+    "shape": {
+      "kind": "string",
+      "values": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ]
+    },
+    "render": "String ∈ {Linux, Windows, macOS}",
+    "why": [
+      {
+        "chain": "runner.os",
+        "kind": "static_schema",
+        "text": "static schema runner"
+      },
+      {
+        "chain": "runner.os",
+        "kind": "access",
+        "shape": {
+          "kind": "string",
+          "values": [
+            "Linux",
+            "Windows",
+            "macOS"
+          ]
+        },
+        "text": ".os"
+      }
+    ],
+    "error": null,
+    "line": 18,
+    "site": "job build / step #2 / run"
+  },
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#3"
+    },
+    "expression": "fromJSON(steps.cfg.outputs.cfg).nope",
+    "ok": false,
+    "shape": {
+      "fields": {
+        "meta": {
+          "fields": {
+            "id": {
+              "kind": "number"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "name": {
+          "kind": "string"
+        },
+        "tags": {
+          "elem": {
+            "kind": "string"
+          },
+          "kind": "array"
+        }
+      },
+      "kind": "object",
+      "open": false
+    },
+    "render": "Object{meta: Object{id: Number}, name: String, tags: Array[String]}",
+    "why": [
+      {
+        "chain": "steps.cfg.outputs.cfg",
+        "kind": "github_output_write",
+        "line": 17,
+        "name": "cfg",
+        "step": "cfg",
+        "text": "echo 'cfg={\"name\":\"x\",\"tags\":[\"a\",\"b\"],\"meta\":{\"id\":1}}' \u003e\u003e\"$GITHUB_OUTPUT\""
+      },
+      {
+        "chain": "steps.cfg.outputs.cfg",
+        "kind": "fromjson",
+        "text": "fromJSON(String ⊂ JSON → X) = X"
+      }
+    ],
+    "error": {
+      "rule": "shape-mismatch",
+      "message": "fromJSON(steps.cfg.outputs.cfg).nope: at step 1 (.nope): field \"nope\" not in object (declared: meta, name, tags) (from step 'cfg' line 17 writes cfg)",
+      "at": "fromJSON(steps.cfg.outputs.cfg)"
+    },
+    "line": 19,
+    "site": "job build / step #3 / run"
+  }
+]

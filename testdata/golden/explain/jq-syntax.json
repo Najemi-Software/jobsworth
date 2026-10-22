@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "jq-syntax",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1: jq filter \"{version: .tag\" does not parse: at 14: expected \"}\""
+      },
+      "context": {
+        "kind": "shape"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore jq-syntax",
+        "config": {
+          "jq-syntax": "off"
+        }
+      }
+    }
+  ]
+}

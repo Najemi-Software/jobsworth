@@ -1,0 +1,10 @@
+# expect: error local-action-no-checkout "no checkout before it"
+name: Local action without a checkout
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: ./.github/actions/greet
+        with:
+          name: world

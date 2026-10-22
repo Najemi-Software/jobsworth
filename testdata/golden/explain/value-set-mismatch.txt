@@ -1,0 +1,33 @@
+.github/workflows/example.yml:9:13  error  value-set-mismatch
+  runner.os is compared with "linux", which is not one of its values (Linux, Windows, macOS)
+
+context:
+  expression     steps.t.outcome == 'sucess' && runner.os == 'linux'   at :9  (job build / step #2 / if)
+  compared path  steps.t.outcome   value set: [success, failure, cancelled, skipped]   (documented runner values)
+  literal        "sucess"
+  nearest value  "success"
+  compared path  runner.os   value set: [Linux, Windows, macOS]   (documented runner values)
+  literal        "linux"
+  nearest value  "Linux"
+  conclusion: "linux" is not in the set; did you mean "Linux"?
+
+suppress:
+  add on line 9:    # jobsworth-ignore value-set-mismatch
+  or in .jobsworth.yml:   rules: { value-set-mismatch: off }
+
+.github/workflows/example.yml:9:13  error  value-set-mismatch
+  steps.t.outcome is compared with "sucess", which is not one of its values (success, failure, cancelled, skipped)
+
+context:
+  expression     steps.t.outcome == 'sucess' && runner.os == 'linux'   at :9  (job build / step #2 / if)
+  compared path  steps.t.outcome   value set: [success, failure, cancelled, skipped]   (documented runner values)
+  literal        "sucess"
+  nearest value  "success"
+  compared path  runner.os   value set: [Linux, Windows, macOS]   (documented runner values)
+  literal        "linux"
+  nearest value  "Linux"
+  conclusion: "linux" is not in the set; did you mean "Linux"?
+
+suppress:
+  add on line 9:    # jobsworth-ignore value-set-mismatch
+  or in .jobsworth.yml:   rules: { value-set-mismatch: off }

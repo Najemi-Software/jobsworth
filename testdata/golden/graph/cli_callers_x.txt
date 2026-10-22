@@ -1,0 +1,4 @@
+<TESTDATA>/repos/acme-tools/.github/workflows/x.yml  (workflow)
+◄─ job tool in .github/workflows/linked.yml
+
+1 caller in 1 repo (1 direct, 0 transitive)

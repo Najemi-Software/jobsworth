@@ -1,0 +1,13 @@
+.github/workflows/example.yml:7:14  error  needs-output-job-unknown
+  needs.biuld.outputs.version references job 'biuld', which does not exist
+
+context:
+  reference      needs.biuld.outputs.version   at :7  (job deploy / step #1 / run)
+  job 'deploy'   needs: []   direct
+                 transitive: []
+  job 'biuld'   does not exist; jobs: [deploy]
+  conclusion: nearest existing job is 'deploy'.
+
+suppress:
+  add on line 7:    # jobsworth-ignore needs-output-job-unknown
+  or in .jobsworth.yml:   rules: { needs-output-job-unknown: off }

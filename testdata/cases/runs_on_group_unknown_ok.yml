@@ -1,0 +1,11 @@
+# enrich
+# expect: none
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on:
+      group: big
+    steps:
+      - run: echo hi

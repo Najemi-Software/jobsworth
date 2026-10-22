@@ -1,0 +1,21 @@
+.github/workflows/ci.yml:12:15  error  local-action-sparse-miss
+  step './.github/actions/greet' uses ./.github/actions/greet but the root checkout's sparse-checkout list (src) does not cover it
+
+context:
+  local action   ./.github/actions/greet              at :12  (job build / step './.github/actions/greet')
+  checkouts seen in job 'build', in order:
+    step #1   acme/wrappers/checkout-cached@v1     root           sparse: [src]   ← active root checkout
+             via actions/checkout@v4 at its step 2
+             path:         caller's with.path             (inputs.path, default '')
+             repository:   caller's with.repository       (inputs.repository, default github.repository)
+             ref:          caller's with.ref              (inputs.ref, default '')
+             sparse:       caller's with.sparse-checkout  (inputs.sparse-checkout, default '')
+  sparse list of active root checkout: [src]
+  conclusion: action path '.github/actions/greet' is not covered: 'src' does not cover it.
+
+suppress:
+  add on line 12:    # jobsworth-ignore local-action-sparse-miss
+  or in .jobsworth.yml:   rules: { local-action-sparse-miss: off }
+
+the callee at this line has 1 finding(s); explain them with:
+  jobsworth explain .github/actions/greet/action.yml:4

@@ -1,0 +1,18 @@
+# expect: none
+# shape: 'github.event.inputs.count' => Number
+# shape: 'fromJSON(github.event.inputs.cfg).a' => Number
+name: github.event.inputs carries the workflow_dispatch input shapes
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        type: number
+      cfg:
+        type: string
+        default: '{"a": 1}'
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.count }} ${{ fromJSON(github.event.inputs.cfg).a }} ${{ inputs.count }} ${{ inputs.cfg }}

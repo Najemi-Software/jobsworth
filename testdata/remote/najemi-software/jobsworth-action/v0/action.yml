@@ -1,0 +1,9 @@
+name: jobsworth
+description: Run jobsworth check
+inputs:
+  token:
+    description: GitHub token used to fetch private callees
+    required: false
+runs:
+  using: node20
+  main: dist/index.js

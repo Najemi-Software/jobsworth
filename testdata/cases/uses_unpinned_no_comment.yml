@@ -1,0 +1,11 @@
+# config: rules: { uses-unpinned-no-comment: note }
+# expect: note uses-unpinned-no-comment
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@0123456789abcdef0123456789abcdef01234567
+      - run: make test

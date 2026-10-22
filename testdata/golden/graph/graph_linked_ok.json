@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": "<TESTDATA>/cases/graph_linked_ok.yml",
+      "path": "<TESTDATA>/cases/graph_linked_ok.yml",
+      "repo": "example/app"
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "workflow",
+      "source": "linked",
+      "display": "acme/tools/.github/workflows/x.yml@v1",
+      "path": "<TESTDATA>/repos/acme-tools/.github/workflows/x.yml",
+      "repo": "acme/tools",
+      "link_path": "<TESTDATA>/repos/acme-tools",
+      "inputs": [
+        "tool"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job tool",
+      "line": 8,
+      "uses": "acme/tools/.github/workflows/x.yml@v1"
+    }
+  ],
+  "summary": {
+    "nodes": 2,
+    "by_source": {
+      "entry": 1,
+      "linked": 1
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 0,
+      "stale": 0
+    },
+    "api_calls": 0
+  }
+}

@@ -1,0 +1,9 @@
+.github/workflows/example.yml:6:1  error  suppress-unknown-rule
+  suppression names unknown rule 'needs-unkown'
+
+context:
+  directive      jobsworth-ignore (no rule)   at :6   applies to line 6
+
+suppress:
+  add on line 6:    # jobsworth-ignore suppress-unknown-rule
+  or in .jobsworth.yml:   rules: { suppress-unknown-rule: off }

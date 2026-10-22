@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-no-action",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 9,
+        "message": "job 'build' step #1 has neither run: nor uses:; GitHub rejects the workflow"
+      },
+      "context": {
+        "kind": "structure",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore step-no-action",
+        "config": {
+          "step-no-action": "off"
+        }
+      }
+    }
+  ]
+}

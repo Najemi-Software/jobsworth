@@ -1,0 +1,9 @@
+# expect: none
+name: Call rules anchor at the with value line
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod
+      bogus: 1  # jobsworth-ignore call-input-unknown -- callee gains this input next release

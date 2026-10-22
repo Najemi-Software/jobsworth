@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "needs-self",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 13,
+        "message": "job 'build' lists itself in needs"
+      },
+      "context": {
+        "job": "build",
+        "jobs": [
+          "build"
+        ],
+        "kind": "jobs",
+        "needs": "build"
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore needs-self",
+        "config": {
+          "needs-self": "off"
+        }
+      }
+    }
+  ]
+}

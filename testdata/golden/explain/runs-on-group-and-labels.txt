@@ -1,0 +1,11 @@
+.github/workflows/example.yml:6:7  note  runs-on-group-and-labels
+  job 'build' runs-on names a group with no labels:; fine, but often a leftover
+
+context:
+  job            'build'                              at :4
+  runs-on        none
+  triggers       push
+
+suppress:
+  add on line 6:    # jobsworth-ignore runs-on-group-and-labels
+  or in .jobsworth.yml:   rules: { runs-on-group-and-labels: off }

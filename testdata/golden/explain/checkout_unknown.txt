@@ -1,0 +1,12 @@
+.github/workflows/ci.yml:9:15  note  checkout-ref-unresolvable
+  checkout step 'actions/checkout@v4' uses an expression for ref:; nothing downstream can be verified against it
+
+context:
+  step           actions/checkout@v4                  at :9  (job build / step 'actions/checkout@v4')
+  checkouts seen in job 'build', in order:
+    step #1   acme/forbidden/checkout@v1           → unknown  (acme/forbidden@v1: could not fetch (HTTP 403), skipping)
+    checkout state unknown after step #1; local-action rules are not applied to later steps
+
+suppress:
+  add on line 9:    # jobsworth-ignore checkout-ref-unresolvable
+  or in .jobsworth.yml:   rules: { checkout-ref-unresolvable: off }

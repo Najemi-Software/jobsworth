@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "expr-env-in-if-job",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 9,
+        "message": "env.* is not available in a job-level if:; the env context is empty there (it works in step-level if:)"
+      },
+      "context": {
+        "expression": "env.DEPLOY == 'true'",
+        "job": "build",
+        "kind": "expression",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "site": "job build / if",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore expr-env-in-if-job",
+        "config": {
+          "expr-env-in-if-job": "off"
+        }
+      }
+    }
+  ]
+}

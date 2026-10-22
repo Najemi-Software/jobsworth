@@ -1,0 +1,17 @@
+ID                         DEFAULT  SINCE  SUMMARY
+input-undeclared           error    0.1    Input is referenced but not declared
+input-unused               warning  0.1    Input is declared but never referenced
+input-default-type         error    0.1    Input default is not representable in its declared type
+choice-default-not-option  error    0.2    Choice input's default is not one of its options
+choice-no-options          error    0.2    Choice input declares no options
+call-input-unknown         error    0.1    Reusable workflow call supplies an input the callee does not declare
+call-input-missing         error    0.1    Reusable workflow call omits a required input
+call-input-type            error    0.1    Reusable workflow call passes a literal of the wrong type
+step-input-unknown         error    0.2    Step supplies an input the action does not declare
+step-input-missing         error    0.2    Step omits a required action input
+step-input-type            error    0.2    Step passes a literal of the wrong type to a typed input
+step-input-choice          error    0.2    Step passes a literal outside a choice input's options
+step-with-on-run           error    0.2    Run step has a with block, which the runner ignores
+step-run-and-uses          error    0.2    Step has both run and uses
+
+14 rules in families inputs, calls: 13 error, 1 warning, 0 note, 0 off

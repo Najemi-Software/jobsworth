@@ -1,0 +1,10 @@
+# expect: error needs-unknown
+# expect: note suppress-unused
+name: A suppression on the wrong line hides nothing and is reported unused
+on: push
+jobs:
+  a: # jobsworth-ignore needs-unknown
+    runs-on: ubuntu-latest
+    needs: nope
+    steps:
+      - run: echo ok

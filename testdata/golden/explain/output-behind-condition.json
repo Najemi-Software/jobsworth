@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "output-behind-condition",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 17,
+        "column": 14,
+        "message": "needs.a.outputs.v comes from step 's', which has an if:; the value may be empty and nothing checks needs.a.result"
+      },
+      "context": {
+        "expression": "needs.a.outputs.v",
+        "kind": "reachability",
+        "site": "job b / step #1 / run",
+        "step": {
+          "id": "s",
+          "index": 0,
+          "job": "a",
+          "line": 10,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 17,
+        "comment": "# jobsworth-ignore output-behind-condition",
+        "config": {
+          "output-behind-condition": "off"
+        }
+      }
+    }
+  ]
+}

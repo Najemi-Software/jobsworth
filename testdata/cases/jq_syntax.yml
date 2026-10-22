@@ -1,0 +1,9 @@
+# expect: error jq-syntax "does not parse"
+name: jq filter with a syntax error
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          jq '{version: .tag' release.json

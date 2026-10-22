@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "checkout-trailing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 15,
+        "message": "checkout 'actions/checkout@v4' is the last step of the job; nothing reads the tree"
+      },
+      "context": {
+        "kind": "performance",
+        "step": {
+          "id": "",
+          "index": 1,
+          "job": "build",
+          "line": 9,
+          "uses": "actions/checkout@v4"
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore checkout-trailing",
+        "config": {
+          "checkout-trailing": "off"
+        }
+      }
+    }
+  ]
+}

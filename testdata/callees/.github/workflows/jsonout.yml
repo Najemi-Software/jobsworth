@@ -1,0 +1,14 @@
+name: JSON out
+on:
+  workflow_call:
+    outputs:
+      meta:
+        value: ${{ jobs.build.outputs.meta }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      meta: ${{ steps.m.outputs.meta }}
+    steps:
+      - id: m
+        run: echo 'meta={"version":"1"}' >> "$GITHUB_OUTPUT"

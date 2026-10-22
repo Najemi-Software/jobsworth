@@ -1,0 +1,14 @@
+# expect: error action-output-unlifted "never writes"
+# expect: warning bash-output-unredirected
+# expect: note action-output-unused
+description: Example
+name: Composite output lifts a step output that is never written
+outputs:
+  version:
+    value: ${{ steps.v.outputs.version }}
+runs:
+  using: composite
+  steps:
+    - id: v
+      shell: bash
+      run: echo "version=1"

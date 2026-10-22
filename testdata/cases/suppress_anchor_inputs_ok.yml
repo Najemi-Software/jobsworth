@@ -1,0 +1,12 @@
+# expect: none
+name: Input rules anchor at the input key line
+on:
+  workflow_call:
+    inputs:
+      env: { type: string }
+      verbose: { type: boolean }  # jobsworth-ignore input-unused -- read by a wrapper script
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.env }}

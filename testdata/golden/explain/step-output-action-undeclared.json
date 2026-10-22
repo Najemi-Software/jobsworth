@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-output-action-undeclared",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 14,
+        "message": "steps.meta.outputs.sha is referenced but ./.github/actions/meta declares no output \"sha\" (declared: version)"
+      },
+      "context": {
+        "action": {
+          "how": "local",
+          "name": "<ROOT>/.github/actions/meta/action.yml",
+          "outputs": [
+            "version"
+          ]
+        },
+        "conclusion": "'sha' is not among the declared outputs; nearest is 'version'.",
+        "kind": "step-output",
+        "producer": {
+          "index": 1,
+          "line": 8,
+          "shell": "bash",
+          "shell_source": "runner default",
+          "step": "meta",
+          "uses": "./.github/actions/meta"
+        },
+        "reference": {
+          "field": "outputs",
+          "line": 10,
+          "output": "sha",
+          "site": "job build / step #3 / run",
+          "step": "meta"
+        }
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore step-output-action-undeclared",
+        "config": {
+          "step-output-action-undeclared": "off"
+        }
+      }
+    }
+  ]
+}

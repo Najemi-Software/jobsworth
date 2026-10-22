@@ -1,0 +1,16 @@
+# expect: none
+name: if with calls, booleans, and expressions
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+      - if: success()
+        run: echo a
+      - if: true
+        run: echo b
+      - if: github.ref == 'refs/heads/main'
+        run: echo c
+      - if: ${{ failure() }}
+        run: echo d

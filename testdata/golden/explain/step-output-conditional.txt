@@ -1,0 +1,16 @@
+.github/workflows/example.yml:12:14  note  step-output-conditional
+  steps.meta.outputs.version is only written on some paths of step 'meta'; the reference may be empty
+
+context:
+  reference      steps.meta.outputs.version   at :12  (job build / step #2 / run)
+  producing step 'meta'                               at :7   shell: bash (runner default)
+  script analysed as bash, 3 statements:
+    :9     if [ -f VERSION ]; then …                      if
+    :9     [ -f VERSION ]                                 call [
+    :10    echo "version=$(cat VERSION)" >>"$GITHUB_OUTP… echo, writes GITHUB_OUTPUT key 'version' (definite)   ← writes 'version' (conditional)
+  GITHUB_OUTPUT target: closed   keys written: version (con)
+  conclusion: 'version' is written, but only on some paths.
+
+suppress:
+  add on line 12:    # jobsworth-ignore step-output-conditional
+  or in .jobsworth.yml:   rules: { step-output-conditional: off }

@@ -1,0 +1,11 @@
+# config: rules: { if-redundant-success: note }
+# expect: note if-redundant-success
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: success()
+        run: echo ok

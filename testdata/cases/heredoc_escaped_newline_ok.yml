@@ -1,0 +1,12 @@
+# expect: none
+name: echo -e and printf interpret the escapes
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: |
+          echo -e "body<<EOF\nline\nEOF" >> "$GITHUB_OUTPUT"
+          printf 'more<<END\nline\nEND\n' >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.notes.outputs.body }} ${{ steps.notes.outputs.more }}"

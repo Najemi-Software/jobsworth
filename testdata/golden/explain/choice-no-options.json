@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "choice-no-options",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 7,
+        "message": "input 'level' is type choice but declares no options"
+      },
+      "context": {
+        "declared": {
+          "workflow_dispatch": [
+            "level (:5)"
+          ]
+        },
+        "kind": "inputs"
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore choice-no-options",
+        "config": {
+          "choice-no-options": "off"
+        }
+      }
+    }
+  ]
+}

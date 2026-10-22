@@ -1,0 +1,8 @@
+# expect: error step-no-action
+name: Example
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: nothing

@@ -1,0 +1,8 @@
+# expect: error needs-output-job-unknown "'nope'"
+name: Expression references outputs of a job that does not exist
+on: push
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.nope.outputs.version }}

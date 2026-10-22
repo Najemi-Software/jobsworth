@@ -1,0 +1,12 @@
+# expect: error heredoc-empty-delim "no delimiter"
+name: Opener with no delimiter
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: |
+          echo "body<<" >> "$GITHUB_OUTPUT"
+          echo "line" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.notes.outputs.body }}"

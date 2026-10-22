@@ -1,0 +1,9 @@
+# expect: none
+name: fromJSON of valid literals of every kind
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ fromJSON('{"a": [1, 2]}').a[1] }} ${{ fromJSON('["x"]')[0] }} ${{ fromJSON('42') }} ${{ fromJSON('true') }}"

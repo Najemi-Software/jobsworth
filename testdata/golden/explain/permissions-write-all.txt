@@ -1,0 +1,10 @@
+.github/workflows/example.yml:3:14  warning  permissions-write-all
+  workflow permissions: write-all grants every scope; list the scopes the workflow needs
+
+context:
+  triggers       push
+  permissions    write-all (workflow)
+
+suppress:
+  add on line 3:    # jobsworth-ignore permissions-write-all
+  or in .jobsworth.yml:   rules: { permissions-write-all: off }

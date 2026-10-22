@@ -1,0 +1,8 @@
+# expect: error on-unknown-event
+name: on-unknown-event flagged
+on: pushh
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

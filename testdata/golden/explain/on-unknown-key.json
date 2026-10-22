@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "on-unknown-key",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 5,
+        "message": "on.push.branch is not a key the push event accepts (allowed: types, branches, branches-ignore, tags, tags-ignore, paths, paths-ignore); did you mean branches?"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore on-unknown-key",
+        "config": {
+          "on-unknown-key": "off"
+        }
+      }
+    }
+  ]
+}

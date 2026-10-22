@@ -1,0 +1,11 @@
+.github/workflows/example.yml:5:14  warning  runs-on-unknown
+  runner label "ubunut-latest" is not a GitHub-hosted runner label; the job never schedules (add it to structure.runner_labels if it is a self-hosted label)
+
+context:
+  job            'build'                              at :4
+  runs-on        ubunut-latest
+  triggers       push
+
+suppress:
+  add on line 5:    # jobsworth-ignore runs-on-unknown
+  or in .jobsworth.yml:   rules: { runs-on-unknown: off }

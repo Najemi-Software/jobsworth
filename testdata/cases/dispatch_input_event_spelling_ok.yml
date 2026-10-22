@@ -1,0 +1,12 @@
+# expect: none
+name: dispatch-input-event-spelling passes
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.name }}

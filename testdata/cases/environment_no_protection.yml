@@ -1,0 +1,11 @@
+# enrich
+# expect: note environment-no-protection
+name: Example
+on: pull_request_target
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    environment: staging
+    steps:
+      - run: echo deploy

@@ -1,0 +1,15 @@
+# config: rules: { step-output-conditional: note }
+# expect: none
+name: Output written on every branch is definite
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: |
+          case "$X" in
+            a) echo "version=a" >> "$GITHUB_OUTPUT" ;;
+            *) echo "version=other" >> "$GITHUB_OUTPUT" ;;
+          esac
+      - run: echo ${{ steps.meta.outputs.version }}

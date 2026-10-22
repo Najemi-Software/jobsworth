@@ -1,0 +1,28 @@
+{
+  "entries": [
+    {
+      "path": "<ROOT>/.github/workflows/suppressed.yml",
+      "ok": true,
+      "findings": [],
+      "suppressed": [
+        {
+          "severity": "error",
+          "rule": "needs-unknown",
+          "file": "<ROOT>/.github/workflows/suppressed.yml",
+          "line": 6,
+          "column": 12,
+          "message": "job 'build' needs unknown job 'generated'",
+          "category": "correctness",
+          "reason": "job is added by a generator"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "entries": 1,
+    "failed": 0,
+    "errors": 0,
+    "warnings": 0,
+    "notes": 0
+  }
+}

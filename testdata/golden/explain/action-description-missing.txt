@@ -1,0 +1,8 @@
+.github/actions/example/action.yml:1:1  note  action-description-missing
+  action has no description:; it is required for the marketplace and is the action's documentation surface
+
+context:
+
+suppress:
+  add on line 1:    # jobsworth-ignore action-description-missing
+  or in .jobsworth.yml:   rules: { action-description-missing: off }

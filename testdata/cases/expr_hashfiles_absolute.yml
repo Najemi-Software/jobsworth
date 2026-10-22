@@ -1,0 +1,8 @@
+# expect: warning expr-hashfiles-absolute "outside the workspace"
+name: hashFiles with an absolute path
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ hashFiles('/etc/hosts') }}

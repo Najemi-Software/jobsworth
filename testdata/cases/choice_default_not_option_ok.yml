@@ -1,0 +1,13 @@
+# expect: none
+name: Choice default within options, or no default
+on:
+  workflow_dispatch:
+    inputs:
+      level: { type: choice, options: [ low, high ], default: low }
+      other: { type: choice, options: [ a, b ] }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: inputs.level == 'high' && inputs.other == 'a'
+    steps:
+      - run: echo ok

@@ -1,0 +1,10 @@
+description: Example
+name: Notify
+inputs:
+  env:
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo ${{ inputs.env }}

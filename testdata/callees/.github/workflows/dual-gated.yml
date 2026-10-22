@@ -1,0 +1,19 @@
+name: Dual gated
+on:
+  workflow_call:
+    inputs:
+      flag:
+        type: boolean
+        default: false
+  workflow_dispatch:
+    inputs:
+      flag:
+        type: boolean
+        default: false
+permissions: read-all
+jobs:
+  reuse:
+    runs-on: ubuntu-latest
+    if: ${{ !inputs.flag }}
+    steps:
+      - run: echo reuse

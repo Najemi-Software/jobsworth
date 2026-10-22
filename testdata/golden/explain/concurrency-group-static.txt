@@ -1,0 +1,9 @@
+.github/workflows/example.yml:3:14  note  concurrency-group-static
+  workflow concurrency group "ci" has no expression, so every run across all branches queues behind or cancels every other; ${{ github.workflow }}-${{ github.ref }} is the usual group
+
+context:
+  triggers       push
+
+suppress:
+  add on line 3:    # jobsworth-ignore concurrency-group-static
+  or in .jobsworth.yml:   rules: { concurrency-group-static: off }

@@ -1,0 +1,14 @@
+# expect: note jobs-mergeable
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make build
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: make test

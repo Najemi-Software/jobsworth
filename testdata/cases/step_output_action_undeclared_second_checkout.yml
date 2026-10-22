@@ -1,0 +1,14 @@
+# expect: note checkout-redundant
+# expect: note checkout-unused
+name: Declared action outputs, local and fetched
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: meta
+        uses: ./.github/actions/meta
+      - id: co
+        uses: actions/checkout@v4
+      - run: echo ${{ steps.meta.outputs.version }} ${{ steps.co.outputs.ref }}

@@ -1,0 +1,12 @@
+# expect: warning on-workflow-run-unknown
+name: on-workflow-run-unknown flagged
+on:
+  workflow_run:
+    workflows: [Nope]
+    types: [completed]
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

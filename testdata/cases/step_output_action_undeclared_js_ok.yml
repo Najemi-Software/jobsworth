@@ -1,0 +1,19 @@
+# expect: none
+name: JS actions set outputs at runtime, so declared outputs are a lower bound
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: script
+        uses: actions/github-script@v7
+        with:
+          script: core.setOutput('answer', 42)
+      - id: filter
+        uses: dorny/paths-filter@v3
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+      - run: echo ${{ steps.script.outputs.answer }} ${{ steps.filter.outputs.docs }} ${{ steps.filter.outputs.changes }}

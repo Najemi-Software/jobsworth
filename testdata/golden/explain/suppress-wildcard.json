@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "suppress-wildcard",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 1,
+        "message": "jobsworth-ignore * hides every rule on this line, including future ones"
+      },
+      "context": {
+        "directives": [
+          {
+            "applies": "line 6",
+            "kind": "line",
+            "line": 6,
+            "reason": "",
+            "rules": null,
+            "wildcard": true
+          }
+        ],
+        "kind": "suppress"
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore suppress-wildcard",
+        "config": {
+          "suppress-wildcard": "off"
+        }
+      }
+    }
+  ]
+}

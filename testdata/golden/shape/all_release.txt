@@ -1,0 +1,12 @@
+ line  at                           expression                                               shape
+    9  job set-vars / outputs       steps.build-clusters-matrix.outputs.canary               String ⊂ JSON → Array[Object{cluster: String, namespace: String}]
+   19  job set-vars / step #3 / run env.VERSION                                              String
+   19  job set-vars / step #3 / run env.REGION                                               String
+   26  job deploy / include         fromJSON(needs.set-vars.outputs.canary)                  Array[Object{cluster: String, namespace: String}]
+   28  job deploy / step #1 / run   fromJSON(needs.set-vars.outputs.canary)[0].cluster       String
+   28  job deploy / step #1 / run   matrix.os                                                String
+   28  job deploy / step #1 / run   github.event_name                                        String ∈ {push, pull_request}
+   31  job deploy / step #3 / run   steps.meta.outputs.sha                                   String
+   31  job deploy / step #3 / run   fromJSON(needs.set-vars.outputs.canary)[0].region        ✗ fromJSON(needs.set-vars.outputs.canary)[0].region: at step 2 (.region): field "region" not in object (declared: cluster, namespace)
+
+9 expressions: 8 resolved, 0 Any

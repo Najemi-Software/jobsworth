@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:9  note  step-unreachable
+  step 'v' never runs (its if: is always false) but its outputs are consumed; the consumers get empty values
+
+context:
+  step           job 'build' / step 'v'               at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore step-unreachable
+  or in .jobsworth.yml:   rules: { step-unreachable: off }

@@ -1,0 +1,11 @@
+# expect: none
+name: Every referenced step id exists, including outcome and conclusion
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: echo "version=1" >> "$GITHUB_OUTPUT"
+      - if: steps.meta.outcome == 'success' && steps.meta.conclusion == 'success'
+        run: echo ${{ steps.meta.outputs.version }}

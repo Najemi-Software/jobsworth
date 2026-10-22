@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "input-undeclared",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 9,
+        "message": "inputs.dry_run is referenced but input 'dry_run' is not declared"
+      },
+      "context": {
+        "conclusion": "'dry_run' is not declared; nearest declared input is 'env'.",
+        "declared": {
+          "workflow_call": [
+            "env (:5)"
+          ]
+        },
+        "kind": "inputs",
+        "nearest": "env",
+        "reference": "dry_run"
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore input-undeclared",
+        "config": {
+          "input-undeclared": "off"
+        }
+      }
+    }
+  ]
+}

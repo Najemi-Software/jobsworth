@@ -1,0 +1,12 @@
+# expect: error choice-no-options "declares no options"
+name: Choice input without options
+on:
+  workflow_dispatch:
+    inputs:
+      level: { type: choice }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: inputs.level == 'high'
+    steps:
+      - run: echo ok

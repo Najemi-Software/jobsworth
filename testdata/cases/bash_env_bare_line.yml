@@ -1,0 +1,8 @@
+# expect: warning bash-env-bare-line "/usr/local/bin"
+name: A path written to $GITHUB_ENV
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "/usr/local/bin" >> "$GITHUB_ENV"

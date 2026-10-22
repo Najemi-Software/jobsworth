@@ -1,0 +1,11 @@
+# expect: none
+name: env in a step-level if is fine
+on: push
+env:
+  DEPLOY: 'true'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: env.DEPLOY == 'true'
+        run: echo deploy

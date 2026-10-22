@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:21  warning  on-unknown-type
+  on.pull_request.types: "synchronise" is not an activity type of pull_request (allowed: assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, synchronize, converted_to_draft, locked, unlocked, enqueued, dequeued, milestoned, demilestoned, ready_for_review, review_requested, review_request_removed, auto_merge_enabled, auto_merge_disabled); did you mean synchronize?; GitHub ignores it and the workflow never fires for the intended type
+
+context:
+  triggers       pull_request
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-unknown-type
+  or in .jobsworth.yml:   rules: { on-unknown-type: off }

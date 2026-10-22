@@ -1,0 +1,9 @@
+# expect: none
+name: Example
+on: pull_request
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

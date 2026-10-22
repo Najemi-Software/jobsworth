@@ -1,0 +1,119 @@
+{
+  "entries": [
+    {
+      "path": "<ROOT>/.github/workflows/fail.yml",
+      "ok": false,
+      "findings": [
+        {
+          "severity": "error",
+          "rule": "needs-unknown",
+          "file": "<ROOT>/.github/workflows/fail.yml",
+          "line": 13,
+          "column": 21,
+          "message": "job 'deploy' needs unknown job 'nope'",
+          "category": "correctness"
+        },
+        {
+          "severity": "error",
+          "rule": "needs-output-undeclared",
+          "file": "<ROOT>/.github/workflows/fail.yml",
+          "line": 15,
+          "column": 14,
+          "message": "job 'deploy' references needs.build.outputs.sha, but job 'build' declares no output 'sha'",
+          "category": "correctness"
+        },
+        {
+          "severity": "warning",
+          "rule": "output-unused",
+          "file": "<ROOT>/.github/workflows/fail.yml",
+          "line": 7,
+          "column": 7,
+          "message": "job 'build' declares output 'version' but nothing references it",
+          "category": "correctness"
+        }
+      ],
+      "suppressed": []
+    },
+    {
+      "path": "<ROOT>/.github/workflows/linked.yml",
+      "ok": true,
+      "findings": [
+        {
+          "severity": "warning",
+          "rule": "fetch-failed",
+          "file": "<ROOT>/.github/workflows/linked.yml",
+          "line": 5,
+          "column": 11,
+          "message": "acme/tools@v1: could not fetch (HTTP 403), skipping",
+          "category": "correctness"
+        },
+        {
+          "severity": "note",
+          "rule": "uses-unpinned",
+          "file": "<ROOT>/.github/workflows/linked.yml",
+          "line": 5,
+          "column": 11,
+          "message": "acme/tools/.github/workflows/x.yml@v1 is pinned to \"v1\", not a full commit SHA; the owner can move the tag (trusted owners: actions, github, najemi-software)",
+          "category": "security"
+        }
+      ],
+      "suppressed": []
+    },
+    {
+      "path": "<ROOT>/.github/workflows/note.yml",
+      "ok": true,
+      "findings": [
+        {
+          "severity": "note",
+          "rule": "uses-dynamic",
+          "file": "<ROOT>/.github/workflows/note.yml",
+          "line": 10,
+          "column": 15,
+          "message": "uses: \"${{ matrix.action }}\" is dynamic and cannot be followed",
+          "category": "correctness"
+        }
+      ],
+      "suppressed": []
+    },
+    {
+      "path": "<ROOT>/.github/workflows/ok.yml",
+      "ok": true,
+      "findings": [
+        {
+          "severity": "note",
+          "rule": "checkout-unused",
+          "file": "<ROOT>/.github/workflows/ok.yml",
+          "line": 7,
+          "column": 15,
+          "message": "checkout 'actions/checkout@v4' is followed only by steps that do not touch the filesystem; drop it and save the clone",
+          "category": "performance"
+        }
+      ],
+      "suppressed": []
+    },
+    {
+      "path": "<ROOT>/.github/workflows/suppressed.yml",
+      "ok": true,
+      "findings": [],
+      "suppressed": [
+        {
+          "severity": "error",
+          "rule": "needs-unknown",
+          "file": "<ROOT>/.github/workflows/suppressed.yml",
+          "line": 6,
+          "column": 12,
+          "message": "job 'build' needs unknown job 'generated'",
+          "category": "correctness",
+          "reason": "job is added by a generator"
+        }
+      ]
+    }
+  ],
+  "summary": {
+    "entries": 5,
+    "failed": 1,
+    "errors": 2,
+    "warnings": 2,
+    "notes": 3
+  }
+}

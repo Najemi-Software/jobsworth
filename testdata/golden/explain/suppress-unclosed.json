@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "suppress-unclosed",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 1,
+        "message": "jobsworth-ignore-start has no matching jobsworth-ignore-end; runs to end of file"
+      },
+      "context": {
+        "directives": [
+          {
+            "applies": "lines 4-10",
+            "kind": "region",
+            "line": 4,
+            "reason": "",
+            "rules": [
+              "needs-unknown"
+            ],
+            "wildcard": false
+          }
+        ],
+        "kind": "suppress"
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore suppress-unclosed",
+        "config": {
+          "suppress-unclosed": "off"
+        }
+      }
+    }
+  ]
+}

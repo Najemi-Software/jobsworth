@@ -1,0 +1,10 @@
+{
+    "retries": 3,
+    "hosts": [
+        "a",
+        "b"
+    ],
+    "nested": {
+        "deep": true
+    }
+}

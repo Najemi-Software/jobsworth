@@ -1,0 +1,14 @@
+# config: bash: { opaque_commands: [mytool] }
+# expect: warning heredoc-delim-collision "END"
+name: Config-listed opaque command triggers the collision rule
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: log
+        run: |
+          echo "body<<END" >> "$GITHUB_OUTPUT"
+          echo "$(mytool report)" >> "$GITHUB_OUTPUT"
+          echo "END" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.log.outputs.body }}"

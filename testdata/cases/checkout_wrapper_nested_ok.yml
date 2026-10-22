@@ -1,0 +1,12 @@
+# expect: none
+name: A wrapper calling another wrapper composes the wiring
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-outer@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

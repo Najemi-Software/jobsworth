@@ -1,0 +1,9 @@
+.github/workflows/example.yml:5:7  error  dispatch-input-type
+  workflow_dispatch input 'count' has type "integer"; allowed: string, boolean, choice, environment, number
+
+context:
+  triggers       workflow_dispatch
+
+suppress:
+  add on line 5:    # jobsworth-ignore dispatch-input-type
+  or in .jobsworth.yml:   rules: { dispatch-input-type: off }

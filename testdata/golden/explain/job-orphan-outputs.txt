@@ -1,0 +1,11 @@
+.github/workflows/example.yml:5:3  note  job-orphan-outputs
+  job 'a' declares outputs: but no job needs it and no on.workflow_call.outputs lifts them; delete the block or lift it
+
+context:
+  job            'a'                                  at :5
+  runs-on        ubuntu-latest
+  triggers       workflow_call
+
+suppress:
+  add on line 5:    # jobsworth-ignore job-orphan-outputs
+  or in .jobsworth.yml:   rules: { job-orphan-outputs: off }

@@ -1,0 +1,13 @@
+# config: skip: { actions: [acme/forbidden], workflows: [acme/forbidden/.github/workflows/x.yml] }
+# expect: none
+name: Skip-listed references are never fetched
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/forbidden@v1
+  b:
+    uses: acme/forbidden/.github/workflows/x.yml@v1
+    with:
+      anything: goes

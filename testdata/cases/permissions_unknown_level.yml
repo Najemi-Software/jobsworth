@@ -1,0 +1,10 @@
+# expect: error permissions-unknown-level
+name: Example
+on: push
+permissions:
+  contents: readonly
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

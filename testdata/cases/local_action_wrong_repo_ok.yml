@@ -1,0 +1,13 @@
+# expect: none
+name: Root checkout of the file's own repository
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - uses: ./.github/actions/greet
+        with:
+          name: world

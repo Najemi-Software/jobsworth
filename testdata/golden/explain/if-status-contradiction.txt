@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:13  warning  if-status-contradiction
+  job 'build' step #1: failure() && success() cannot both hold
+
+context:
+  expression     success() && failure()   at :8  (job build / step #1 / if)
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore if-status-contradiction
+  or in .jobsworth.yml:   rules: { if-status-contradiction: off }

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "job-unreachable",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 3,
+        "message": "job 'build' needs 'gate', whose if: is always false, and nothing on the way runs after a skip; the job never runs"
+      },
+      "context": {
+        "kind": "structure",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "gate",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore job-unreachable",
+        "config": {
+          "job-unreachable": "off"
+        }
+      }
+    }
+  ]
+}

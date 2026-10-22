@@ -1,0 +1,13 @@
+# expect: warning prt-untrusted-checkout
+name: Example
+on: pull_request_target
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions: read-all
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+      - run: ls -la

@@ -1,0 +1,13 @@
+# expect: none
+name: Reusable workflow job outputs come from the callee declarations
+on: push
+jobs:
+  build:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo ${{ needs.build.outputs.version }}

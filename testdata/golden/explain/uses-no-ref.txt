@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:15  error  uses-no-ref
+  uses: "actions/checkout": external reference has no @ref
+
+context:
+  reference      actions/checkout                     at :7
+  resolution     failed: uses: "actions/checkout": external reference has no @ref
+  api calls      none (served from cache, linked, skipped, or offline)
+  token source   JOBSWORTH_TOKEN
+
+suppress:
+  add on line 7:    # jobsworth-ignore uses-no-ref
+  or in .jobsworth.yml:   rules: { uses-no-ref: off }

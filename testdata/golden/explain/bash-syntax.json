@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "bash-syntax",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1: script does not parse as bash: 1:1: `if` statement must end with `fi`"
+      },
+      "context": {
+        "conclusion": "no bash rule ran on this step; fix the syntax first.",
+        "kind": "bash",
+        "parse_error": {
+          "column": 1,
+          "line": 8,
+          "message": "`if` statement must end with `fi`"
+        },
+        "step": {
+          "id": "",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        }
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore bash-syntax",
+        "config": {
+          "bash-syntax": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+# expect: error step-id-invalid "1st.step"
+# expect: error step-id-invalid "my step"
+# expect: note step-output-unused x2
+name: Ids with invalid characters or a leading digit
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: 1st.step
+        run: echo "a=1" >> "$GITHUB_OUTPUT"
+      - id: my step
+        run: echo "b=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps['1st.step'].outputs.a }} ${{ steps['my step'].outputs.b }}

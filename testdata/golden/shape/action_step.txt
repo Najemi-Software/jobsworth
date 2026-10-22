@@ -1,0 +1,10 @@
+steps.s.outputs.sha
+  = String
+
+why:
+  steps.s.outputs.sha
+    written by step 's' (line 11):  echo "sha=$(git rev-parse HEAD)" >>$GITHUB_OUTPUT
+      opaque: output of command git → String
+
+accepted:
+  no member access accepted on String

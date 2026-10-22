@@ -1,0 +1,7 @@
+REF                          KIND  SHA      AGE  TTL  SIZE  FILES
+(unreferenced)
+acme/shared@25c71f4…         sha   25c71f4  3m   ∞    615   1
+actions/checkout@2db1d53…    sha   2db1d53  3m   ∞    428   1
+actions/checkout@61d4992…    sha   61d4992  3m   ∞    385   1
+
+0 refs, 3 SHAs unreferenced, 3 files, 1K

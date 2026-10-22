@@ -1,0 +1,12 @@
+# enrich
+# self: example/writer
+# config: rules: { permissions-missing: warning }
+# expect: error permissions-missing
+# expect: warning prt-no-permissions
+name: A read-write default on a privileged trigger upgrades the missing block to an error
+on: pull_request_target
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

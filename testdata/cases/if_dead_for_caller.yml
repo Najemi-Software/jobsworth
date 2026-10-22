@@ -1,0 +1,14 @@
+# config: rules: { if-dead-for-caller: note }
+# expect: note if-dead-for-caller
+name: Example
+on: push
+permissions: read-all
+jobs:
+  staging:
+    uses: ./.github/workflows/gated.yml
+    with:
+      env: staging
+  dynamic:
+    uses: ./.github/workflows/gated.yml
+    with:
+      env: ${{ github.ref_name }}

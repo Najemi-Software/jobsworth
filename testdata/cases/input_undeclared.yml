@@ -1,0 +1,12 @@
+# expect: error input-undeclared "'missing'"
+name: Workflow references an input it never declares
+on:
+  workflow_call:
+    inputs:
+      env: { type: string }
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    if: inputs.env == 'x' && inputs.missing
+    steps:
+      - run: echo ok

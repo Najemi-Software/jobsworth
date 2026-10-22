@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": "<TESTDATA>/cases/graph_sha_and_branch.yml",
+      "path": "<TESTDATA>/cases/graph_sha_and_branch.yml",
+      "repo": "example/app"
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@v4",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "v4",
+      "ref_kind": "tag",
+      "sha": "2db1d539fba6c56715b3e80ff0292b398ca3ed2e",
+      "cache": "miss",
+      "inputs": [
+        "persist-credentials",
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    },
+    "n2": {
+      "id": "n2",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@main",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "main",
+      "ref_kind": "branch",
+      "sha": "61d4992077fad0725441a010d6da254ca451a0a2",
+      "cache": "miss",
+      "inputs": [
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    },
+    "n3": {
+      "id": "n3",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@0123456789abcdef0123456789abcdef01234567",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "0123456789abcdef0123456789abcdef01234567",
+      "ref_kind": "sha",
+      "sha": "0123456789abcdef0123456789abcdef01234567",
+      "cache": "miss",
+      "inputs": [
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job build / step #1",
+      "line": 10,
+      "uses": "actions/checkout@v4"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "site": "job build / step #2",
+      "line": 11,
+      "uses": "actions/checkout@main"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "site": "job build / step #3",
+      "line": 12,
+      "uses": "actions/checkout@0123456789abcdef0123456789abcdef01234567"
+    }
+  ],
+  "summary": {
+    "nodes": 4,
+    "by_source": {
+      "entry": 1,
+      "fetched": 3
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 3,
+      "stale": 0
+    },
+    "api_calls": 7
+  }
+}

@@ -1,0 +1,7 @@
+digraph jobsworth {
+  rankdir=LR;
+  node [fontname="Helvetica"];
+  n0 [label=".github/workflows/ok.yml\nentry", shape=box, color=black];
+  n1 [label="actions/checkout@v4\nfetched 2db1d53", shape=ellipse, color=blue];
+  n0 -> n1 [label="job build / step #1"];
+}

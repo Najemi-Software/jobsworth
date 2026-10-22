@@ -1,0 +1,8 @@
+# expect: none
+name: Escaped braces are not placeholders
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ format('{{ {0}', github.sha) }}

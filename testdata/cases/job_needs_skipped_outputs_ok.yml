@@ -1,0 +1,19 @@
+# expect: none
+name: A job that reads the conditional dependency's outputs is skipped on purpose
+on: push
+permissions: read-all
+jobs:
+  prepare:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      tags: ${{ steps.t.outputs.tags }}
+    steps:
+      - id: t
+        run: echo "tags=a,b" >> "$GITHUB_OUTPUT"
+  publish:
+    runs-on: ubuntu-latest
+    needs: prepare
+    if: ${{ needs.prepare.outputs.tags != '' }}
+    steps:
+      - run: echo ${{ needs.prepare.outputs.tags }}

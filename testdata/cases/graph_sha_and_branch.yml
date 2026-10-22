@@ -1,0 +1,12 @@
+# graph
+# expect: note checkout-redundant x2
+# expect: note checkout-trailing
+name: The same action at three refs is three nodes
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/checkout@main
+      - uses: actions/checkout@0123456789abcdef0123456789abcdef01234567

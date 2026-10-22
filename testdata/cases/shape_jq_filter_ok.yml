@@ -1,0 +1,19 @@
+# expect: none
+# shape: --at build 'fromJSON(steps.bare.outputs.cfg)' => Object{a: Number}
+# shape: --at build 'fromJSON(steps.filtered.outputs.inner)' => Object{b: String}
+name: jq with no filter runs the identity; an explicit filter is applied
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: bare
+        run: |
+          CFG=$(echo '{"a": 1}' | jq -c)
+          echo "cfg=$CFG" >> "$GITHUB_OUTPUT"
+      - id: filtered
+        run: |
+          INNER=$(echo '{"x": {"b": "y"}}' | jq -c '.x')
+          echo "inner=$INNER" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ fromJSON(steps.bare.outputs.cfg).a }} ${{ fromJSON(steps.filtered.outputs.inner).b }}

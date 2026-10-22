@@ -1,0 +1,13 @@
+# expect: none
+name: Outputs without an id or under an open target are not reported
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "orphan=1" >> "$GITHUB_OUTPUT"
+      - id: dyn
+        run: |
+          echo "known=1" >> "$GITHUB_OUTPUT"
+          echo "$k=2" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.dyn.outputs.other }}

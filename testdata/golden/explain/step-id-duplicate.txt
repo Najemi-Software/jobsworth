@@ -1,0 +1,13 @@
+.github/workflows/example.yml:9:13  error  step-id-duplicate
+  step id "meta" is already used by step 'meta'
+
+context:
+  step           'meta'                               at :9   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :10    echo "a=2" >>"$GITHUB_OUTPUT"                  echo, writes GITHUB_OUTPUT key 'a' (definite)
+  GITHUB_OUTPUT target: closed   keys written: a (def)
+  referenced ids in scope: meta
+
+suppress:
+  add on line 9:    # jobsworth-ignore step-id-duplicate
+  or in .jobsworth.yml:   rules: { step-id-duplicate: off }

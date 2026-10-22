@@ -1,0 +1,5 @@
+graph_via_checkout.yml  (workflow, entry)
+├─ job notify / step #1 → actions/checkout@v4  (node-action, fetched, tag → 2db1d53, cache miss)
+└─ job notify / step #2 → ./.github/actions/notify  (composite-action, fetched acme/shared@v2 → 25c71f4, via checkout in job notify, cache miss)
+
+3 nodes: 1 entry, 2 fetched (0 cache hits, 2 misses, 0 stale)

@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "callee-unparseable",
+        "file": "<ROOT>/.github/workflows/broken.yml",
+        "message": "cannot parse: yaml: yaml: line 3: did not find expected node content"
+      },
+      "context": {
+        "conclusion": "nothing in this file was validated; fix the YAML first, then re-run check.",
+        "error": "cannot parse: yaml: yaml: line 3: did not find expected node content",
+        "file": "<ROOT>/.github/workflows/broken.yml",
+        "kind": "callee",
+        "referenced_by": [
+          {
+            "file": "<ROOT>/.github/workflows/example.yml",
+            "line": 5,
+            "site": "job call",
+            "uses": "./.github/workflows/broken.yml"
+          }
+        ]
+      },
+      "suppress": {
+        "line": 0,
+        "comment": "# jobsworth-ignore callee-unparseable",
+        "config": {
+          "callee-unparseable": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "local-action-no-checkout",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 15,
+        "message": "step './.github/actions/greet' uses local action ./.github/actions/greet but job 'build' has no checkout before it"
+      },
+      "context": {
+        "action": {
+          "job": "build",
+          "line": 7,
+          "step": "'./.github/actions/greet'",
+          "uses": "./.github/actions/greet"
+        },
+        "checkouts": null,
+        "kind": "checkout"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore local-action-no-checkout",
+        "config": {
+          "local-action-no-checkout": "off"
+        }
+      }
+    }
+  ]
+}

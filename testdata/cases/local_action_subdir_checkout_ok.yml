@@ -1,0 +1,16 @@
+# self: acme/app
+# expect: none
+name: A subdirectory checkout provides the local actions referenced through its path
+on: push
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: acme/shared
+          ref: v2
+          path: shared
+      - uses: ./shared/.github/actions/notify
+        with:
+          env: prod

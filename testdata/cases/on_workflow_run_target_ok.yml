@@ -1,0 +1,12 @@
+# expect: none
+name: on-workflow-run-target passes
+on:
+  workflow_run:
+    workflows: [Reusable]
+    types: [completed]
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

@@ -1,0 +1,10 @@
+# offline
+# expect: none
+name: Offline with only local references fetches nothing
+on: push
+permissions: read-all
+jobs:
+  a:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod

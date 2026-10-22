@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  expr-string-escape
+  double-quoted strings are not valid in GitHub expressions; use single quotes ('...')
+
+context:
+  expression     github.ref == "refs/heads/main"   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore expr-string-escape
+  or in .jobsworth.yml:   rules: { expr-string-escape: off }

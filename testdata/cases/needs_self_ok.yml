@@ -1,0 +1,14 @@
+# expect: none
+name: Job needs another job, not itself
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: [ b ]
+    steps:
+      - run: echo ok
+  b:
+    runs-on: windows-latest
+    steps:
+      - run: echo ok

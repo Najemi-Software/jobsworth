@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "self-hosted-pr-trigger",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 15,
+        "message": "job 'build' runs on a self-hosted runner for pull_request without a branches: restriction; pull requests from forks execute on that machine"
+      },
+      "context": {
+        "job": "build",
+        "kind": "security",
+        "runs_on": [
+          "self-hosted",
+          "linux"
+        ],
+        "triggers": [
+          "pull_request"
+        ]
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore self-hosted-pr-trigger",
+        "config": {
+          "self-hosted-pr-trigger": "off"
+        }
+      }
+    }
+  ]
+}

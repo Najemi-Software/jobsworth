@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "input-no-trigger",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "inputs.name is referenced but the workflow has neither workflow_call nor workflow_dispatch; the inputs context is always empty"
+      },
+      "context": {
+        "expression": "inputs.name",
+        "kind": "trigger",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore input-no-trigger",
+        "config": {
+          "input-no-trigger": "off"
+        }
+      }
+    }
+  ]
+}

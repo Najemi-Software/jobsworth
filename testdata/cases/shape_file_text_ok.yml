@@ -1,0 +1,16 @@
+# expect: none
+# shape: --at build 'steps.s.outputs.toml' => String
+# shape: --at build 'steps.s.outputs.env' => String
+name: Plain-text files read into outputs are strings, not JSON-of-string
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: s
+        run: |
+          echo "toml=$(cat config.toml)" >> "$GITHUB_OUTPUT"
+          echo "env=$(cat settings.env)" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.s.outputs.toml }} ${{ steps.s.outputs.env }}

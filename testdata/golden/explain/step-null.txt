@@ -1,0 +1,10 @@
+.github/workflows/example.yml:8:8  error  step-null
+  job 'build' step #2 is null (an empty list item); GitHub rejects the workflow
+
+context:
+  step           job 'build' / step #2                at :8   run:
+  triggers       push
+
+suppress:
+  add on line 8:    # jobsworth-ignore step-null
+  or in .jobsworth.yml:   rules: { step-null: off }

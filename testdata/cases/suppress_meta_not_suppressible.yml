@@ -1,0 +1,9 @@
+# expect: note suppress-wildcard
+name: Meta-rules cannot themselves be suppressed inline
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: nope  # jobsworth-ignore *, suppress-wildcard
+    steps:
+      - run: echo ok

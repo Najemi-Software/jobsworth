@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "if-redundant-success",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 13,
+        "message": "job 'build' step #1 has if: success(), which is the default"
+      },
+      "context": {
+        "expression": "success()",
+        "kind": "condition",
+        "site": "job build / step #1 / if",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore if-redundant-success",
+        "config": {
+          "if-redundant-success": "off"
+        }
+      }
+    }
+  ]
+}

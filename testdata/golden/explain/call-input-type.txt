@@ -1,0 +1,15 @@
+.github/workflows/example.yml:8:14  error  call-input-type
+  job 'call' calling <ROOT>/.github/workflows/reusable.yml: with.count is "three" but the callee declares type number (expected a number)
+
+context:
+  callsite       job call                             at :5
+  callee         <ROOT>/.github/workflows/reusable.yml local
+  supplied       env, count
+  declared       env (string), count (number), strict (boolean), level (string)   (4 inputs)
+  required       env   missing: none
+    env: declared, str literal fits type string
+    count: declared, str literal "three" does not fit type number (expected a number)
+
+suppress:
+  add on line 8:    # jobsworth-ignore call-input-type
+  or in .jobsworth.yml:   rules: { call-input-type: off }

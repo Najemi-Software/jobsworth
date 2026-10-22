@@ -1,0 +1,8 @@
+.github/workflows/example.yml:5:7  error  call-output-undeclared
+  workflow output 'version' references jobs.build.outputs.version, but job 'build' declares no output 'version'
+
+context:
+
+suppress:
+  add on line 5:    # jobsworth-ignore call-output-undeclared
+  or in .jobsworth.yml:   rules: { call-output-undeclared: off }

@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "name-expression",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 1,
+        "column": 7,
+        "message": "workflow name: contains ${{ }}, which is not evaluated there; the Actions tab shows it verbatim (run-name: does evaluate expressions)"
+      },
+      "context": {
+        "expression": "github.ref",
+        "kind": "structure",
+        "site": "name",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 1,
+        "comment": "# jobsworth-ignore name-expression",
+        "config": {
+          "name-expression": "off"
+        }
+      }
+    }
+  ]
+}

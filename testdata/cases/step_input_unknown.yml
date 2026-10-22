@@ -1,0 +1,12 @@
+# expect: error step-input-unknown "with.loud"
+name: Step supplies an input the action does not declare
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet
+        with:
+          name: world
+          loud: true

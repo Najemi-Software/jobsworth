@@ -1,0 +1,10 @@
+# expect: error uses-no-ref "no @ref"
+name: External reference without a ref
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout
+      - run: ls -la

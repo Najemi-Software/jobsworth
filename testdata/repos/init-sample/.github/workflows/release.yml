@@ -1,0 +1,17 @@
+name: Release
+on: push
+jobs:
+  lint:
+    uses: acme/shared/.github/workflows/lint.yml@v2
+    with:
+      env: prod
+  publish:
+    runs-on: windows-latest
+    needs: lint
+    steps:
+      - uses: acme/tools/git/checkout-with-cache@v1
+      - uses: acme/forbidden@v1
+      - uses: acme/nope@v1
+      - shell: pwsh
+        run: Write-Host publish
+permissions: read-all

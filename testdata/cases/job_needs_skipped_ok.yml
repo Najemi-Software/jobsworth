@@ -1,0 +1,16 @@
+# expect: none
+name: Example
+on: push
+permissions: read-all
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    steps:
+      - run: echo gate
+  build:
+    runs-on: ubuntu-latest
+    needs: gate
+    if: always() && needs.gate.result != 'failure'
+    steps:
+      - run: echo hi

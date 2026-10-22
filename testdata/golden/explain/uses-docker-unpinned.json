@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "uses-docker-unpinned",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 15,
+        "message": "docker://alpine:3.19 is not pinned to a digest (@sha256:...); the tag can be moved"
+      },
+      "context": {
+        "kind": "security",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": "docker://alpine:3.19"
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore uses-docker-unpinned",
+        "config": {
+          "uses-docker-unpinned": "off"
+        }
+      }
+    }
+  ]
+}

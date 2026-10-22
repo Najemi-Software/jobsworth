@@ -1,0 +1,12 @@
+.github/workflows/example.yml:12:14  warning  expr-or-default-boolean
+  inputs.flag || 'default': the input is a boolean, so false falls through to the default; use inputs.flag != '' && inputs.flag || 'default'
+
+context:
+  expression     inputs.flag || 'default'   at :12  (job build / step #1 / run)
+  step           job 'build' / step #1                at :12   run:
+  triggers       workflow_dispatch
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 12:    # jobsworth-ignore expr-or-default-boolean
+  or in .jobsworth.yml:   rules: { expr-or-default-boolean: off }

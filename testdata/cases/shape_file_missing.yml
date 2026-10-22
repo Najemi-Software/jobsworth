@@ -1,0 +1,11 @@
+# config: rules: { shape-file-missing: note }
+# expect: note shape-file-missing "missing.json"
+name: cat of a JSON path that does not exist, with the rule enabled
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cfg
+        run: echo "cfg=$(cat missing.json)" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.cfg.outputs.cfg }}

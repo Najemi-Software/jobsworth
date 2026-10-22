@@ -1,0 +1,8 @@
+# expect: error fetch-not-found "no action.yml"
+name: External path with no action file
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout/nope@v4

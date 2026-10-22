@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-with-on-run",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 11,
+        "message": "step #1 is a run: step; its with: block is ignored"
+      },
+      "context": {
+        "callsite": {
+          "job": "build",
+          "line": 7,
+          "step": "#1"
+        },
+        "kind": "call"
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore step-with-on-run",
+        "config": {
+          "step-with-on-run": "off"
+        }
+      }
+    }
+  ]
+}

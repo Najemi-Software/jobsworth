@@ -1,0 +1,7 @@
+ line  at                           expression                                               shape
+   18  job build / step #2 / run    fromJSON(steps.cfg.outputs.cfg).meta.id                  Number
+   18  job build / step #2 / run    inputs.dry-run                                           Bool
+   18  job build / step #2 / run    runner.os                                                String ∈ {Linux, Windows, macOS}
+   19  job build / step #3 / run    fromJSON(steps.cfg.outputs.cfg).nope                     ✗ fromJSON(steps.cfg.outputs.cfg).nope: at step 1 (.nope): field "nope" not in object (declared: meta, name, tags) (from step 'cfg' line 17 writes cfg)
+
+4 expressions: 3 resolved, 0 Any

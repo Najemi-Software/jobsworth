@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-forward-ref",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "steps.meta is referenced by step #1 but declared later; the value is always empty"
+      },
+      "context": {
+        "conclusion": "step 'meta' (index 2) is declared at or after the referencing step (index 1); the value is empty when evaluated.",
+        "kind": "step-output",
+        "producer": {
+          "index": 1,
+          "line": 8,
+          "shell": "bash",
+          "shell_source": "runner default",
+          "step": "meta"
+        },
+        "reference": {
+          "field": "outputs",
+          "line": 7,
+          "output": "version",
+          "site": "job build / step #1 / run",
+          "step": "meta"
+        },
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 9,
+            "note": "writes 'version' (definite)",
+            "redirect": "GITHUB_OUTPUT",
+            "relevant": true,
+            "text": "echo \"version=1\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "version"
+            ]
+          }
+        ],
+        "target": {
+          "keys": {
+            "version": "definite"
+          },
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore step-forward-ref",
+        "config": {
+          "step-forward-ref": "off"
+        }
+      }
+    }
+  ]
+}

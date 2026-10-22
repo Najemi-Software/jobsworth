@@ -1,0 +1,11 @@
+description: Example
+name: Meta
+outputs:
+  sha:
+    value: ${{ steps.s.outputs.sha }}
+runs:
+  using: composite
+  steps:
+    - id: s
+      shell: bash
+      run: echo "sha=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT

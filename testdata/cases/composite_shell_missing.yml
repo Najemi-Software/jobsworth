@@ -1,0 +1,7 @@
+# expect: error composite-shell-missing "no shell:"
+description: Example
+name: Composite run step without a shell
+runs:
+  using: composite
+  steps:
+    - run: make

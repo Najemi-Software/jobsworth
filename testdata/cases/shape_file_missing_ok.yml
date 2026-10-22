@@ -1,0 +1,13 @@
+# config: rules: { shape-file-missing: note }
+# expect: none
+name: Existing data files and non-data files
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cfg
+        run: |
+          echo "cfg=$(cat config.json)" >> "$GITHUB_OUTPUT"
+          echo "notes=$(cat README.md)" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.cfg.outputs.cfg }} ${{ steps.cfg.outputs.notes }}

@@ -1,0 +1,11 @@
+# expect: error bash-deprecated-command "::set-output"
+# expect: error bash-deprecated-command "::add-path"
+name: Deprecated workflow commands on stdout
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "::set-output name=version::1"
+          printf '::add-path::/opt/bin\n'

@@ -1,0 +1,10 @@
+# expect: none
+name: on-filter-shape passes
+on:
+  push:
+    branches: [main]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

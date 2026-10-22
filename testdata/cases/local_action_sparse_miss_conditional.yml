@@ -1,0 +1,21 @@
+# expect: error local-action-sparse-miss "(docs)"
+name: A conditional checkout under another condition does not rescue a sparse miss
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            docs
+      - if: github.ref == 'refs/heads/a'
+        uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+      - if: github.ref == 'refs/heads/b'
+        uses: ./.github/actions/greet
+        with:
+          name: world

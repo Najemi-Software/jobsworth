@@ -1,0 +1,13 @@
+# expect: warning injection-run "steps.meta.outputs.title (github.event.issue.title via env TITLE in step 'meta')"
+name: A step output written from a tainted env variable is still untrusted in a later run
+on: issues
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        env:
+          TITLE: ${{ github.event.issue.title }}
+        run: echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.meta.outputs.title }}"

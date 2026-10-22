@@ -1,0 +1,9 @@
+# expect: none
+name: A well-formed callee parses
+on: push
+permissions: read-all
+jobs:
+  a:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod

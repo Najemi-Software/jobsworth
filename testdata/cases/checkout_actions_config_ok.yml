@@ -1,0 +1,13 @@
+# config: checkout: { actions: [acme/wrappers/checkout-with-cache] }
+# expect: none
+name: The old checkout.actions key is accepted and ignored
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-with-cache@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

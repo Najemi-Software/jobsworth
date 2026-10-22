@@ -1,0 +1,19 @@
+.github/workflows/example.yml:7:14  error  shape-mismatch
+  fromJSON('{"version":"1.2.3"}').verison: at step 1 (.verison): field "verison" not in object (declared: version) (from fromJSON literal)
+
+context:
+  expression     fromJSON('{"version":"1.2.3"}').verison   at :7  (job build / step #1 / run)
+  chain          fromJSON('{"version":"1.2.3"}').verison
+  failing at     fromJSON('{"version":"1.2.3"}'): field "verison" not in object (declared: version)
+  shape there    Object{version: String}
+  accepted there:
+      .version  → String
+      .*        → Array[String]
+  why:
+      '{"version":"1.2.3"}'
+        Any
+      fromJSON('…') parsed as JSON
+
+suppress:
+  add on line 7:    # jobsworth-ignore shape-mismatch
+  or in .jobsworth.yml:   rules: { shape-mismatch: off }

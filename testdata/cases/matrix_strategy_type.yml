@@ -1,0 +1,13 @@
+# expect: error matrix-strategy-type
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: two
+      matrix:
+        os: [ubuntu-latest]
+    steps:
+      - run: echo ${{ matrix.os }}

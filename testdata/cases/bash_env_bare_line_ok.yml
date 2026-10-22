@@ -1,0 +1,12 @@
+# expect: none
+name: Heredoc value lines are not bare lines
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "NOTES<<EOF" >> "$GITHUB_ENV"
+          echo "a line without equals" >> "$GITHUB_ENV"
+          echo "EOF" >> "$GITHUB_ENV"
+          echo "KEY=1" >> "$GITHUB_ENV"

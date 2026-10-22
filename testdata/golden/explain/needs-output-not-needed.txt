@@ -1,0 +1,12 @@
+.github/workflows/example.yml:13:14  error  needs-output-not-needed
+  job 'deploy' references needs.build.outputs.version, but 'build' is not in its needs
+
+context:
+  reference      needs.build.outputs.version   at :13  (job deploy / step #1 / run)
+  job 'deploy'   needs: []   direct
+                 transitive: []
+  job 'build'   outputs: [version]   at :4
+
+suppress:
+  add on line 13:    # jobsworth-ignore needs-output-not-needed
+  or in .jobsworth.yml:   rules: { needs-output-not-needed: off }

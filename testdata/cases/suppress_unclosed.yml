@@ -1,0 +1,15 @@
+# expect: warning suppress-unclosed
+name: Unclosed region runs to end of file and is reported
+on: push
+jobs:
+  # jobsworth-ignore-start needs-unknown
+  a:
+    runs-on: ubuntu-latest
+    needs: nope
+    steps:
+      - run: echo ok
+  b:
+    runs-on: ubuntu-latest
+    needs: also-nope
+    steps:
+      - run: echo ok

@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:18  error  environment-unknown
+  job 'build' names environment "prodution", which example/app does not have
+
+context:
+  job            'build'                              at :5
+  runs-on        ubuntu-latest
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 7:    # jobsworth-ignore environment-unknown
+  or in .jobsworth.yml:   rules: { environment-unknown: off }

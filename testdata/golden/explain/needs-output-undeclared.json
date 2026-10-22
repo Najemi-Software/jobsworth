@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "needs-output-undeclared",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 12,
+        "column": 14,
+        "message": "job 'deploy' references needs.build.outputs.version, but job 'build' declares no output 'version'"
+      },
+      "context": {
+        "kind": "jobs",
+        "needs": {
+          "direct": [
+            "build"
+          ],
+          "transitive": null
+        },
+        "reference": {
+          "job": "build",
+          "line": 12,
+          "output": "version",
+          "site": "job deploy / step #1 / run"
+        },
+        "target": {
+          "job": "build",
+          "line": 4,
+          "outputs": null
+        }
+      },
+      "suppress": {
+        "line": 12,
+        "comment": "# jobsworth-ignore needs-output-undeclared",
+        "config": {
+          "needs-output-undeclared": "off"
+        }
+      }
+    }
+  ]
+}

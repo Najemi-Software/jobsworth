@@ -1,0 +1,11 @@
+.github/workflows/example.yml:13:13  warning  if-not-boolean
+  if: is a string (from input 'name' (type string)), not a boolean; any non-empty string is truthy, including 'false'; compare it, e.g. == 'true'
+
+context:
+  expression     inputs.name   at :13  (job build / step #1 / if)
+  step           job 'build' / step #1                at :13   run:
+  triggers       workflow_call
+
+suppress:
+  add on line 13:    # jobsworth-ignore if-not-boolean
+  or in .jobsworth.yml:   rules: { if-not-boolean: off }

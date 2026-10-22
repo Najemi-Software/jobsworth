@@ -1,0 +1,14 @@
+.github/workflows/example.yml:7:14  error  bash-env-bad-key
+  step #1 writes "MY-VAR=1" to $GITHUB_ENV; the key must match [A-Za-z_][A-Za-z0-9_]*
+
+context:
+  step           #1                                   run: at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :7     echo "MY-VAR=1" >>"$GITHUB_ENV"                echo, writes GITHUB_ENV key 'MY-VAR' (definite)   ← writes MY-VAR
+  GITHUB_ENV target: closed   keys written: MY-VAR (def)
+  GITHUB_ENV line stream:
+    :7     MY-VAR=1                                       
+
+suppress:
+  add on line 7:    # jobsworth-ignore bash-env-bad-key
+  or in .jobsworth.yml:   rules: { bash-env-bad-key: off }

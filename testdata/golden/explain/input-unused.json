@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "input-unused",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 7,
+        "message": "input 'verbose' is declared but never referenced"
+      },
+      "context": {
+        "declared": {
+          "workflow_call": [
+            "env (:5)",
+            "verbose (:6)"
+          ]
+        },
+        "kind": "inputs",
+        "scanned": [
+          ":11 inputs.env"
+        ]
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore input-unused",
+        "config": {
+          "input-unused": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+name: Conditional checkout
+description: Example
+inputs:
+  enabled:
+    description: run the checkout
+    default: 'true'
+runs:
+  using: composite
+  steps:
+    - if: inputs.enabled == 'true'
+      uses: actions/checkout@v4

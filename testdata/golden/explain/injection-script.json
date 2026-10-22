@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "injection-script",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 19,
+        "message": "github.event.issue.title is interpolated into actions/github-script code; read it with core.getInput or from env: instead"
+      },
+      "context": {
+        "expression": "github.event.issue.title",
+        "kind": "security",
+        "site": "job build / step 'actions/github-script@v7' / script",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": "actions/github-script@v7"
+        },
+        "triggers": [
+          "issues"
+        ]
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore injection-script",
+        "config": {
+          "injection-script": "off"
+        }
+      }
+    }
+  ]
+}

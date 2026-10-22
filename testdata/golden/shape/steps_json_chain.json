@@ -1,0 +1,181 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/release.yml",
+  "at": {
+    "job": "set-vars",
+    "step": null
+  },
+  "expression": "fromJSON(steps.build-clusters-matrix.outputs.canary)",
+  "ok": true,
+  "shape": {
+    "elem": {
+      "fields": {
+        "cluster": {
+          "kind": "string"
+        },
+        "namespace": {
+          "kind": "string"
+        }
+      },
+      "kind": "object",
+      "open": false
+    },
+    "kind": "array"
+  },
+  "render": "Array[Object{cluster: String, namespace: String}]",
+  "why": [
+    {
+      "chain": "steps.build-clusters-matrix.outputs.canary",
+      "kind": "github_output_write",
+      "line": 17,
+      "name": "canary",
+      "step": "build-clusters-matrix",
+      "text": "echo \"canary=$CANARY_MATRIX\" \u003e\u003e$GITHUB_OUTPUT"
+    },
+    {
+      "chain": "steps.build-clusters-matrix.outputs.canary",
+      "kind": "bash_var",
+      "line": 16,
+      "name": "CANARY_MATRIX",
+      "text": "$(yq e .canary -o=json -M $DATA_FILE | jq -c)"
+    },
+    {
+      "chain": "steps.build-clusters-matrix.outputs.canary",
+      "format": "yaml",
+      "kind": "file_read",
+      "path": ".github/workflows/data/clusters.yml",
+      "shape": {
+        "fields": {
+          "canary": {
+            "elem": {
+              "fields": {
+                "cluster": {
+                  "kind": "string"
+                },
+                "namespace": {
+                  "kind": "string"
+                }
+              },
+              "kind": "object",
+              "open": false
+            },
+            "kind": "array"
+          },
+          "production": {
+            "elem": {
+              "fields": {
+                "cluster": {
+                  "kind": "string"
+                },
+                "namespace": {
+                  "kind": "string"
+                }
+              },
+              "kind": "object",
+              "open": false
+            },
+            "kind": "array"
+          }
+        },
+        "kind": "object",
+        "open": false
+      }
+    },
+    {
+      "chain": "steps.build-clusters-matrix.outputs.canary",
+      "kind": "builtin",
+      "text": "yq '.canary': Object{canary: Array[Object{…}], production: Array[Object{…}]} → Array[Object{cluster: String, namespace: String}]"
+    },
+    {
+      "chain": "steps.build-clusters-matrix.outputs.canary",
+      "filter": ".",
+      "flags": [
+        "-c"
+      ],
+      "input": {
+        "elem": {
+          "fields": {
+            "cluster": {
+              "kind": "string"
+            },
+            "namespace": {
+              "kind": "string"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "kind": "array"
+      },
+      "kind": "jq",
+      "output": {
+        "elem": {
+          "fields": {
+            "cluster": {
+              "kind": "string"
+            },
+            "namespace": {
+              "kind": "string"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "kind": "array"
+      }
+    },
+    {
+      "chain": "steps.build-clusters-matrix.outputs.canary",
+      "kind": "fromjson",
+      "text": "fromJSON(String ⊂ JSON → X) = X"
+    }
+  ],
+  "accepted": [
+    {
+      "access": "[n]",
+      "shape": {
+        "fields": {
+          "cluster": {
+            "kind": "string"
+          },
+          "namespace": {
+            "kind": "string"
+          }
+        },
+        "kind": "object",
+        "open": false
+      }
+    },
+    {
+      "access": "[n].cluster",
+      "shape": {
+        "kind": "string"
+      }
+    },
+    {
+      "access": "[n].namespace",
+      "shape": {
+        "kind": "string"
+      }
+    },
+    {
+      "access": ".*",
+      "shape": {
+        "elem": {
+          "fields": {
+            "cluster": {
+              "kind": "string"
+            },
+            "namespace": {
+              "kind": "string"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "kind": "array"
+      }
+    }
+  ],
+  "error": null
+}

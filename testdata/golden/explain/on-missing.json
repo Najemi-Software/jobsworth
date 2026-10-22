@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "on-missing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 1,
+        "column": 1,
+        "message": "workflow has no on: block; it never runs"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": null
+      },
+      "suppress": {
+        "line": 1,
+        "comment": "# jobsworth-ignore on-missing",
+        "config": {
+          "on-missing": "off"
+        }
+      }
+    }
+  ]
+}

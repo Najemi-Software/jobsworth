@@ -1,0 +1,12 @@
+# expect: none
+name: input-no-trigger passes
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.name }}

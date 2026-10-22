@@ -1,0 +1,11 @@
+# expect: error bash-env-bad-key "MY-VAR=1"
+# expect: error bash-env-bad-key "=orphan"
+name: Invalid and empty keys written to $GITHUB_ENV
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "MY-VAR=1" >> "$GITHUB_ENV"
+          echo "=orphan" >> "$GITHUB_ENV"

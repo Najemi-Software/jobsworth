@@ -1,0 +1,12 @@
+# expect: error dispatch-input-type
+name: dispatch-input-type flagged
+on:
+  workflow_dispatch:
+    inputs:
+      count:
+        type: integer
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

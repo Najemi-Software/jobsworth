@@ -1,0 +1,15 @@
+.github/workflows/example.yml:11:18  error  step-input-choice
+  job 'build' step './.github/actions/typed' using ./.github/actions/typed: with.level is "medium" but the input declares type choice (expected one of the declared options (low, high))
+
+context:
+  callsite       job build / step './.github/actions/typed' at :8
+  callee         <ROOT>/.github/actions/typed/action.yml local
+  supplied       count, level
+  declared       count (number), level (choice)   (2 inputs)
+  required       count   missing: none
+    count: declared, int literal fits type number
+    level: declared, str literal "medium" does not fit type choice (expected one of the declared options (low, high))
+
+suppress:
+  add on line 11:    # jobsworth-ignore step-input-choice
+  or in .jobsworth.yml:   rules: { step-input-choice: off }

@@ -1,0 +1,15 @@
+name: Gated remote
+on:
+  workflow_call:
+    inputs:
+      action:
+        type: string
+        required: true
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - if: inputs.action == 'terminate'
+        run: echo terminate
+      - if: inputs.action != 'terminate'
+        run: echo apply ${{ inputs.action }}

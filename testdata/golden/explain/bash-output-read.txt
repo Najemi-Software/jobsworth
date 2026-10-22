@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:14  error  bash-output-read
+  step #1 reads $GITHUB_OUTPUT (cat); it is append-only and never holds other steps' outputs
+
+context:
+  step           #1                                   run: at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :7     cat "$GITHUB_OUTPUT"                           cat
+  GITHUB_OUTPUT target: closed   keys written: none
+
+suppress:
+  add on line 7:    # jobsworth-ignore bash-output-read
+  or in .jobsworth.yml:   rules: { bash-output-read: off }

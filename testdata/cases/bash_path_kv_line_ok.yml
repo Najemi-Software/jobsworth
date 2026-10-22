@@ -1,0 +1,10 @@
+# expect: none
+name: Directories written to $GITHUB_PATH
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "$HOME/go/bin" >> "$GITHUB_PATH"
+          echo "/opt/tool=1.0/bin" >> "$GITHUB_PATH"

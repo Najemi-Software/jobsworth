@@ -1,0 +1,10 @@
+# expect: error suppress-unknown-rule "'needs-unkown'"
+# expect: error needs-unknown
+name: A typo in a suppression is an error and protects nothing
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: nope  # jobsworth-ignore needs-unkown
+    steps:
+      - run: echo ok

@@ -1,0 +1,19 @@
+# expect: none
+name: The empty string is a valid status for a step or job never reached
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: resolve_refs
+        if: github.event_name == 'push'
+        run: echo resolved
+      - if: steps.resolve_refs.conclusion != ''
+        run: echo ran
+  after:
+    runs-on: ubuntu-latest
+    needs: build
+    if: needs.build.result != ''
+    steps:
+      - if: job.status != ''
+        run: echo still ok

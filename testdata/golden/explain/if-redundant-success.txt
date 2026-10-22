@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:13  note  if-redundant-success
+  job 'build' step #1 has if: success(), which is the default
+
+context:
+  expression     success()   at :8  (job build / step #1 / if)
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore if-redundant-success
+  or in .jobsworth.yml:   rules: { if-redundant-success: off }

@@ -1,0 +1,11 @@
+# expect: none
+name: Modern file-based commands and workflow commands that are still valid
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "version=1" >> "$GITHUB_OUTPUT"
+          echo "/opt/bin" >> "$GITHUB_PATH"
+          echo "::warning::still fine"

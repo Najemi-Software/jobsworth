@@ -1,0 +1,11 @@
+.github/workflows/example.yml:5:14  warning  runs-on-retired
+  runner label "ubuntu-20.04" was retired by GitHub on 2025-04-15; the job will never schedule
+
+context:
+  job            'build'                              at :4
+  runs-on        ubuntu-20.04
+  triggers       push
+
+suppress:
+  add on line 5:    # jobsworth-ignore runs-on-retired
+  or in .jobsworth.yml:   rules: { runs-on-retired: off }

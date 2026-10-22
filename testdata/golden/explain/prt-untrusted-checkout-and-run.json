@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "prt-untrusted-checkout-and-run",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 15,
+        "message": "job 'build' checks out github.event.pull_request.head.sha on pull_request_target and step #2 then runs code from the checked-out tree; attacker code runs with the base repo's secrets and a write token"
+      },
+      "context": {
+        "kind": "security",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 9,
+          "uses": "actions/checkout@v4"
+        },
+        "triggers": [
+          "pull_request_target"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore prt-untrusted-checkout-and-run",
+        "config": {
+          "prt-untrusted-checkout-and-run": "off"
+        }
+      }
+    }
+  ]
+}

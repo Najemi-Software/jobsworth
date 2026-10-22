@@ -1,0 +1,16 @@
+# expect: warning job-unreachable "always false"
+# expect: warning if-status-contradiction
+name: A dependency whose if is provably false makes the dependant unreachable
+on: push
+permissions: read-all
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    if: success() && failure()
+    steps:
+      - run: echo gate
+  build:
+    runs-on: ubuntu-latest
+    needs: gate
+    steps:
+      - run: echo hi

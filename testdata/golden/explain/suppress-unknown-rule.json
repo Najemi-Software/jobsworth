@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "suppress-unknown-rule",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 1,
+        "message": "suppression names unknown rule 'needs-unkown'"
+      },
+      "context": {
+        "directives": [
+          {
+            "applies": "line 6",
+            "kind": "line",
+            "line": 6,
+            "reason": "",
+            "rules": null,
+            "wildcard": false
+          }
+        ],
+        "kind": "suppress"
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore suppress-unknown-rule",
+        "config": {
+          "suppress-unknown-rule": "off"
+        }
+      }
+    }
+  ]
+}

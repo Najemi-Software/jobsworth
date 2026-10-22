@@ -1,0 +1,9 @@
+.github/workflows/example.yml:8:18  error  choice-default-not-option
+  input 'level' defaults to "medium", which is not one of its options (low, high)
+
+context:
+  declared       workflow_dispatch: level (:5)
+
+suppress:
+  add on line 8:    # jobsworth-ignore choice-default-not-option
+  or in .jobsworth.yml:   rules: { choice-default-not-option: off }

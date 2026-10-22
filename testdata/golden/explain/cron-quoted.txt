@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:13  note  cron-quoted
+  cron 0 0 * * * is not quoted; `* * * * *` would not parse as YAML, quoting is the convention
+
+context:
+  triggers       schedule
+
+suppress:
+  add on line 4:    # jobsworth-ignore cron-quoted
+  or in .jobsworth.yml:   rules: { cron-quoted: off }

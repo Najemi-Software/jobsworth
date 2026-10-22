@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "prt-untrusted-checkout",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 15,
+        "message": "job 'build' checks out github.event.pull_request.head.sha on pull_request_target; secrets and a write token are exposed to code from the pull request"
+      },
+      "context": {
+        "kind": "security",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 9,
+          "uses": "actions/checkout@v4"
+        },
+        "triggers": [
+          "pull_request_target"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore prt-untrusted-checkout",
+        "config": {
+          "prt-untrusted-checkout": "off"
+        }
+      }
+    }
+  ]
+}

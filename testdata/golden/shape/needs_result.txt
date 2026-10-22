@@ -1,0 +1,12 @@
+needs.set-vars.result
+  = String ∈ {success, failure, cancelled, skipped}
+
+why:
+  needs.set-vars.result
+    needs.set-vars.result: the job's status
+
+accepted:
+  success
+  failure
+  cancelled
+  skipped

@@ -1,0 +1,5 @@
+'hello'
+  = String
+
+accepted:
+  no member access accepted on String

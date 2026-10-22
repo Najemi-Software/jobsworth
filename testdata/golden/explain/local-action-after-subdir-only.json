@@ -1,0 +1,42 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "local-action-after-subdir-only",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 15,
+        "message": "step './.github/actions/greet' uses local action ./.github/actions/greet but the only checkouts in job 'build' use path:; the workspace root is empty"
+      },
+      "context": {
+        "action": {
+          "job": "build",
+          "line": 10,
+          "step": "'./.github/actions/greet'",
+          "uses": "./.github/actions/greet"
+        },
+        "checkouts": [
+          {
+            "active": false,
+            "line": 7,
+            "path": "src",
+            "repository": "",
+            "target": "subdir",
+            "uses": "actions/checkout@v4"
+          }
+        ],
+        "kind": "checkout"
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore local-action-after-subdir-only",
+        "config": {
+          "local-action-after-subdir-only": "off"
+        }
+      }
+    }
+  ]
+}

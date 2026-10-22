@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "workflow-name-duplicate",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 1,
+        "column": 7,
+        "message": "workflow name \"Choosy\" is also used by .github/workflows/choosy.yml; the Actions tab cannot tell them apart"
+      },
+      "context": {
+        "kind": "structure",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 1,
+        "comment": "# jobsworth-ignore workflow-name-duplicate",
+        "config": {
+          "workflow-name-duplicate": "off"
+        }
+      }
+    }
+  ]
+}

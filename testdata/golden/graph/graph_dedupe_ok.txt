@@ -1,0 +1,11 @@
+graph_dedupe_ok.yml  (workflow, entry)
+├─ job a / step #1 → actions/checkout@v4  (node-action, fetched, tag → 2db1d53, cache miss)
+├─ job a / step #2 → ./.github/actions/nested  (composite-action, local)
+│  └─ step #1 → ./.github/actions/greet  (composite-action, local)
+├─ job a / step #3 → ./.github/actions/greet  ↑
+├─ job b / step #1 → actions/checkout@v4  ↑
+└─ job b / step #2 → ./.github/actions/cycle-a  (composite-action, local)
+   └─ step #1 → ./.github/actions/cycle-b  (composite-action, local)
+      └─ step #1 → ./.github/actions/cycle-a  ↑
+
+6 nodes: 1 entry, 4 local, 1 fetched (0 cache hits, 1 miss, 0 stale)

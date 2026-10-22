@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "choice-default-not-option",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 18,
+        "message": "input 'level' defaults to \"medium\", which is not one of its options (low, high)"
+      },
+      "context": {
+        "declared": {
+          "workflow_dispatch": [
+            "level (:5)"
+          ]
+        },
+        "kind": "inputs"
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore choice-default-not-option",
+        "config": {
+          "choice-default-not-option": "off"
+        }
+      }
+    }
+  ]
+}

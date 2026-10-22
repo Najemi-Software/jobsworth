@@ -1,0 +1,4 @@
+OK   .github/workflows/ok.yml
+  .github/workflows/ok.yml:7:15  note  checkout-unused
+    checkout 'actions/checkout@v4' is followed only by steps that do not touch the filesystem; drop it and save the clone
+

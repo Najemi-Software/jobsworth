@@ -1,0 +1,13 @@
+# expect: none
+name: Scripts that parse, including sh and expressions inside
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: sh
+        run: '[ -f x ] && echo "${{ github.sha }}"'
+      - run: |
+          for f in *.go; do
+            echo "$f"
+          done

@@ -1,0 +1,35 @@
+# expect: none
+# shape: --at deploy 'needs.build.outputs.cfg' => String ⊂ JSON → Object{a: Number}
+# shape: --at deploy 'fromJSON(needs.build.outputs.cfg).a' => Number
+# shape: --at deploy 'needs.build.result' => String ∈ {success, failure, cancelled, skipped}
+# shape: --at deploy 'matrix.os' => String ∈ {ubuntu, windows}
+# shape: --at deploy 'env.REGION' => String
+# shape: --at deploy/#1 'env.REGION' => String
+# shape: --at other 'needs.build.outputs.cfg' => ✗ not in its needs
+# shape: --at nope 'needs.build.outputs.cfg' => ✗ no job named
+# shape: 'needs.build.outputs.cfg' => ✗ pass --at
+# shape: --at deploy 'job.status' => String ∈ {success, failure, cancelled}
+name: Shape queries over needs, matrix and env
+on: push
+env:
+  REGION: eu
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      cfg: ${{ steps.c.outputs.cfg }}
+    steps:
+      - id: c
+        run: echo 'cfg={"a":1}' >> "$GITHUB_OUTPUT"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    strategy:
+      matrix:
+        os: [ubuntu, windows]
+    steps:
+      - run: echo ${{ fromJSON(needs.build.outputs.cfg).a }} ${{ matrix.os }} ${{ env.REGION }}
+  other:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok

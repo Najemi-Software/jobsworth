@@ -1,0 +1,12 @@
+.github/workflows/example.yml:10:14  error  step-output-action-undeclared
+  steps.meta.outputs.sha is referenced but ./.github/actions/meta declares no output "sha" (declared: version)
+
+context:
+  reference      steps.meta.outputs.sha   at :10  (job build / step #3 / run)
+  producing step 'meta'                               at :8   shell: bash (runner default)
+  action         <ROOT>/.github/actions/meta/action.yml local, declares outputs: version
+  conclusion: 'sha' is not among the declared outputs; nearest is 'version'.
+
+suppress:
+  add on line 10:    # jobsworth-ignore step-output-action-undeclared
+  or in .jobsworth.yml:   rules: { step-output-action-undeclared: off }

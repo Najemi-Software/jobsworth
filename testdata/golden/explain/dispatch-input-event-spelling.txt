@@ -1,0 +1,11 @@
+.github/workflows/example.yml:11:14  note  dispatch-input-event-spelling
+  github.event.inputs.name works, but inputs.name is the same value and also works under workflow_call
+
+context:
+  expression     github.event.inputs.name   at :11  (job build / step #1 / run)
+  step           job 'build' / step #1                at :11   run:
+  triggers       workflow_dispatch
+
+suppress:
+  add on line 11:    # jobsworth-ignore dispatch-input-event-spelling
+  or in .jobsworth.yml:   rules: { dispatch-input-event-spelling: off }

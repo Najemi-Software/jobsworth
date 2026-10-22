@@ -1,0 +1,9 @@
+inputs.count
+  = Number
+
+why:
+  inputs.count
+    declared on.workflow_call.inputs.count: type: number (line 8)
+
+accepted:
+  no member access accepted on Number

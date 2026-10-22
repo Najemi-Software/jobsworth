@@ -1,0 +1,6 @@
+graph_sha_and_branch.yml  (workflow, entry)
+├─ job build / step #1 → actions/checkout@v4  (node-action, fetched, tag → 2db1d53, cache miss)
+├─ job build / step #2 → actions/checkout@main  (node-action, fetched, branch → 61d4992, cache miss)
+└─ job build / step #3 → actions/checkout@0123456789abcdef0123456789abcdef01234567  (node-action, fetched, sha 0123456, cache miss)
+
+4 nodes: 1 entry, 3 fetched (0 cache hits, 3 misses, 0 stale)

@@ -1,0 +1,10 @@
+# expect: none
+name: Naming the suppressed rules instead of a wildcard
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: [ nope, a ]  # jobsworth-ignore needs-unknown needs-self
+    steps:
+      - run: echo ok

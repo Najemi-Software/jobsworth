@@ -1,0 +1,11 @@
+# expect: error on-filter-shape
+name: on-filter-shape flagged
+on:
+  push:
+    branches:
+      main: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

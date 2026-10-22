@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-run-and-uses",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 15,
+        "message": "step 'actions/checkout@v4' has both run: and uses:"
+      },
+      "context": {
+        "callsite": {
+          "job": "build",
+          "line": 7,
+          "step": "'actions/checkout@v4'"
+        },
+        "kind": "call"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore step-run-and-uses",
+        "config": {
+          "step-run-and-uses": "off"
+        }
+      }
+    }
+  ]
+}

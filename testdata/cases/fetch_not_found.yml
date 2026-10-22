@@ -1,0 +1,11 @@
+# expect: error fetch-not-found "not found on GitHub"
+# expect: error fetch-not-found "workflow file not found"
+name: Remote repo or workflow file that does not exist is an error at the caller
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/nope@v1
+  b:
+    uses: acme/shared/.github/workflows/missing.yml@v2

@@ -1,0 +1,8 @@
+# expect: warning fetch-failed "rate limit"
+name: Rate limited fetch is a warning at the caller
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/limited@v1

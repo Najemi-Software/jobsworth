@@ -1,0 +1,11 @@
+# expect: none
+name: fromJSON of strings, including toJSON round trips
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ a, b ]
+    steps:
+      - run: echo ${{ fromJSON(toJSON(matrix)).os }} ${{ fromJSON(github.event.inputs.cfg).x }}

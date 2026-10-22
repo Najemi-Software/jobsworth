@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  expr-format-placeholders
+  format(): placeholder {2} has no argument (2 argument(s) given)
+
+context:
+  expression     format('{0} and {2}', github.sha, github.ref)   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore expr-format-placeholders
+  or in .jobsworth.yml:   rules: { expr-format-placeholders: off }

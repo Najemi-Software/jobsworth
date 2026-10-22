@@ -1,0 +1,11 @@
+name: Sink
+description: Example
+inputs:
+  text:
+    description: text
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo ${{ inputs.text }}

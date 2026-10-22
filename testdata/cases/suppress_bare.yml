@@ -1,0 +1,10 @@
+# expect: error suppress-unknown-rule "names no rule"
+# expect: error needs-unknown
+name: A jobsworth-ignore with no rule ids protects nothing and is an error
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: nope  # jobsworth-ignore
+    steps:
+      - run: echo ok

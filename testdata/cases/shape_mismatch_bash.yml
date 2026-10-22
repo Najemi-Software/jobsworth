@@ -1,0 +1,19 @@
+# expect: error shape-mismatch "fromJSON(steps.cfg.outputs.cfg).retry"
+# expect: error shape-mismatch "fromJSON(steps.cfg.outputs.hosts)[0].name"
+# expect: error shape-mismatch "fromJSON(steps.cfg.outputs.viavar).nope"
+# expect: error shape-mismatch "fromJSON(steps.cfg.outputs.yml).levels"
+name: Shapes from cat, jq, shell variables and yq flow into step outputs
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cfg
+        run: |
+          CFG=$(cat config.json)
+          echo "cfg=$(cat config.json)" >> "$GITHUB_OUTPUT"
+          echo "hosts=$(jq '.hosts' config.json)" >> "$GITHUB_OUTPUT"
+          echo "viavar=$CFG" >> "$GITHUB_OUTPUT"
+          echo "yml=$(yq -o=json '.' settings.yml)" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ fromJSON(steps.cfg.outputs.cfg).retry }} ${{ fromJSON(steps.cfg.outputs.hosts)[0].name }}
+      - run: echo ${{ fromJSON(steps.cfg.outputs.viavar).nope }} ${{ fromJSON(steps.cfg.outputs.yml).levels }}

@@ -1,0 +1,9 @@
+# expect: none
+name: A choice input dispatched by hand can take every option
+on: push
+permissions: read-all
+jobs:
+  call:
+    uses: ./.github/workflows/dual-choice.yml
+    with:
+      level: low

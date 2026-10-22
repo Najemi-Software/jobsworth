@@ -1,0 +1,13 @@
+# expect: note jobs-mergeable
+name: Job needs another job with a similar name
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: [ a2 ]
+    steps:
+      - run: echo ok
+  a2:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok

@@ -1,0 +1,12 @@
+# expect: warning injection-via-input
+name: Example
+on: pull_request
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet
+        with:
+          name: ${{ github.event.pull_request.title }}

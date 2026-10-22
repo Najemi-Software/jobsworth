@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "if-dead-for-caller",
+        "file": "<ROOT>/.github/workflows/gated.yml",
+        "line": 11,
+        "column": 9,
+        "message": "job 'deploy' has a condition that is false for the values .github/workflows/example.yml:6 (job staging) passes"
+      },
+      "context": {
+        "expression": "inputs.env == 'prod'",
+        "job": "deploy",
+        "kind": "condition",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "site": "job deploy / if",
+        "triggers": [
+          "workflow_call"
+        ]
+      },
+      "suppress": {
+        "line": 11,
+        "comment": "# jobsworth-ignore if-dead-for-caller",
+        "config": {
+          "if-dead-for-caller": "off"
+        }
+      }
+    }
+  ]
+}

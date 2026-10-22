@@ -1,0 +1,9 @@
+.github/workflows/example.yml:2:5  error  on-unknown-event
+  on: "pushh" is not a GitHub Actions event; did you mean push?
+
+context:
+  triggers       pushh
+
+suppress:
+  add on line 2:    # jobsworth-ignore on-unknown-event
+  or in .jobsworth.yml:   rules: { on-unknown-event: off }

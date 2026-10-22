@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "shape-mismatch",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "fromJSON('{\"version\":\"1.2.3\"}').verison: at step 1 (.verison): field \"verison\" not in object (declared: version) (from fromJSON literal)"
+      },
+      "context": {
+        "at": "fromJSON('{\"version\":\"1.2.3\"}')",
+        "chain": "fromJSON('{\"version\":\"1.2.3\"}').verison",
+        "expression": "fromJSON('{\"version\":\"1.2.3\"}').verison",
+        "kind": "shape",
+        "shape": {
+          "fields": {
+            "version": {
+              "kind": "string"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "why": [
+          {
+            "chain": "'{\"version\":\"1.2.3\"}'",
+            "kind": "fromjson",
+            "line": 0,
+            "text": "fromJSON('…') parsed as JSON"
+          }
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore shape-mismatch",
+        "config": {
+          "shape-mismatch": "off"
+        }
+      }
+    }
+  ]
+}

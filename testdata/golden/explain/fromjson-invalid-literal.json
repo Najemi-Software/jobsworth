@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "fromjson-invalid-literal",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "fromJSON('{version: 1}') is not valid JSON: invalid character 'v' looking for beginning of object key string"
+      },
+      "context": {
+        "expression": "fromJSON('{version: 1}').version",
+        "kind": "shape"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore fromjson-invalid-literal",
+        "config": {
+          "fromjson-invalid-literal": "off"
+        }
+      }
+    }
+  ]
+}

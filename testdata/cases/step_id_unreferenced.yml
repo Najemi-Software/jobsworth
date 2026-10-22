@@ -1,0 +1,10 @@
+# config: rules: { step-id-unreferenced: note }
+# expect: note step-id-unreferenced "never referenced"
+name: An id nothing references, with the rule enabled
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: build
+        run: make

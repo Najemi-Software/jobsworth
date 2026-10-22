@@ -1,0 +1,11 @@
+# expect: none
+name: Dispatch-only workflow inputs read through github.event.inputs are not flagged
+on:
+  workflow_dispatch:
+    inputs:
+      env: { type: string }
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.env }}

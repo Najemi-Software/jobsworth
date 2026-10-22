@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:14  error  step-id-unknown
+  steps.metadata is referenced but no step has id "metadata" (declared ids: meta)
+
+context:
+  reference      steps.metadata.outputs.version   at :9  (job build / step #2 / run)
+  producing step not found; declared ids: meta
+  conclusion: no step has id 'metadata'; nearest declared id is 'meta'.
+
+suppress:
+  add on line 9:    # jobsworth-ignore step-id-unknown
+  or in .jobsworth.yml:   rules: { step-id-unknown: off }

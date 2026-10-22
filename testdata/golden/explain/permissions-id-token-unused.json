@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "permissions-id-token-unused",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 3,
+        "message": "id-token: write is granted but job 'build' uses no OIDC-consuming action and no step requests a token; drop the grant"
+      },
+      "context": {
+        "kind": "security",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore permissions-id-token-unused",
+        "config": {
+          "permissions-id-token-unused": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# expect: none
+name: Logging a key that is also written properly, or that nothing references
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: |
+          echo "version=1"
+          echo "version=1" >> "$GITHUB_OUTPUT"
+          echo "debug=on"
+      - run: echo ${{ steps.meta.outputs.version }}

@@ -1,0 +1,12 @@
+# unix
+# expect: none
+name: A windows-only job defaults to pwsh, so its body is not parsed as bash
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - run: |
+          $x = 1
+          Write-Host $x

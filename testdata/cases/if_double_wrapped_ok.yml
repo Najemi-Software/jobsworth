@@ -1,0 +1,9 @@
+# expect: none
+name: A single expression block around the whole condition
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ github.event_name == 'push' && runner.os == 'Linux' }}
+        run: echo ok

@@ -1,0 +1,16 @@
+# expect: none
+name: The same id in two jobs is fine
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: echo "a=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.a }}
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: echo "a=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.a }}

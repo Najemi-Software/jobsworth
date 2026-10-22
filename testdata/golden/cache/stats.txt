@@ -1,0 +1,7 @@
+root         <ROOT>/v1
+schema       1
+refs         3   (2 tags, 1 branch; 0 expired)
+content      3 files, 1K across 3 SHAs
+unreferenced 0 SHAs, 0
+oldest       3m   newest  3m
+last run     hits 39 / misses 2 / stale 3 / api calls 5     (from the most recent check)

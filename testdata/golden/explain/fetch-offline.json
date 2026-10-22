@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "fetch-offline",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 15,
+        "message": "acme/never-fetched@v1: offline, not cached, skipping"
+      },
+      "context": {
+        "api_calls": null,
+        "kind": "fetch",
+        "reference": "acme/never-fetched@v1",
+        "resolution": {
+          "error": "acme/never-fetched@v1: offline, not cached, skipping",
+          "how": "failed",
+          "name": ""
+        },
+        "token_source": "JOBSWORTH_TOKEN"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore fetch-offline",
+        "config": {
+          "fetch-offline": "off"
+        }
+      }
+    }
+  ]
+}

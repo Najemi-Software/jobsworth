@@ -1,0 +1,4 @@
+checked 4 refs, 7 files
+  4 corrupt:  content/acme/x/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/empty.yml (empty), content/acme/x/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/mismatch.yml (sha256 mismatch), content/acme/x/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/nosidecar.yml (missing sha256 sidecar), refs/acme/x/tags/bad (not a 40-hex SHA)
+  1 unparseable:  content/acme/x/aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa/broken.yml (yaml: yaml: line 1: did not find expected node content)
+  2 unexpected:  content/tmp.abc123, refs/.DS_Store

@@ -1,0 +1,159 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/release.yml",
+  "at": {
+    "job": "deploy",
+    "step": null
+  },
+  "expression": "fromJSON(needs.set-vars.outputs.canary)[0].region",
+  "ok": false,
+  "shape": {
+    "fields": {
+      "cluster": {
+        "kind": "string"
+      },
+      "namespace": {
+        "kind": "string"
+      }
+    },
+    "kind": "object",
+    "open": false
+  },
+  "render": "Object{cluster: String, namespace: String}",
+  "why": [
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "kind": "lift",
+      "line": 9,
+      "name": "canary",
+      "text": "lifted from jobs.set-vars.outputs.canary: ${{ steps.build-clusters-matrix.outputs.canary }}"
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "kind": "github_output_write",
+      "line": 17,
+      "name": "canary",
+      "step": "build-clusters-matrix",
+      "text": "echo \"canary=$CANARY_MATRIX\" \u003e\u003e$GITHUB_OUTPUT"
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "kind": "bash_var",
+      "line": 16,
+      "name": "CANARY_MATRIX",
+      "text": "$(yq e .canary -o=json -M $DATA_FILE | jq -c)"
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "format": "yaml",
+      "kind": "file_read",
+      "path": ".github/workflows/data/clusters.yml",
+      "shape": {
+        "fields": {
+          "canary": {
+            "elem": {
+              "fields": {
+                "cluster": {
+                  "kind": "string"
+                },
+                "namespace": {
+                  "kind": "string"
+                }
+              },
+              "kind": "object",
+              "open": false
+            },
+            "kind": "array"
+          },
+          "production": {
+            "elem": {
+              "fields": {
+                "cluster": {
+                  "kind": "string"
+                },
+                "namespace": {
+                  "kind": "string"
+                }
+              },
+              "kind": "object",
+              "open": false
+            },
+            "kind": "array"
+          }
+        },
+        "kind": "object",
+        "open": false
+      }
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "kind": "builtin",
+      "text": "yq '.canary': Object{canary: Array[Object{…}], production: Array[Object{…}]} → Array[Object{cluster: String, namespace: String}]"
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "filter": ".",
+      "flags": [
+        "-c"
+      ],
+      "input": {
+        "elem": {
+          "fields": {
+            "cluster": {
+              "kind": "string"
+            },
+            "namespace": {
+              "kind": "string"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "kind": "array"
+      },
+      "kind": "jq",
+      "output": {
+        "elem": {
+          "fields": {
+            "cluster": {
+              "kind": "string"
+            },
+            "namespace": {
+              "kind": "string"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "kind": "array"
+      }
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "kind": "fromjson",
+      "text": "fromJSON(String ⊂ JSON → X) = X"
+    },
+    {
+      "chain": "needs.set-vars.outputs.canary",
+      "kind": "access",
+      "shape": {
+        "fields": {
+          "cluster": {
+            "kind": "string"
+          },
+          "namespace": {
+            "kind": "string"
+          }
+        },
+        "kind": "object",
+        "open": false
+      },
+      "text": "[0]"
+    }
+  ],
+  "error": {
+    "rule": "shape-mismatch",
+    "message": "fromJSON(needs.set-vars.outputs.canary)[0].region: at step 2 (.region): field \"region\" not in object (declared: cluster, namespace)",
+    "at": "[0]"
+  }
+}

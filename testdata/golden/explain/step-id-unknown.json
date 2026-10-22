@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-id-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 14,
+        "message": "steps.metadata is referenced but no step has id \"metadata\" (declared ids: meta)"
+      },
+      "context": {
+        "conclusion": "no step has id 'metadata'; nearest declared id is 'meta'.",
+        "declared_ids": [
+          "meta"
+        ],
+        "kind": "step-output",
+        "reference": {
+          "field": "outputs",
+          "line": 9,
+          "output": "version",
+          "site": "job build / step #2 / run",
+          "step": "metadata"
+        }
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore step-id-unknown",
+        "config": {
+          "step-id-unknown": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+# expect: none
+name: always() combined only with status checks is the documented idiom
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
+  after:
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ always() && needs.build.result == 'success' }}
+    steps:
+      - id: t
+        run: make test
+      - if: always() && steps.t.outcome != 'skipped'
+        run: echo report

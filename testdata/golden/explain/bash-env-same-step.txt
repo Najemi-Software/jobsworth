@@ -1,0 +1,15 @@
+.github/workflows/example.yml:7:14  warning  bash-env-same-step
+  step #1 writes VERSION to $GITHUB_ENV on line 1 and reads $VERSION on line 2; $GITHUB_ENV takes effect from the next step
+
+context:
+  step           #1                                   run: at :7   shell: bash (runner default)
+  script analysed as bash, 2 statements:
+    :8     echo "VERSION=1.2.3" >>"$GITHUB_ENV"           echo, writes GITHUB_ENV key 'VERSION' (definite)   ← named in the finding
+    :9     echo "building $VERSION"                       echo, NO REDIRECT   ← named in the finding
+  GITHUB_ENV target: closed   keys written: VERSION (def)
+  GITHUB_ENV line stream:
+    :8     VERSION=1.2.3                                  
+
+suppress:
+  add on line 7:    # jobsworth-ignore bash-env-same-step
+  or in .jobsworth.yml:   rules: { bash-env-same-step: off }

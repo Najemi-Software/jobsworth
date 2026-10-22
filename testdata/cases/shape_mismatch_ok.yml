@@ -1,0 +1,23 @@
+# expect: none
+name: Chains that fit, plus unknowns that must stay silent
+on: [ push, pull_request ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ ubuntu, windows ]
+        include:
+          - os: macos
+            extra: true
+    env:
+      CFG: '{"retries": 3, "hosts": ["a", "b"]}'
+    steps:
+      - run: echo ${{ fromJSON('{"version":"1","items":[{"id":1}]}').items[0].id }}
+      - run: echo ${{ matrix.os }} ${{ matrix.extra }} ${{ runner.os }} ${{ job.status }}
+      - env:
+          MSG: ${{ github.event.commits[0].message }}
+        run: echo "$MSG" ${{ github.event.pull_request.head.sha }} ${{ github.event.custom_field }}
+      - run: echo ${{ fromJSON(env.CFG).retries }} ${{ fromJSON(env.CFG).hosts[1] }} ${{ fromJSON(env.CFG).hosts.* }}
+      - run: x=${{ secrets.TOKEN }} ${{ vars.LEVEL }} ${{ github.event[github.event_name].x }}
+      - run: echo ${{ toJSON(matrix) }} ${{ fromJSON(toJSON(matrix)).os }}

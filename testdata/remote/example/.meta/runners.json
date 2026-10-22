@@ -1,0 +1,15 @@
+{
+  "runners": [
+    {
+      "name": "r1",
+      "labels": [
+        {
+          "name": "self-hosted"
+        },
+        {
+          "name": "gpu"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+name: Explicit caller
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/secret_undeclared.yml
+    secrets:
+      token: ${{ secrets.TOKEN }}

@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "setup-no-cache",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 15,
+        "message": "actions/setup-node@v4 runs without cache: in a job that installs packages; the built-in cache saves the install"
+      },
+      "context": {
+        "kind": "performance",
+        "step": {
+          "id": "",
+          "index": 1,
+          "job": "build",
+          "line": 9,
+          "uses": "actions/setup-node@v4"
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore setup-no-cache",
+        "config": {
+          "setup-no-cache": "off"
+        }
+      }
+    }
+  ]
+}

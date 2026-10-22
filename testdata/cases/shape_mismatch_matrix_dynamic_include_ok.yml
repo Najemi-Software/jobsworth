@@ -1,0 +1,27 @@
+# expect: none
+name: A matrix include from an expression has fields the file does not name
+on: push
+jobs:
+  set-vars:
+    runs-on: ubuntu-latest
+    outputs:
+      clusters: ${{ steps.m.outputs.clusters }}
+    steps:
+      - id: m
+        run: echo 'clusters=[{"cluster":"a","region":"eu"}]' >> "$GITHUB_OUTPUT"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: set-vars
+    strategy:
+      matrix:
+        include: ${{ fromJSON(needs.set-vars.outputs.clusters) }}
+    steps:
+      - run: echo ${{ matrix.cluster }} ${{ matrix.region }} ${{ matrix.anything }}
+  axis:
+    runs-on: ubuntu-latest
+    needs: set-vars
+    strategy:
+      matrix:
+        cluster: ${{ fromJSON(needs.set-vars.outputs.clusters) }}
+    steps:
+      - run: echo ${{ matrix.cluster }} ${{ matrix.other }}

@@ -1,0 +1,10 @@
+# expect: error permissions-unknown-scope
+name: Example
+on: push
+permissions:
+  content: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

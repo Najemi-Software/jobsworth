@@ -1,0 +1,4 @@
+.github/workflows/ok.yml  (workflow, entry)
+└─ job build / step #1 → actions/checkout@v4  (node-action, fetched, tag → 2db1d53, cache miss)
+
+2 nodes: 1 entry, 1 fetched (0 cache hits, 1 miss, 0 stale)

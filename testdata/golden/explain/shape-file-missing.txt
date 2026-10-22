@@ -1,0 +1,10 @@
+.github/workflows/example.yml:8:14  note  shape-file-missing
+  step 'cfg' reads missing.json, which does not exist in the repository (it may be generated at runtime)
+
+context:
+  detail         step 'cfg' reads missing.json, which does not exist in the repository (it may be generated at runtime)
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 8:    # jobsworth-ignore shape-file-missing
+  or in .jobsworth.yml:   rules: { shape-file-missing: off }

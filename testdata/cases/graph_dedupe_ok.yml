@@ -1,0 +1,18 @@
+# graph
+# expect: none
+name: A node reached twice is expanded once; local cycles stop at the reference line
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/nested
+      - uses: ./.github/actions/greet
+        with:
+          name: again
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/cycle-a

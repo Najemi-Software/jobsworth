@@ -1,0 +1,12 @@
+# expect: none
+name: Choice input with options
+on:
+  workflow_dispatch:
+    inputs:
+      level: { type: choice, options: [ low, high ] }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: inputs.level == 'high'
+    steps:
+      - run: echo ok

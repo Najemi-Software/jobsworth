@@ -1,0 +1,11 @@
+# expect: none
+name: Static uses next to a dynamic with value
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet
+        with:
+          name: ${{ github.actor }}

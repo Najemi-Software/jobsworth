@@ -1,0 +1,4 @@
+OK   .github/workflows/note.yml
+  .github/workflows/note.yml:10:15  note  uses-dynamic
+    uses: "${{ matrix.action }}" is dynamic and cannot be followed
+

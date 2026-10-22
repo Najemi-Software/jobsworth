@@ -1,0 +1,9 @@
+inputs[github.ref]
+  = Any
+
+why:
+  inputs[…]
+    opaque: dynamic index → Any
+  github.ref
+    static schema github for on: [push, pull_request] (event payload open)
+  .ref → String

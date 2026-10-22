@@ -1,0 +1,12 @@
+# expect: warning if-string-compare-bool
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: x
+        run: echo "flag=true" >> "$GITHUB_OUTPUT"
+      - if: steps.x.outputs.flag == true
+        run: echo yes

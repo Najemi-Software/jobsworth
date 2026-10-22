@@ -1,0 +1,145 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": "<TESTDATA>/cases/graph_dedupe_ok.yml",
+      "path": "<TESTDATA>/cases/graph_dedupe_ok.yml",
+      "repo": "example/app"
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@v4",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "v4",
+      "ref_kind": "tag",
+      "sha": "2db1d539fba6c56715b3e80ff0292b398ca3ed2e",
+      "cache": "miss",
+      "inputs": [
+        "persist-credentials",
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    },
+    "n2": {
+      "id": "n2",
+      "kind": "composite-action",
+      "source": "local",
+      "display": "./.github/actions/nested",
+      "path": "<TESTDATA>/callees/.github/actions/nested/action.yml",
+      "repo": "example/app"
+    },
+    "n3": {
+      "id": "n3",
+      "kind": "composite-action",
+      "source": "local",
+      "display": "./.github/actions/greet",
+      "path": "<TESTDATA>/callees/.github/actions/greet/action.yml",
+      "repo": "example/app",
+      "inputs": [
+        "name"
+      ]
+    },
+    "n4": {
+      "id": "n4",
+      "kind": "composite-action",
+      "source": "local",
+      "display": "./.github/actions/cycle-a",
+      "path": "<TESTDATA>/callees/.github/actions/cycle-a/action.yml",
+      "repo": "example/app"
+    },
+    "n5": {
+      "id": "n5",
+      "kind": "composite-action",
+      "source": "local",
+      "display": "./.github/actions/cycle-b",
+      "path": "<TESTDATA>/callees/.github/actions/cycle-b/action.yml",
+      "repo": "example/app"
+    }
+  },
+  "edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job a / step #1",
+      "line": 9,
+      "uses": "actions/checkout@v4"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "site": "job a / step #2",
+      "line": 10,
+      "uses": "./.github/actions/nested"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "site": "job a / step #3",
+      "line": 11,
+      "uses": "./.github/actions/greet"
+    },
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job b / step #1",
+      "line": 17,
+      "uses": "actions/checkout@v4"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "site": "job b / step #2",
+      "line": 18,
+      "uses": "./.github/actions/cycle-a"
+    },
+    {
+      "from": "n2",
+      "to": "n3",
+      "site": "step #1",
+      "line": 6,
+      "uses": "./.github/actions/greet"
+    },
+    {
+      "from": "n4",
+      "to": "n5",
+      "site": "step #1",
+      "line": 6,
+      "uses": "./.github/actions/cycle-b"
+    },
+    {
+      "from": "n5",
+      "to": "n4",
+      "site": "step #1",
+      "line": 6,
+      "uses": "./.github/actions/cycle-a"
+    }
+  ],
+  "summary": {
+    "nodes": 6,
+    "by_source": {
+      "entry": 1,
+      "fetched": 1,
+      "local": 4
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 1,
+      "stale": 0
+    },
+    "api_calls": 3
+  }
+}

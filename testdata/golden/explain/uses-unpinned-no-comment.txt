@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:15  note  uses-unpinned-no-comment
+  actions/checkout@0123456789abcdef0123456789abcdef01234567 is pinned to a SHA with no trailing version comment (# vX.Y); readers cannot tell which release it is
+
+context:
+  step           job 'build' / step #1                at :8   uses: actions/checkout@0123456789abcdef0123456789abcdef01234567
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore uses-unpinned-no-comment
+  or in .jobsworth.yml:   rules: { uses-unpinned-no-comment: off }

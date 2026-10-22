@@ -1,0 +1,66 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "call-input-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 12,
+        "message": "job 'call' calling <ROOT>/.github/workflows/reusable.yml: with.evn is supplied but the callee declares no input 'evn'"
+      },
+      "context": {
+        "callee": {
+          "how": "local",
+          "name": "<ROOT>/.github/workflows/reusable.yml",
+          "ref": "./.github/workflows/reusable.yml"
+        },
+        "callsite": {
+          "job": "call",
+          "line": 5
+        },
+        "checks": [
+          "env: declared, str literal fits type string",
+          "evn: UNKNOWN (nearest declared: env)"
+        ],
+        "declared": [
+          "env (string)",
+          "count (number)",
+          "strict (boolean)",
+          "level (string)"
+        ],
+        "kind": "call",
+        "missing": null,
+        "required": [
+          "env"
+        ],
+        "supplied": [
+          {
+            "declared": true,
+            "expression": false,
+            "kind": "str",
+            "name": "env",
+            "type": "string",
+            "value": "prod"
+          },
+          {
+            "declared": false,
+            "expression": false,
+            "name": "evn",
+            "nearest": "env",
+            "value": "staging"
+          }
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore call-input-unknown",
+        "config": {
+          "call-input-unknown": "off"
+        }
+      }
+    }
+  ]
+}

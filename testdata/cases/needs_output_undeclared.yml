@@ -1,0 +1,15 @@
+# expect: error needs-output-undeclared "no output 'sha'"
+name: Job references an output the needed job does not declare
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: x
+    steps:
+      - run: echo ok
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo ${{ needs.build.outputs.sha }} ${{ needs.build.outputs.version }}

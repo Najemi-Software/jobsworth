@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "needs-output-not-needed",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 13,
+        "column": 14,
+        "message": "job 'deploy' references needs.build.outputs.version, but 'build' is not in its needs"
+      },
+      "context": {
+        "kind": "jobs",
+        "needs": {
+          "direct": null,
+          "transitive": null
+        },
+        "reference": {
+          "job": "build",
+          "line": 13,
+          "output": "version",
+          "site": "job deploy / step #1 / run"
+        },
+        "target": {
+          "job": "build",
+          "line": 4,
+          "outputs": [
+            "version"
+          ]
+        }
+      },
+      "suppress": {
+        "line": 13,
+        "comment": "# jobsworth-ignore needs-output-not-needed",
+        "config": {
+          "needs-output-not-needed": "off"
+        }
+      }
+    }
+  ]
+}

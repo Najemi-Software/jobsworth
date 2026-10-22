@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:3  error  permissions-unknown-level
+  workflow permissions: contents: "readonly" is not read, write or none
+
+context:
+  triggers       push
+  permissions    {contents: readonly} (workflow)
+
+suppress:
+  add on line 4:    # jobsworth-ignore permissions-unknown-level
+  or in .jobsworth.yml:   rules: { permissions-unknown-level: off }

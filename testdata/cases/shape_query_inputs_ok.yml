@@ -1,0 +1,26 @@
+# expect: none
+# shape: 'inputs.count' => Number
+# shape: 'inputs.dry-run' => Bool
+# shape: 'inputs.cfg' => String ⊂ JSON → Object{replicas: Object{min: Number}}
+# shape: 'fromJSON(inputs.cfg).replicas.min' => Number
+# shape: 'fromJSON(inputs.cfg).replicas.max' => ✗ field "max" not in object
+# shape: 'secrets.TOKEN' => String
+# shape: 'github.ref_type' => String ∈ {branch, tag}
+# shape: 'github.event_name' => String
+# shape: 'inputs.count > 1' => Bool
+name: Shape queries over declared inputs
+on:
+  workflow_call:
+    inputs:
+      cfg:
+        type: string
+        default: '{"replicas": {"min": 0}}'
+      count:
+        type: number
+      dry-run:
+        type: boolean
+jobs:
+  rollout:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ fromJSON(inputs.cfg).replicas.min }} ${{ inputs.count }} ${{ inputs.dry-run }}

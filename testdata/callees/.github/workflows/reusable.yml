@@ -1,0 +1,28 @@
+name: Reusable
+on:
+  workflow_call:
+    inputs:
+      env:
+        type: string
+        required: true
+      count:
+        type: number
+        default: 1
+      strict:
+        type: boolean
+        default: false
+      level:
+        type: string
+        default: low
+    outputs:
+      version:
+        value: ${{ jobs.build.outputs.version }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: inputs.strict && inputs.count && inputs.level
+    outputs:
+      version: ${{ steps.v.outputs.version }}
+    steps:
+      - id: v
+        run: echo "version=${{ inputs.env }}" >> $GITHUB_OUTPUT

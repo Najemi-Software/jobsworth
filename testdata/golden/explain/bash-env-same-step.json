@@ -1,0 +1,73 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "bash-env-same-step",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1 writes VERSION to $GITHUB_ENV on line 1 and reads $VERSION on line 2; $GITHUB_ENV takes effect from the next step"
+      },
+      "context": {
+        "kind": "bash",
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 8,
+            "note": "named in the finding",
+            "redirect": "GITHUB_ENV",
+            "relevant": true,
+            "text": "echo \"VERSION=1.2.3\" \u003e\u003e\"$GITHUB_ENV\"",
+            "writes": [
+              "VERSION"
+            ]
+          },
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 9,
+            "note": "named in the finding",
+            "relevant": true,
+            "text": "echo \"building $VERSION\""
+          }
+        ],
+        "step": {
+          "id": "",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "targets": [
+          {
+            "keys": {
+              "VERSION": "definite"
+            },
+            "name": "GITHUB_ENV",
+            "open": false,
+            "open_reason": "",
+            "stream": [
+              {
+                "dynamic": false,
+                "in_heredoc": false,
+                "line": 8,
+                "opaque": false,
+                "text": "VERSION=1.2.3"
+              }
+            ]
+          }
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore bash-env-same-step",
+        "config": {
+          "bash-env-same-step": "off"
+        }
+      }
+    }
+  ]
+}

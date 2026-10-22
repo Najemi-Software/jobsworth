@@ -1,0 +1,35 @@
+[
+  {
+    "ttl_seconds": 14220,
+    "ref": "acme/shared@v2",
+    "kind": "tag",
+    "sha": "25c71f4",
+    "age_seconds": 180,
+    "size_bytes": 615,
+    "files": 1,
+    "expired": false,
+    "unreferenced": false
+  },
+  {
+    "ttl_seconds": 420,
+    "ref": "actions/checkout@main",
+    "kind": "branch",
+    "sha": "61d4992",
+    "age_seconds": 180,
+    "size_bytes": 385,
+    "files": 1,
+    "expired": false,
+    "unreferenced": false
+  },
+  {
+    "ttl_seconds": 14220,
+    "ref": "actions/checkout@v4",
+    "kind": "tag",
+    "sha": "2db1d53",
+    "age_seconds": 180,
+    "size_bytes": 428,
+    "files": 1,
+    "expired": false,
+    "unreferenced": false
+  }
+]

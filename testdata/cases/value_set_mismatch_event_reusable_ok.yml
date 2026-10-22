@@ -1,0 +1,13 @@
+# expect: none
+name: In a reusable workflow github.event_name is the caller's event
+on:
+  workflow_call:
+    inputs:
+      kind:
+        type: string
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ !cancelled() && github.event_name == 'pull_request' }}
+        run: echo llm-eval ${{ inputs.kind }}

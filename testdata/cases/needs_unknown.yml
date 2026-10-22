@@ -1,0 +1,9 @@
+# expect: error needs-unknown "'nope'"
+name: Job needs a job that does not exist
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: nope
+    steps:
+      - run: echo ok

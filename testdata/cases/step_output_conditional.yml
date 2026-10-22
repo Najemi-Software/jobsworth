@@ -1,0 +1,14 @@
+# config: rules: { step-output-conditional: note }
+# expect: note step-output-conditional "some paths"
+name: Output written only inside an if
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: |
+          if [ -f VERSION ]; then
+            echo "version=1" >> "$GITHUB_OUTPUT"
+          fi
+      - run: echo ${{ steps.meta.outputs.version }}

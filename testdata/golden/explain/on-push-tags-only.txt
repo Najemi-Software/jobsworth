@@ -1,0 +1,9 @@
+.github/workflows/example.yml:3:3  note  on-push-tags-only
+  on.push has tags: but no branches:, so branch pushes no longer trigger this workflow; add branches: if both were meant
+
+context:
+  triggers       push
+
+suppress:
+  add on line 3:    # jobsworth-ignore on-push-tags-only
+  or in .jobsworth.yml:   rules: { on-push-tags-only: off }

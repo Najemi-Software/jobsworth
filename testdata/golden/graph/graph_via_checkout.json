@@ -1,0 +1,83 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": "<TESTDATA>/cases/graph_via_checkout.yml",
+      "path": "<TESTDATA>/cases/graph_via_checkout.yml",
+      "repo": "acme/app"
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@v4",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "v4",
+      "ref_kind": "tag",
+      "sha": "2db1d539fba6c56715b3e80ff0292b398ca3ed2e",
+      "cache": "miss",
+      "inputs": [
+        "persist-credentials",
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    },
+    "n2": {
+      "id": "n2",
+      "kind": "composite-action",
+      "source": "fetched",
+      "display": "./.github/actions/notify",
+      "path": ".github/actions/notify/action.yml",
+      "repo": "acme/shared",
+      "ref": "v2",
+      "ref_kind": "default-branch",
+      "sha": "25c71f4f3fd745cb77b0331aa2f06123c929c397",
+      "cache": "miss",
+      "inputs": [
+        "env"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job notify / step #1",
+      "line": 10,
+      "uses": "actions/checkout@v4"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "site": "job notify / step #2",
+      "line": 13,
+      "uses": "./.github/actions/notify",
+      "via_checkout": "acme/shared"
+    }
+  ],
+  "summary": {
+    "nodes": 3,
+    "by_source": {
+      "entry": 1,
+      "fetched": 2
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 2,
+      "stale": 0
+    },
+    "api_calls": 7
+  }
+}

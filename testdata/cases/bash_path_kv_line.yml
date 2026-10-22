@@ -1,0 +1,8 @@
+# expect: warning bash-path-kv-line "GOFLAGS=-mod=vendor"
+name: KEY=VALUE written to $GITHUB_PATH
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "GOFLAGS=-mod=vendor" >> "$GITHUB_PATH"

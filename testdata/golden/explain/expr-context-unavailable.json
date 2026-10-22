@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "expr-context-unavailable",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 7,
+        "message": "the matrix context is not available at workflow level (outside jobs:); the expression is always empty here"
+      },
+      "context": {
+        "expression": "matrix.os",
+        "kind": "expression",
+        "site": "OS",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore expr-context-unavailable",
+        "config": {
+          "expr-context-unavailable": "off"
+        }
+      }
+    }
+  ]
+}

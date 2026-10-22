@@ -1,0 +1,10 @@
+# expect: error step-with-on-run "ignored"
+name: A run step with a with block
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+        with:
+          target: all

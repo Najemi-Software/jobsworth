@@ -1,0 +1,14 @@
+.github/workflows/example.yml:7:14  warning  bash-env-bare-line
+  step #1 writes "/usr/local/bin" to $GITHUB_ENV without a =; paths belong in $GITHUB_PATH
+
+context:
+  step           #1                                   run: at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :7     echo "/usr/local/bin" >>"$GITHUB_ENV"          echo to GITHUB_ENV, no key
+  GITHUB_ENV target: closed   keys written: none
+  GITHUB_ENV line stream:
+    :7     /usr/local/bin                                 
+
+suppress:
+  add on line 7:    # jobsworth-ignore bash-env-bare-line
+  or in .jobsworth.yml:   rules: { bash-env-bare-line: off }

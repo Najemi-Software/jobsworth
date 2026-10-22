@@ -1,0 +1,8 @@
+name: Configure AWS credentials
+description: Example
+inputs:
+  role-to-assume:
+    required: false
+runs:
+  using: node20
+  main: dist/index.js

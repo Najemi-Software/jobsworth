@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "if-status-contradiction",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 13,
+        "message": "job 'build' step #1: failure() \u0026\u0026 success() cannot both hold"
+      },
+      "context": {
+        "expression": "success() \u0026\u0026 failure()",
+        "kind": "condition",
+        "site": "job build / step #1 / if",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore if-status-contradiction",
+        "config": {
+          "if-status-contradiction": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+name: Choosy
+on:
+  workflow_call:
+    inputs:
+      level:
+        type: choice
+        options: [low, high]
+        default: low
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.level }}

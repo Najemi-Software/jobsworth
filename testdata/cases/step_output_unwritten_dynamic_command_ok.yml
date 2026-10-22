@@ -1,0 +1,12 @@
+# expect: none
+name: A command invoked through a variable may write any output
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: dyn
+        run: |
+          CMD=./tools/emit
+          $CMD --json
+      - run: echo ${{ steps.dyn.outputs.result }}

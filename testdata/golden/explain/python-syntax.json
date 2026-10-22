@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "python-syntax",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 14,
+        "message": "step #1: python does not parse the script (line 10): SyntaxError: invalid syntax (\u003cunknown\u003e, line 1)"
+      },
+      "context": {
+        "kind": "script",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore python-syntax",
+        "config": {
+          "python-syntax": "off"
+        }
+      }
+    }
+  ]
+}

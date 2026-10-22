@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": "<TESTDATA>/repos/acme-tools/.github/workflows/x.yml",
+      "path": "<TESTDATA>/repos/acme-tools/.github/workflows/x.yml",
+      "repo": "acme/tools",
+      "link_path": "<TESTDATA>/repos/acme-tools",
+      "inputs": [
+        "tool"
+      ]
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "workflow",
+      "source": "local",
+      "display": "<ROOT>/.github/workflows/linked.yml",
+      "path": "<ROOT>/.github/workflows/linked.yml"
+    }
+  },
+  "edges": [
+    {
+      "from": "n1",
+      "to": "n0",
+      "site": "job tool",
+      "line": 5,
+      "uses": "acme/tools/.github/workflows/x.yml@v1"
+    }
+  ],
+  "summary": {
+    "nodes": 2,
+    "by_source": {
+      "entry": 1,
+      "local": 1
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 0,
+      "stale": 0
+    },
+    "api_calls": 0
+  }
+}

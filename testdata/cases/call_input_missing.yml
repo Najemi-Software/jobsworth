@@ -1,0 +1,8 @@
+# expect: error call-input-missing "'env'"
+name: Caller omits a required input without a default
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      count: 2

@@ -1,0 +1,12 @@
+name: Linked tool workflow
+on:
+  workflow_call:
+    inputs:
+      tool:
+        type: string
+        required: true
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.tool }}

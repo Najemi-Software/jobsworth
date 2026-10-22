@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:3  error  runs-on-missing
+  job 'build' has no runs-on:; GitHub rejects the workflow
+
+context:
+  job            'build'                              at :4
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore runs-on-missing
+  or in .jobsworth.yml:   rules: { runs-on-missing: off }

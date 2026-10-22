@@ -1,0 +1,9 @@
+# link: acme/tools = repos/acme-tools
+# expect: none
+name: Linked checkout resolves the reference locally
+on: push
+jobs:
+  a:
+    uses: acme/tools/.github/workflows/x.yml@v1
+    with:
+      tool: hammer

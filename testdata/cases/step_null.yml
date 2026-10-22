@@ -1,0 +1,9 @@
+# expect: error step-null
+name: Example
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi
+      -

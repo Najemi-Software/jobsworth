@@ -1,0 +1,12 @@
+# expect: error callee-unparseable "neither a workflow nor an action"
+# expect: error callee-unparseable "neither a workflow nor an action"
+name: Callees that are neither workflow nor action are errors at the caller
+on: push
+jobs:
+  a:
+    uses: ./.github/workflows/not-a-workflow.yml
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/not-an-action

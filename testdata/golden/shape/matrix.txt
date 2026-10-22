@@ -1,0 +1,9 @@
+matrix.os
+  = String
+
+why:
+  matrix.os
+    strategy.matrix.os: [ubuntu, windows] (line 25)
+
+accepted:
+  no member access accepted on String

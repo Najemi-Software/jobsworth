@@ -1,0 +1,11 @@
+description: Example
+name: Paths filter
+inputs:
+  filters:
+    required: true
+outputs:
+  changes:
+    description: JSON array of filter names that matched
+runs:
+  using: node20
+  main: dist/index.js

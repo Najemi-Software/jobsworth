@@ -1,0 +1,41 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "fetch-not-found",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 15,
+        "message": "acme/nope@v1: not found on GitHub"
+      },
+      "context": {
+        "api_calls": [
+          {
+            "error": "",
+            "path": "/repos/acme/nope/commits/v1",
+            "rate_limited": false,
+            "status": 404
+          }
+        ],
+        "kind": "fetch",
+        "reference": "acme/nope@v1",
+        "resolution": {
+          "error": "acme/nope@v1: not found on GitHub",
+          "how": "failed",
+          "name": ""
+        },
+        "token_source": "JOBSWORTH_TOKEN"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore fetch-not-found",
+        "config": {
+          "fetch-not-found": "off"
+        }
+      }
+    }
+  ]
+}

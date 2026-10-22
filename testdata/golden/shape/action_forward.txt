@@ -1,0 +1,2 @@
+steps.s.outputs.sha
+  ✗ step-forward-ref: steps.s is unknown at this point: step 's' (line 9) is the step itself or a later one

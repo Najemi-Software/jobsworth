@@ -1,0 +1,8 @@
+# expect: none
+description: Example
+name: Composite action without outputs
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo hello

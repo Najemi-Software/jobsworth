@@ -1,0 +1,19 @@
+# expect: none
+name: A gated job whose dependant reads its outputs is reachable
+on: push
+permissions: read-all
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      go: ${{ steps.g.outputs.go }}
+    steps:
+      - id: g
+        run: echo "go=yes" >> "$GITHUB_OUTPUT"
+  build:
+    runs-on: ubuntu-latest
+    needs: gate
+    if: needs.gate.outputs.go == 'yes'
+    steps:
+      - run: echo hi

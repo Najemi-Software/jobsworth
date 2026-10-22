@@ -1,0 +1,11 @@
+# config: rules: { on-push-tags-only: note }
+# expect: note on-push-tags-only
+name: on-push-tags-only flagged
+on:
+  push:
+    tags: ['v*']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

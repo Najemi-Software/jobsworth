@@ -1,0 +1,14 @@
+.github/workflows/example.yml:5:11  error  call-input-missing
+  job 'call' calling <ROOT>/.github/workflows/reusable.yml: required input 'env' is not supplied
+
+context:
+  callsite       job call                             at :5
+  callee         <ROOT>/.github/workflows/reusable.yml local
+  supplied       count
+  declared       env (string), count (number), strict (boolean), level (string)   (4 inputs)
+  required       env   missing: env
+    count: declared, int literal fits type number
+
+suppress:
+  add on line 5:    # jobsworth-ignore call-input-missing
+  or in .jobsworth.yml:   rules: { call-input-missing: off }

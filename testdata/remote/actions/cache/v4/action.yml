@@ -1,0 +1,15 @@
+name: Cache
+description: Example
+inputs:
+  path:
+    required: true
+  key:
+    required: true
+  restore-keys:
+    required: false
+outputs:
+  cache-hit:
+    description: hit
+runs:
+  using: node20
+  main: dist/index.js

@@ -1,0 +1,15 @@
+.github/actions/example/action.yml:5:12  error  action-output-unlifted
+  steps.v.outputs.version is referenced but step 'v' never writes "version" to $GITHUB_OUTPUT (no $GITHUB_OUTPUT writes in the 1 statement analysed)
+
+context:
+  reference      steps.v.outputs.version   at :5  (value)
+  producing step 'v'                                  at :9   shell: bash (step)
+  script analysed as bash, 1 statements:
+    :11    echo "version=1"                               echo, NO REDIRECT   ← key 'version' seen here, not written
+  GITHUB_OUTPUT target: closed   keys written: none
+  conclusion: 'version' is not among the keys written; nothing is written to GITHUB_OUTPUT.
+  see also: bash-output-unredirected fired on :11 for the same key.
+
+suppress:
+  add on line 5:    # jobsworth-ignore action-output-unlifted
+  or in .jobsworth.yml:   rules: { action-output-unlifted: off }

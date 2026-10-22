@@ -1,0 +1,9 @@
+# expect: warning injection-via-input "forwards inputs.title"
+name: Untrusted context forwarded by a reusable workflow into an action's run sink
+on: issue_comment
+permissions: read-all
+jobs:
+  call:
+    uses: ./.github/workflows/forward.yml
+    with:
+      title: ${{ github.event.comment.body }}

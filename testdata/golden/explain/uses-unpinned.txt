@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:15  note  uses-unpinned
+  someone/thing@v1 is pinned to "v1", not a full commit SHA; the owner can move the tag (trusted owners: acme, actions, dorny, github, hashicorp, najemi-software)
+
+context:
+  step           job 'build' / step #1                at :8   uses: someone/thing@v1
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore uses-unpinned
+  or in .jobsworth.yml:   rules: { uses-unpinned: off }

@@ -1,0 +1,11 @@
+.github/workflows/example.yml:12:17  note  artifact-whole-workspace
+  step 'actions/upload-artifact@v4' uploads the whole workspace (path: .); name the files the artifact needs
+
+context:
+  step           job 'build' / step #3                at :10   uses: actions/upload-artifact@v4
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 12:    # jobsworth-ignore artifact-whole-workspace
+  or in .jobsworth.yml:   rules: { artifact-whole-workspace: off }

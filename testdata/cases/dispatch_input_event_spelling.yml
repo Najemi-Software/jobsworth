@@ -1,0 +1,13 @@
+# config: rules: { dispatch-input-event-spelling: note }
+# expect: note dispatch-input-event-spelling
+name: dispatch-input-event-spelling flagged
+on:
+  workflow_dispatch:
+    inputs:
+      name:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.name }}

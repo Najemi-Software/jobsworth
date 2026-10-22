@@ -1,0 +1,12 @@
+# expect: error bash-syntax "does not parse"
+name: Run script with a syntax error
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: |
+          if [ -f x ]; then
+            echo "version=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.version }}

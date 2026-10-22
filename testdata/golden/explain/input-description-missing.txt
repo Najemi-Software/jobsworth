@@ -1,0 +1,8 @@
+.github/actions/example/action.yml:4:3  note  input-description-missing
+  input 'who' has no description:
+
+context:
+
+suppress:
+  add on line 4:    # jobsworth-ignore input-description-missing
+  or in .jobsworth.yml:   rules: { input-description-missing: off }

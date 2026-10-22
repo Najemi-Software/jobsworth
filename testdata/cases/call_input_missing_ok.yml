@@ -1,0 +1,8 @@
+# expect: none
+name: Caller supplies the required input
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: ${{ github.ref_name }}

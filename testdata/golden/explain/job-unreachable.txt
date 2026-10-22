@@ -1,0 +1,10 @@
+.github/workflows/example.yml:9:3  warning  job-unreachable
+  job 'build' needs 'gate', whose if: is always false, and nothing on the way runs after a skip; the job never runs
+
+context:
+  step           job 'gate' / step #1                 at :8   run:
+  triggers       push
+
+suppress:
+  add on line 9:    # jobsworth-ignore job-unreachable
+  or in .jobsworth.yml:   rules: { job-unreachable: off }

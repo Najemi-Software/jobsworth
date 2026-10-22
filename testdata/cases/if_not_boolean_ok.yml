@@ -1,0 +1,15 @@
+# expect: none
+name: Example
+on:
+  workflow_call:
+    inputs:
+      name:
+        type: string
+      flag:
+        type: boolean
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: inputs.name != ''
+        run: echo named ${{ inputs.flag }}

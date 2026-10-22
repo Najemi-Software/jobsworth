@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/actions/example/action.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "action-description-missing",
+        "file": "<ROOT>/.github/actions/example/action.yml",
+        "line": 1,
+        "column": 1,
+        "message": "action has no description:; it is required for the marketplace and is the action's documentation surface"
+      },
+      "context": {
+        "kind": "structure"
+      },
+      "suppress": {
+        "line": 1,
+        "comment": "# jobsworth-ignore action-description-missing",
+        "config": {
+          "action-description-missing": "off"
+        }
+      }
+    }
+  ]
+}

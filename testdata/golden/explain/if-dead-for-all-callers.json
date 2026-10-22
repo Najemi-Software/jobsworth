@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "if-dead-for-all-callers",
+        "file": "<ROOT>/.github/workflows/gated.yml",
+        "line": 11,
+        "column": 9,
+        "message": "job 'deploy' has a condition that is false for every known caller (.github/workflows/example.yml:6 (job call)=staging); it never runs"
+      },
+      "context": {
+        "expression": "inputs.env == 'prod'",
+        "job": "deploy",
+        "kind": "condition",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "site": "job deploy / if",
+        "triggers": [
+          "workflow_call"
+        ]
+      },
+      "suppress": {
+        "line": 11,
+        "comment": "# jobsworth-ignore if-dead-for-all-callers",
+        "config": {
+          "if-dead-for-all-callers": "off"
+        }
+      }
+    }
+  ]
+}

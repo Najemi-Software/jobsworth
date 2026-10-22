@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "if-double-wrapped",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 13,
+        "message": "if: joins two ${{ }} blocks into one string, which is always truthy; use a single ${{ ... }} around the whole condition"
+      },
+      "context": {
+        "expression": "github.event_name == 'push'",
+        "kind": "values"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore if-double-wrapped",
+        "config": {
+          "if-double-wrapped": "off"
+        }
+      }
+    }
+  ]
+}

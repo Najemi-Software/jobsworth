@@ -1,0 +1,9 @@
+# offline
+# expect: warning fetch-offline "offline, not cached"
+name: Offline with a cold cache is a warning at the caller
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/never-fetched@v1

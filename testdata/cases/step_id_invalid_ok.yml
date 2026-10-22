@@ -1,0 +1,10 @@
+# expect: none
+name: Ids with hyphens, underscores and digits after the first character
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: step-1_b
+        run: echo "a=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.step-1_b.outputs.a }}

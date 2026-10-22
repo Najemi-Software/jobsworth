@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "jobs-mergeable",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 3,
+        "message": "job 'test' only exists to run after 'build' on the same runner; one job with both step lists saves a runner spin-up"
+      },
+      "context": {
+        "kind": "performance",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore jobs-mergeable",
+        "config": {
+          "jobs-mergeable": "off"
+        }
+      }
+    }
+  ]
+}

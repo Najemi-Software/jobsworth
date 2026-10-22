@@ -1,0 +1,11 @@
+.github/workflows/example.yml:6:12  error  needs-unknown
+  job 'deploy' needs unknown job 'biuld'
+
+context:
+  job 'deploy'   needs 'biuld'   at :6
+  jobs in file:  [deploy]
+  conclusion: nearest existing job is 'deploy'.
+
+suppress:
+  add on line 6:    # jobsworth-ignore needs-unknown
+  or in .jobsworth.yml:   rules: { needs-unknown: off }

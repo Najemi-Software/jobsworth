@@ -1,0 +1,15 @@
+# graph
+# self: acme/app
+# expect: warning local-action-wrong-repo "loaded from acme/shared"
+name: A local reference through another repository's root checkout
+on: push
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          repository: acme/shared
+      - uses: ./.github/actions/notify
+        with:
+          env: prod

@@ -1,0 +1,9 @@
+.github/workflows/example.yml:5:7  error  call-input-type-decl
+  workflow_call input 'level' has type "choice"; allowed: string, boolean, number (choice is workflow_dispatch-only; declare a string and validate it in the caller)
+
+context:
+  triggers       workflow_call
+
+suppress:
+  add on line 5:    # jobsworth-ignore call-input-type-decl
+  or in .jobsworth.yml:   rules: { call-input-type-decl: off }

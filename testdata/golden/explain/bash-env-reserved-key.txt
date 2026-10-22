@@ -1,0 +1,14 @@
+.github/workflows/example.yml:7:14  warning  bash-env-reserved-key
+  step #1 sets GITHUB_SHA via $GITHUB_ENV; the runner owns it and ignores the write
+
+context:
+  step           #1                                   run: at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :7     echo "GITHUB_SHA=abc" >>"$GITHUB_ENV"          echo, writes GITHUB_ENV key 'GITHUB_SHA' (definite)
+  GITHUB_ENV target: closed   keys written: GITHUB_SHA (def)
+  GITHUB_ENV line stream:
+    :7     GITHUB_SHA=abc                                 
+
+suppress:
+  add on line 7:    # jobsworth-ignore bash-env-reserved-key
+  or in .jobsworth.yml:   rules: { bash-env-reserved-key: off }

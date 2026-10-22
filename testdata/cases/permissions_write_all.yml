@@ -1,0 +1,9 @@
+# expect: warning permissions-write-all
+name: Example
+on: push
+permissions: write-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

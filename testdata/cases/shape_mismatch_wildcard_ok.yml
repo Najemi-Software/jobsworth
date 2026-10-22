@@ -1,0 +1,19 @@
+# expect: none
+name: A field after .* maps over the elements
+on: pull_request
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
+  gate:
+    runs-on: ubuntu-latest
+    needs: [ a, b ]
+    if: ${{ !cancelled() && !contains(needs.*.result, 'failure') }}
+    steps:
+      - run: echo '${{ toJSON(needs.*.result) }}' ${{ join(github.event.pull_request.labels.*.name, ',') }}
+      - run: echo ${{ fromJSON('{"items":[{"id":1}]}').items.*.id }}

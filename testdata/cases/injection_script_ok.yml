@@ -1,0 +1,13 @@
+# expect: none
+name: Example
+on: issues
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        env:
+          TITLE: ${{ github.event.issue.title }}
+        with:
+          script: console.log(process.env.TITLE)

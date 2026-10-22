@@ -1,0 +1,14 @@
+.github/workflows/example.yml:7:14  error  step-forward-ref
+  steps.meta is referenced by step #1 but declared later; the value is always empty
+
+context:
+  reference      steps.meta.outputs.version   at :7  (job build / step #1 / run)
+  producing step 'meta'                               at :8   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :9     echo "version=1" >>"$GITHUB_OUTPUT"            echo, writes GITHUB_OUTPUT key 'version' (definite)   ← writes 'version' (definite)
+  GITHUB_OUTPUT target: closed   keys written: version (def)
+  conclusion: step 'meta' (index 2) is declared at or after the referencing step (index 1); the value is empty when evaluated.
+
+suppress:
+  add on line 7:    # jobsworth-ignore step-forward-ref
+  or in .jobsworth.yml:   rules: { step-forward-ref: off }

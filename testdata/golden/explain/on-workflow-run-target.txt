@@ -1,0 +1,10 @@
+.github/workflows/example.yml:3:3  error  on-workflow-run-target
+  on.workflow_run has no workflows: list; GitHub requires the triggering workflows to be named
+
+context:
+  triggers       workflow_run
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 3:    # jobsworth-ignore on-workflow-run-target
+  or in .jobsworth.yml:   rules: { on-workflow-run-target: off }

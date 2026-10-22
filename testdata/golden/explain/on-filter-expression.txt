@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:16  error  on-filter-expression
+  on.push.branches contains ${{ }}; expressions are not evaluated in on: and the pattern is taken literally
+
+context:
+  expression     github.ref   at :4  ()
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-filter-expression
+  or in .jobsworth.yml:   rules: { on-filter-expression: off }

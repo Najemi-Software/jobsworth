@@ -1,0 +1,15 @@
+# expect: none
+name: A wrapper with two checkouts provides the root and a tools subdirectory
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-two@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world
+      - uses: ./tools/.github/actions/notify
+        with:
+          env: prod

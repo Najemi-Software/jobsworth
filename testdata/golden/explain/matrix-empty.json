@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "matrix-empty",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 9,
+        "message": "job 'build' matrix axis \"os\" is an empty list; the job never runs"
+      },
+      "context": {
+        "kind": "shape"
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore matrix-empty",
+        "config": {
+          "matrix-empty": "off"
+        }
+      }
+    }
+  ]
+}

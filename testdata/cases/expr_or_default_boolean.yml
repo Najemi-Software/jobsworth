@@ -1,0 +1,13 @@
+# expect: warning expr-or-default-boolean
+name: Example
+on:
+  workflow_dispatch:
+    inputs:
+      flag:
+        type: boolean
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.flag || 'default' }}

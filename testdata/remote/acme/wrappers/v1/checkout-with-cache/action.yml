@@ -1,0 +1,35 @@
+name: Checkout with cache
+description: Example
+inputs:
+  repository:
+    description: repository
+    default: ${{ github.repository }}
+  ref:
+    description: ref
+    default: ''
+  path:
+    description: path
+    default: ''
+  sparse-checkout:
+    description: sparse
+    default: ''
+  persist-credentials:
+    description: persist
+    default: 'true'
+  token:
+    description: token
+    default: ${{ github.token }}
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "restoring cache"
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        repository: ${{ inputs.repository }}
+        ref: ${{ inputs.ref }}
+        path: ${{ inputs.path }}
+        sparse-checkout: ${{ inputs.sparse-checkout }}
+        persist-credentials: ${{ inputs.persist-credentials }}
+        token: ${{ inputs.token }}

@@ -1,0 +1,6 @@
+name: Cycle B
+description: Example
+runs:
+  using: composite
+  steps:
+    - uses: acme/wrappers/checkout-cycle-a@v1

@@ -1,0 +1,13 @@
+# config: rules: { node-syntax: warning }
+# unix
+# expect: warning node-syntax
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: node {0}
+        run: |
+          function (

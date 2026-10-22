@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "workflow-name-missing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 1,
+        "column": 1,
+        "message": "workflow has no name:; the Actions tab shows the file path instead"
+      },
+      "context": {
+        "kind": "structure",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 1,
+        "comment": "# jobsworth-ignore workflow-name-missing",
+        "config": {
+          "workflow-name-missing": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+.github/workflows/example.yml:6:1  note  suppress-unused
+  suppression of needs-unknown suppressed nothing
+
+context:
+  directive      jobsworth-ignore needs-unknown   at :6   applies to line 6
+
+suppress:
+  add on line 6:    # jobsworth-ignore suppress-unused
+  or in .jobsworth.yml:   rules: { suppress-unused: off }

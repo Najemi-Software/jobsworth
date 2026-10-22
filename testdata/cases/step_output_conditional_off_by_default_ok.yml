@@ -1,0 +1,10 @@
+# expect: none
+name: The conditional rule is off unless enabled
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: test -f x && echo "version=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.version }}

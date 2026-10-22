@@ -1,0 +1,12 @@
+# expect: error call-output-job-unknown "'nope'"
+name: Workflow output references a job that does not exist
+on:
+  workflow_call:
+    outputs:
+      v:
+        value: ${{ jobs.nope.outputs.version }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok

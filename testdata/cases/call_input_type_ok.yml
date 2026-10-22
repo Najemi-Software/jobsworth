@@ -1,0 +1,11 @@
+# expect: none
+name: Caller passes well-typed literals and unchecked expressions
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod
+      count: 3
+      strict: true
+      level: ${{ github.event_name == 'push' && 'high' || 'low' }}

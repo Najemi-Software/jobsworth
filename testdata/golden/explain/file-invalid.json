@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "file-invalid",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "message": "not a workflow (no top-level jobs:) or action (no runs.using)"
+      },
+      "context": {
+        "kind": "generic",
+        "message": "not a workflow (no top-level jobs:) or action (no runs.using)"
+      },
+      "suppress": {
+        "line": 0,
+        "comment": "# jobsworth-ignore file-invalid",
+        "config": {
+          "file-invalid": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+env.VERSION
+  = String
+
+why:
+  env.VERSION
+    written to $GITHUB_ENV by step 'build-clusters-matrix' (line 18):  echo "VERSION=1.2.3" >>$GITHUB_ENV
+
+accepted:
+  no member access accepted on String

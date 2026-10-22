@@ -1,0 +1,13 @@
+# expect: none
+name: A job name with a matrix expression is evaluated by GitHub
+on: push
+permissions: read-all
+jobs:
+  build:
+    name: Effort ${{ matrix.effort }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        effort: [low, high]
+    steps:
+      - run: echo ${{ matrix.effort }}

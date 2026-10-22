@@ -1,0 +1,11 @@
+.github/workflows/example.yml:10:15  note  checkout-redundant
+  checkout 'actions/checkout@v4' repeats step #1's checkout of the same repository and ref to the root; the first already provides everything this one does
+
+context:
+  step           job 'build' / step #3                at :10   uses: actions/checkout@v4
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 10:    # jobsworth-ignore checkout-redundant
+  or in .jobsworth.yml:   rules: { checkout-redundant: off }

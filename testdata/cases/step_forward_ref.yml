@@ -1,0 +1,13 @@
+# expect: error step-forward-ref "declared later"
+# expect: error step-forward-ref "declared itself"
+name: References to a later step and to the step itself
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ steps.meta.outputs.version }}
+      - id: meta
+        run: echo "version=1" >> "$GITHUB_OUTPUT"
+        env:
+          SELF: ${{ steps.meta.outputs.version }}

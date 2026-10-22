@@ -1,0 +1,16 @@
+name: Outer wrapper
+description: Example
+inputs:
+  repo:
+    description: repository
+    default: ''
+  where:
+    description: path
+    default: ''
+runs:
+  using: composite
+  steps:
+    - uses: acme/wrappers/checkout-cached@v1
+      with:
+        repository: ${{ inputs.repo || github.repository }}
+        path: ${{ inputs.where }}

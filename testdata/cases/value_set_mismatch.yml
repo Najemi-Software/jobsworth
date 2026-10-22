@@ -1,0 +1,20 @@
+# expect: error value-set-mismatch "sucess"
+# expect: error value-set-mismatch "linux"
+# expect: error value-set-mismatch "x86_64"
+# expect: warning value-set-mismatch "pull_request"
+name: Comparisons against literals outside the documented sets
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: t
+        run: make test
+      - if: steps.t.outcome == 'sucess'
+        run: echo a
+      - if: "'linux' == runner.os"
+        run: echo b
+      - if: runner.arch != 'x86_64'
+        run: echo c
+      - if: github.event_name == 'pull_request'
+        run: echo d

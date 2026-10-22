@@ -1,0 +1,47 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-input-missing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 15,
+        "message": "job 'build' step './.github/actions/greet' using ./.github/actions/greet: required input \"name\" is not supplied"
+      },
+      "context": {
+        "callee": {
+          "how": "local",
+          "name": "<ROOT>/.github/actions/greet/action.yml",
+          "ref": "./.github/actions/greet"
+        },
+        "callsite": {
+          "job": "build",
+          "line": 8,
+          "step": "'./.github/actions/greet'"
+        },
+        "checks": null,
+        "declared": [
+          "name"
+        ],
+        "kind": "call",
+        "missing": [
+          "name"
+        ],
+        "required": [
+          "name"
+        ],
+        "supplied": null
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore step-input-missing",
+        "config": {
+          "step-input-missing": "off"
+        }
+      }
+    }
+  ]
+}
