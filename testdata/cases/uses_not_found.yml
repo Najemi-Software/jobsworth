@@ -1,0 +1,12 @@
+# expect: error uses-not-found "local action"
+# expect: error uses-not-found "local workflow"
+name: Local references that do not exist
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/missing
+  b:
+    uses: ./.github/workflows/missing.yml

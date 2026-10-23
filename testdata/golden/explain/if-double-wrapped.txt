@@ -1,0 +1,9 @@
+.github/workflows/example.yml:7:13  error  if-double-wrapped
+  if: joins two ${{ }} blocks into one string, which is always truthy; use a single ${{ ... }} around the whole condition
+
+context:
+  expression     github.event_name == 'push'   at :7  (job build / step #1 / if)
+
+suppress:
+  add on line 7:    # jobsworth-ignore if-double-wrapped
+  or in .jobsworth.yml:   rules: { if-double-wrapped: off }

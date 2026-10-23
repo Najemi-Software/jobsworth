@@ -1,0 +1,12 @@
+.github/workflows/example.yml:5:11  error  uses-invalid
+  job-level uses: must reference a reusable workflow, but <ROOT>/.github/actions/greet/action.yml is a composite action
+
+context:
+  reference      ./.github/actions/greet              at :5
+  resolution     failed: job-level uses: must reference a reusable workflow, but <ROOT>/.github/actions/greet/action.yml is a composite action
+  api calls      none (served from cache, linked, skipped, or offline)
+  token source   JOBSWORTH_TOKEN
+
+suppress:
+  add on line 5:    # jobsworth-ignore uses-invalid
+  or in .jobsworth.yml:   rules: { uses-invalid: off }

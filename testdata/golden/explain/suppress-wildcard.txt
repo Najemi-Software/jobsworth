@@ -1,0 +1,9 @@
+.github/workflows/example.yml:6:1  note  suppress-wildcard
+  jobsworth-ignore * hides every rule on this line, including future ones
+
+context:
+  directive      jobsworth-ignore *   at :6   applies to line 6
+
+suppress:
+  add on line 6:    # jobsworth-ignore suppress-wildcard
+  or in .jobsworth.yml:   rules: { suppress-wildcard: off }

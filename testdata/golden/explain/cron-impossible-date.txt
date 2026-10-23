@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:13  warning  cron-impossible-date
+  cron "0 0 31 2 *" names a day of month that no listed month has; it never fires
+
+context:
+  triggers       schedule
+
+suppress:
+  add on line 4:    # jobsworth-ignore cron-impossible-date
+  or in .jobsworth.yml:   rules: { cron-impossible-date: off }

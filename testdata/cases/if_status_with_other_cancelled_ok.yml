@@ -1,0 +1,15 @@
+# expect: none
+name: A condition that already tests cancelled() has applied the remedy
+on:
+  workflow_call:
+    inputs:
+      kind:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ always() && !cancelled() && inputs.kind == 'python' }}
+        run: echo python
+      - if: always() && cancelled()
+        run: echo cleanup

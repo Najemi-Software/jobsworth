@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "runs-on-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 14,
+        "message": "runner label \"ubunut-latest\" is not a GitHub-hosted runner label; the job never schedules (add it to structure.runner_labels if it is a self-hosted label)"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": [
+          "ubunut-latest"
+        ],
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore runs-on-unknown",
+        "config": {
+          "runs-on-unknown": "off"
+        }
+      }
+    }
+  ]
+}

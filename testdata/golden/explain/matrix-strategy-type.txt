@@ -1,0 +1,10 @@
+.github/workflows/example.yml:8:21  error  matrix-strategy-type
+  job 'build' strategy.max-parallel is "two", not a number
+
+context:
+  detail         job 'build' strategy.max-parallel is "two", not a number
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 8:    # jobsworth-ignore matrix-strategy-type
+  or in .jobsworth.yml:   rules: { matrix-strategy-type: off }

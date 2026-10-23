@@ -1,0 +1,10 @@
+.github/actions/example/action.yml:6:12  error  composite-shell-missing
+  composite step #1 has run: but no shell:; every composite run step must set one
+
+context:
+  step           #1                                   at :6   shell: none (missing)
+  referenced ids in scope: none
+
+suppress:
+  add on line 6:    # jobsworth-ignore composite-shell-missing
+  or in .jobsworth.yml:   rules: { composite-shell-missing: off }

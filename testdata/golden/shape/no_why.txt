@@ -1,0 +1,8 @@
+fromJSON(steps.build-clusters-matrix.outputs.canary)
+  = Array[Object{cluster: String, namespace: String}]
+
+accepted:
+  [n]            → Object{cluster: String, namespace: String}
+  [n].cluster    → String
+  [n].namespace  → String
+  .*             → Array[Object{cluster: String, namespace: String}]

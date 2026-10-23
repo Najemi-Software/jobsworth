@@ -1,0 +1,17 @@
+# unix
+# expect: error step-output-unwritten "nope"
+# expect: note step-output-unused
+name: A python write the model knows does not cover an unwritten key
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: py
+        shell: python
+        run: |
+          import os
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write("version=1.2.3\n")
+      - run: echo ${{ steps.py.outputs.nope }}

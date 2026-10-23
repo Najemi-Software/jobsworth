@@ -1,0 +1,32 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "needs-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 12,
+        "message": "job 'deploy' needs unknown job 'biuld'"
+      },
+      "context": {
+        "conclusion": "nearest existing job is 'deploy'.",
+        "job": "deploy",
+        "jobs": [
+          "deploy"
+        ],
+        "kind": "jobs",
+        "needs": "biuld"
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore needs-unknown",
+        "config": {
+          "needs-unknown": "off"
+        }
+      }
+    }
+  ]
+}

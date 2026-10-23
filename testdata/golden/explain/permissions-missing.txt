@@ -1,0 +1,9 @@
+.github/workflows/example.yml:2:5  warning  permissions-missing
+  no permissions: block at workflow level and at least one job without one; the token gets the repository default, which may be read-write
+
+context:
+  triggers       push
+
+suppress:
+  add on line 2:    # jobsworth-ignore permissions-missing
+  or in .jobsworth.yml:   rules: { permissions-missing: off }

@@ -1,0 +1,10 @@
+.github/workflows/example.yml:8:7  warning  output-unused
+  job 'build' declares output 'sha' but nothing references it
+
+context:
+  job 'build'   output 'sha'   at :8
+  references to this job's outputs: needs.build.outputs.version at :15
+
+suppress:
+  add on line 8:    # jobsworth-ignore output-unused
+  or in .jobsworth.yml:   rules: { output-unused: off }

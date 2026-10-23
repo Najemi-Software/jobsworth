@@ -1,0 +1,13 @@
+# expect: none
+name: A subdirectory checkout of the file's own repository resolves locally at the stripped path
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+      - uses: ./src/.github/actions/greet
+        with:
+          name: world

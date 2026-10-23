@@ -1,0 +1,7 @@
+# expect: error runs-on-missing
+name: Example
+on: push
+jobs:
+  build:
+    steps:
+      - run: echo hi

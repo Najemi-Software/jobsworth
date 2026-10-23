@@ -1,0 +1,10 @@
+# expect: error cron-syntax
+name: cron-syntax flagged
+on:
+  schedule:
+    - cron: '0 0 * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

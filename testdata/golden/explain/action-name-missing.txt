@@ -1,0 +1,8 @@
+.github/actions/example/action.yml:1:1  note  action-name-missing
+  action has no name:; it is required for the marketplace and is the action's documentation surface
+
+context:
+
+suppress:
+  add on line 1:    # jobsworth-ignore action-name-missing
+  or in .jobsworth.yml:   rules: { action-name-missing: off }

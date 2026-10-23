@@ -1,0 +1,10 @@
+# expect: error step-id-unknown "declared ids: meta"
+name: Reference to a step id that does not exist
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: echo "version=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.metadata.outputs.version }} ${{ steps.meta.outputs.version }}

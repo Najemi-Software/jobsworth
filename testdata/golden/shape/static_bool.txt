@@ -1,0 +1,10 @@
+github.event_name == 'push'
+  = Bool
+
+why:
+  github.event_name
+    static schema github for on: [push, pull_request] (event payload open)
+  .event_name → String ∈ {push, pull_request}
+
+accepted:
+  no member access accepted on Bool

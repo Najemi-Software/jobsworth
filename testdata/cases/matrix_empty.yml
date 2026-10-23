@@ -1,0 +1,13 @@
+# expect: error matrix-empty
+# expect: error shape-mismatch
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: []
+    steps:
+      - run: echo ${{ matrix.os }}

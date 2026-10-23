@@ -1,0 +1,15 @@
+# self: acme/app
+# expect: warning local-action-wrong-repo "loaded from acme/shared"
+name: A repository passed through a wrapper makes the root checkout foreign
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-cached@v1
+        with:
+          repository: acme/shared
+      - uses: ./.github/actions/notify
+        with:
+          env: prod

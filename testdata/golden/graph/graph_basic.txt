@@ -1,0 +1,12 @@
+graph_basic.yml  (workflow, entry)
+├─ job build / step #1    → actions/checkout@v4  (node-action, fetched, tag → 2db1d53, cache miss)
+├─ job build / step greet → ./.github/actions/greet  (composite-action, local)
+├─ job build / step #3    → ./.github/actions/nested  (composite-action, local)
+│  └─ step #1 → ./.github/actions/greet  ↑
+├─ job build / step #4    → docker://alpine:3.19  (docker-action, skipped)
+├─ job build / step #5    → ${{ matrix.action }}  (unresolved: dynamic reference)
+├─ job build / step #6    → hashicorp/vault-action@v3  (skipped by config)
+├─ job build / step #7    → acme/forbidden@v1  (failed: acme/forbidden@v1: could not fetch (HTTP 403), skipping)
+└─ job call               → ./.github/workflows/reusable.yml  (workflow, local)
+
+9 nodes: 1 entry, 3 local, 1 fetched (0 cache hits, 1 miss, 0 stale), 2 skipped, 1 unresolved, 1 failed

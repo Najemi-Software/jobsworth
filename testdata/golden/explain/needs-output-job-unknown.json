@@ -1,0 +1,37 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "needs-output-job-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "needs.biuld.outputs.version references job 'biuld', which does not exist"
+      },
+      "context": {
+        "conclusion": "nearest existing job is 'deploy'.",
+        "kind": "jobs",
+        "needs": {
+          "direct": null,
+          "transitive": null
+        },
+        "reference": {
+          "job": "biuld",
+          "line": 7,
+          "output": "version",
+          "site": "job deploy / step #1 / run"
+        }
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore needs-output-job-unknown",
+        "config": {
+          "needs-output-job-unknown": "off"
+        }
+      }
+    }
+  ]
+}

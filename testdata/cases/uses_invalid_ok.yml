@@ -1,0 +1,16 @@
+# expect: none
+name: Step uses an action and a job uses a reusable workflow
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet
+        with:
+          name: world
+  b:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod

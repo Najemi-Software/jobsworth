@@ -1,0 +1,16 @@
+# expect: warning output-unused "'sha'"
+name: Job output nothing references
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: x
+      sha: y
+    steps:
+      - run: echo ok
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo ${{ needs.build.outputs.version }}

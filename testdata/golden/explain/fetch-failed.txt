@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:15  warning  fetch-failed
+  acme/forbidden@v1: could not fetch (HTTP 403), skipping
+
+context:
+  reference      acme/forbidden@v1                    at :7
+  resolution     failed: acme/forbidden@v1: could not fetch (HTTP 403), skipping
+    GET /repos/acme/forbidden/commits/v1                             403
+  token source   JOBSWORTH_TOKEN
+
+suppress:
+  add on line 7:    # jobsworth-ignore fetch-failed
+  or in .jobsworth.yml:   rules: { fetch-failed: off }

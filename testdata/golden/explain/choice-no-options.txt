@@ -1,0 +1,9 @@
+.github/workflows/example.yml:5:7  error  choice-no-options
+  input 'level' is type choice but declares no options
+
+context:
+  declared       workflow_dispatch: level (:5)
+
+suppress:
+  add on line 5:    # jobsworth-ignore choice-no-options
+  or in .jobsworth.yml:   rules: { choice-no-options: off }

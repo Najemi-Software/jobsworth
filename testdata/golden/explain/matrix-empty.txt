@@ -1,0 +1,10 @@
+.github/workflows/example.yml:9:9  error  matrix-empty
+  job 'build' matrix axis "os" is an empty list; the job never runs
+
+context:
+  detail         job 'build' matrix axis "os" is an empty list; the job never runs
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 9:    # jobsworth-ignore matrix-empty
+  or in .jobsworth.yml:   rules: { matrix-empty: off }

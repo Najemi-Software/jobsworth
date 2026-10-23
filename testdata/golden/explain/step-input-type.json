@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-input-type",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 18,
+        "message": "job 'build' step './.github/actions/typed' using ./.github/actions/typed: with.count is \"many\" but the input declares type number (expected a number)"
+      },
+      "context": {
+        "callee": {
+          "how": "local",
+          "name": "<ROOT>/.github/actions/typed/action.yml",
+          "ref": "./.github/actions/typed"
+        },
+        "callsite": {
+          "job": "build",
+          "line": 8,
+          "step": "'./.github/actions/typed'"
+        },
+        "checks": [
+          "count: declared, str literal \"many\" does not fit type number (expected a number)"
+        ],
+        "declared": [
+          "count (number)",
+          "level (choice)"
+        ],
+        "kind": "call",
+        "missing": null,
+        "required": [
+          "count"
+        ],
+        "supplied": [
+          {
+            "declared": true,
+            "expected": "a number",
+            "expression": false,
+            "kind": "str",
+            "name": "count",
+            "type": "number",
+            "value": "many"
+          }
+        ]
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore step-input-type",
+        "config": {
+          "step-input-type": "off"
+        }
+      }
+    }
+  ]
+}

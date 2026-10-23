@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "environment-no-protection",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 18,
+        "message": "job 'build' deploys to environment \"staging\", which has no required reviewers or branch policy, on a privileged trigger"
+      },
+      "context": {
+        "job": "build",
+        "kind": "security",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "triggers": [
+          "pull_request_target"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore environment-no-protection",
+        "config": {
+          "environment-no-protection": "off"
+        }
+      }
+    }
+  ]
+}

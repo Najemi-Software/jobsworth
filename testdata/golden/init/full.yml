@@ -1,0 +1,51 @@
+# .jobsworth.yml — configuration for `jobsworth check`.
+# Every key is optional. Paths are relative to this file.
+# Docs: https://github.com/najemi-software/jobsworth#configuration
+
+schema: 1                       # config schema version; bumped on incompatible changes
+
+# Map an external owner/repo to a local checkout. `uses:` references to
+# that repo are read from the checkout (any @ref ignored) instead of
+# fetched. Flags (--repo) override entries here.
+repos:                          # detected
+  acme/tools: ../acme-tools  # detected: origin matches
+  # acme/forbidden: <path>   # referenced in 1 file, no local checkout found
+  # acme/nope: <path>        # referenced in 1 file, no local checkout found
+  # acme/shared: <path>      # referenced in 1 file, no local checkout found
+
+# References to never fetch, parse, or validate. For actions you trust
+# but cannot fetch from this environment.
+skip:
+  actions: []   # owner/repo or owner/repo/sub/path, no @ref    (detected with --probe)
+  workflows: [] # owner/repo/.github/workflows/name.yml
+
+# 1 step uses a shell other than bash and will not be analysed by the bash rules.
+bash:
+  opaque_commands: []           # extra commands whose output is treated as opaque for heredoc-delimiter collision
+
+shapes:
+  github_event_open: true       # treat github.event payload objects as open (unknown fields allowed)
+
+fetch:
+  api_url: https://api.github.com   # GitHub Enterprise: https://ghe.example.com/api/v3
+  timeout: 10s
+  parallel: 8
+
+cache:
+  dir: ""                       # empty = platform default; --cache-dir and $JOBSWORTH_CACHE_DIR override
+  tag_ttl: 4h
+  branch_ttl: 10m
+
+# Per-rule severity override: error | warning | note | off.
+# `jobsworth rules` lists every id with its default.
+rules: {}
+
+# Lowest severity that fails the exit code. --fail-on overrides.
+fail_on: error
+
+# Default entries when `check` is run with no arguments.
+entries:
+  - .github/workflows/*.yml
+  - .github/workflows/*.yaml
+  - .github/actions/**/action.yml
+  - .github/actions/**/action.yaml

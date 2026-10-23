@@ -1,0 +1,23 @@
+# expect: none
+name: Comparisons within the sets, and against variables
+on: [ push, pull_request ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: t
+        run: make test
+      - if: steps.t.outcome == 'success' && steps.t.conclusion != 'skipped'
+        run: echo a
+      - if: runner.os == 'macOS' && runner.arch == 'ARM64' && github.ref_type == 'tag'
+        run: echo b
+      - if: github.event_name == 'pull_request' && job.status == 'success'
+        run: echo c
+      - if: runner.os == env.EXPECTED_OS
+        run: echo d
+  after:
+    runs-on: ubuntu-latest
+    needs: build
+    if: needs.build.result == 'failure'
+    steps:
+      - run: echo ok

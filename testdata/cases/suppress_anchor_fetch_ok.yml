@@ -1,0 +1,8 @@
+# expect: none
+name: Fetch rules anchor at the uses value line
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/nope@v1  # jobsworth-ignore fetch-not-found -- repo is being created

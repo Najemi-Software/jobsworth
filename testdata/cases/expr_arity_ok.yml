@@ -1,0 +1,9 @@
+# expect: none
+name: Right argument counts
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ contains(github.ref, 'tags') }} ${{ toJSON(github.ref) }}

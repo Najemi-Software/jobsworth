@@ -1,0 +1,12 @@
+# expect: none
+name: call-input-type-decl passes
+on:
+  workflow_call:
+    inputs:
+      level:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.level }}

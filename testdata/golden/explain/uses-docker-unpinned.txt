@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:15  note  uses-docker-unpinned
+  docker://alpine:3.19 is not pinned to a digest (@sha256:...); the tag can be moved
+
+context:
+  step           job 'build' / step #1                at :8   uses: docker://alpine:3.19
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore uses-docker-unpinned
+  or in .jobsworth.yml:   rules: { uses-docker-unpinned: off }

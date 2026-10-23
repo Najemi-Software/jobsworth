@@ -1,0 +1,9 @@
+.github/workflows/example.yml:1:1  error  on-missing
+  workflow has no on: block; it never runs
+
+context:
+  triggers       none
+
+suppress:
+  add on line 1:    # jobsworth-ignore on-missing
+  or in .jobsworth.yml:   rules: { on-missing: off }

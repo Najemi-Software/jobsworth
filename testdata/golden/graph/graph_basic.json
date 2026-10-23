@@ -1,0 +1,180 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": "<TESTDATA>/cases/graph_basic.yml",
+      "path": "<TESTDATA>/cases/graph_basic.yml",
+      "repo": "example/app"
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@v4",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "v4",
+      "ref_kind": "tag",
+      "sha": "2db1d539fba6c56715b3e80ff0292b398ca3ed2e",
+      "cache": "miss",
+      "inputs": [
+        "persist-credentials",
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    },
+    "n2": {
+      "id": "n2",
+      "kind": "composite-action",
+      "source": "local",
+      "display": "./.github/actions/greet",
+      "path": "<TESTDATA>/callees/.github/actions/greet/action.yml",
+      "repo": "example/app",
+      "inputs": [
+        "name"
+      ]
+    },
+    "n3": {
+      "id": "n3",
+      "kind": "composite-action",
+      "source": "local",
+      "display": "./.github/actions/nested",
+      "path": "<TESTDATA>/callees/.github/actions/nested/action.yml",
+      "repo": "example/app"
+    },
+    "n4": {
+      "id": "n4",
+      "kind": "docker-action",
+      "source": "skipped",
+      "display": "docker://alpine:3.19"
+    },
+    "n5": {
+      "id": "n5",
+      "source": "unresolved",
+      "display": "${{ matrix.action }}",
+      "error": "dynamic reference"
+    },
+    "n6": {
+      "id": "n6",
+      "source": "skipped",
+      "display": "hashicorp/vault-action@v3",
+      "error": "skipped by config"
+    },
+    "n7": {
+      "id": "n7",
+      "source": "failed",
+      "display": "acme/forbidden@v1",
+      "error": "acme/forbidden@v1: could not fetch (HTTP 403), skipping"
+    },
+    "n8": {
+      "id": "n8",
+      "kind": "workflow",
+      "source": "local",
+      "display": "./.github/workflows/reusable.yml",
+      "path": "<TESTDATA>/callees/.github/workflows/reusable.yml",
+      "repo": "example/app",
+      "inputs": [
+        "env",
+        "count",
+        "strict",
+        "level"
+      ],
+      "outputs": [
+        "version"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job build / step #1",
+      "line": 12,
+      "uses": "actions/checkout@v4"
+    },
+    {
+      "from": "n0",
+      "to": "n2",
+      "site": "job build / step greet",
+      "line": 14,
+      "uses": "./.github/actions/greet"
+    },
+    {
+      "from": "n0",
+      "to": "n3",
+      "site": "job build / step #3",
+      "line": 17,
+      "uses": "./.github/actions/nested"
+    },
+    {
+      "from": "n0",
+      "to": "n4",
+      "site": "job build / step #4",
+      "line": 18,
+      "uses": "docker://alpine:3.19"
+    },
+    {
+      "from": "n0",
+      "to": "n5",
+      "site": "job build / step #5",
+      "line": 19,
+      "uses": "${{ matrix.action }}"
+    },
+    {
+      "from": "n0",
+      "to": "n6",
+      "site": "job build / step #6",
+      "line": 20,
+      "uses": "hashicorp/vault-action@v3"
+    },
+    {
+      "from": "n0",
+      "to": "n7",
+      "site": "job build / step #7",
+      "line": 21,
+      "uses": "acme/forbidden@v1"
+    },
+    {
+      "from": "n0",
+      "to": "n8",
+      "site": "job call",
+      "line": 23,
+      "uses": "./.github/workflows/reusable.yml"
+    },
+    {
+      "from": "n3",
+      "to": "n2",
+      "site": "step #1",
+      "line": 6,
+      "uses": "./.github/actions/greet"
+    }
+  ],
+  "summary": {
+    "nodes": 9,
+    "by_source": {
+      "entry": 1,
+      "failed": 1,
+      "fetched": 1,
+      "local": 3,
+      "skipped": 2,
+      "unresolved": 1
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 1,
+      "stale": 0
+    },
+    "api_calls": 4
+  }
+}

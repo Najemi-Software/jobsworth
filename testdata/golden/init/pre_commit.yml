@@ -1,0 +1,6 @@
+repos:
+  - repo: https://github.com/najemi-software/jobsworth
+    rev: v0.1.0                                    # the running binary's version
+    hooks:
+      - id: jobsworth
+        files: ^\.github/

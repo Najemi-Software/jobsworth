@@ -1,0 +1,9 @@
+# expect: note concurrency-group-static
+name: concurrency-group-static flagged
+on: push
+concurrency: ci
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

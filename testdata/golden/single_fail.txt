@@ -1,0 +1,8 @@
+FAIL .github/workflows/fail.yml
+  .github/workflows/fail.yml:13:21  error  needs-unknown
+    job 'deploy' needs unknown job 'nope'
+  .github/workflows/fail.yml:15:14  error  needs-output-undeclared
+    job 'deploy' references needs.build.outputs.sha, but job 'build' declares no output 'sha'
+  .github/workflows/fail.yml:7:7  warning  output-unused
+    job 'build' declares output 'version' but nothing references it
+

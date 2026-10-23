@@ -1,0 +1,19 @@
+# config: rules: { input-unused: off, needs-output-not-needed: note }
+# expect: note needs-output-not-needed
+# expect: note job-orphan-outputs
+name: Config can silence a rule and lower another
+on:
+  workflow_call:
+    inputs:
+      never-used: { type: string }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: x
+    steps:
+      - run: echo ok
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.build.outputs.version }}

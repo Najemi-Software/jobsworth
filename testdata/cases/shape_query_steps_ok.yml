@@ -1,0 +1,19 @@
+# expect: none
+# shape: --at build 'steps.cfg.outputs.cfg' => String ⊂ JSON → Object{meta: Object{id: Number}, name: String, tags: Array[String]}
+# shape: --at build 'fromJSON(steps.cfg.outputs.cfg).tags' => Array[String]
+# shape: --at build 'fromJSON(steps.cfg.outputs.cfg).meta.id' => Number
+# shape: --at build/#2 'steps.cfg.outputs.cfg' => String ⊂ JSON → Object{meta: Object{id: Number}, name: String, tags: Array[String]}
+# shape: --at build 'steps.cfg.outcome' => String ∈ {success, failure, cancelled, skipped}
+# shape: --at build 'fromJSON(steps.cfg.outputs.cfg).nope' => ✗ field "nope" not in object
+# shape: --at build/cfg 'steps.cfg.outputs.cfg' => ✗ unknown at this point
+# shape: --at build 'steps.missing.outputs.x' => ✗ no step has id "missing"
+name: Shape queries over a step's JSON output
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cfg
+        run: |
+          echo 'cfg={"name":"x","tags":["a","b"],"meta":{"id":1}}' >> "$GITHUB_OUTPUT"
+      - run: echo ${{ fromJSON(steps.cfg.outputs.cfg).meta.id }}

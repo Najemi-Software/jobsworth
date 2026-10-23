@@ -1,0 +1,7 @@
+# expect: error on-missing
+name: on-missing flagged
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

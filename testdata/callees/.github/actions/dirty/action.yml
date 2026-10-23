@@ -1,0 +1,12 @@
+description: Example
+name: Dirty
+inputs:
+  used:
+    required: false
+  unused:
+    required: false
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo ${{ inputs.used }} ${{ inputs.typo }}

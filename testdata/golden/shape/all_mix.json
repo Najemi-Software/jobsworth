@@ -1,0 +1,100 @@
+[
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#2"
+    },
+    "expression": "fromJSON(steps.cfg.outputs.cfg).meta.id",
+    "ok": true,
+    "shape": {
+      "kind": "number"
+    },
+    "render": "Number",
+    "error": null,
+    "line": 18,
+    "site": "job build / step #2 / run"
+  },
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#2"
+    },
+    "expression": "inputs.dry-run",
+    "ok": true,
+    "shape": {
+      "kind": "bool"
+    },
+    "render": "Bool",
+    "error": null,
+    "line": 18,
+    "site": "job build / step #2 / run"
+  },
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#2"
+    },
+    "expression": "runner.os",
+    "ok": true,
+    "shape": {
+      "kind": "string",
+      "values": [
+        "Linux",
+        "Windows",
+        "macOS"
+      ]
+    },
+    "render": "String ∈ {Linux, Windows, macOS}",
+    "error": null,
+    "line": 18,
+    "site": "job build / step #2 / run"
+  },
+  {
+    "schema": 1,
+    "file": "<ROOT>/.github/workflows/mix.yml",
+    "at": {
+      "job": "build",
+      "step": "#3"
+    },
+    "expression": "fromJSON(steps.cfg.outputs.cfg).nope",
+    "ok": false,
+    "shape": {
+      "fields": {
+        "meta": {
+          "fields": {
+            "id": {
+              "kind": "number"
+            }
+          },
+          "kind": "object",
+          "open": false
+        },
+        "name": {
+          "kind": "string"
+        },
+        "tags": {
+          "elem": {
+            "kind": "string"
+          },
+          "kind": "array"
+        }
+      },
+      "kind": "object",
+      "open": false
+    },
+    "render": "Object{meta: Object{id: Number}, name: String, tags: Array[String]}",
+    "error": {
+      "rule": "shape-mismatch",
+      "message": "fromJSON(steps.cfg.outputs.cfg).nope: at step 1 (.nope): field \"nope\" not in object (declared: meta, name, tags) (from step 'cfg' line 17 writes cfg)",
+      "at": "fromJSON(steps.cfg.outputs.cfg)"
+    },
+    "line": 19,
+    "site": "job build / step #3 / run"
+  }
+]

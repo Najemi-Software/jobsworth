@@ -1,0 +1,11 @@
+# expect: warning fetch-failed
+name: Outputs of a callee that could not be fetched are not checked
+on: push
+jobs:
+  build:
+    uses: acme/forbidden/.github/workflows/x.yml@v1
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo ${{ needs.build.outputs.anything }}

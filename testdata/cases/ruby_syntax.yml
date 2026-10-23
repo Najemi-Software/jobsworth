@@ -1,0 +1,13 @@
+# config: rules: { ruby-syntax: warning }
+# unix
+# expect: warning ruby-syntax
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: ruby {0}
+        run: |
+          end end

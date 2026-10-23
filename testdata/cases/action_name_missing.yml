@@ -1,0 +1,7 @@
+# expect: note action-name-missing
+description: Example
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo hi

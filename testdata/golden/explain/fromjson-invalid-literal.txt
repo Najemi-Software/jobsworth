@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  fromjson-invalid-literal
+  fromJSON('{version: 1}') is not valid JSON: invalid character 'v' looking for beginning of object key string
+
+context:
+  expression     fromJSON('{version: 1}').version   at :7  (job build / step #1 / run)
+  detail         fromJSON('{version: 1}') is not valid JSON: invalid character 'v' looking for beginning of object key string
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 7:    # jobsworth-ignore fromjson-invalid-literal
+  or in .jobsworth.yml:   rules: { fromjson-invalid-literal: off }

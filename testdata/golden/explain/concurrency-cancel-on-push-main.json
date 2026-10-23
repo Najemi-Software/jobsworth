@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "concurrency-cancel-on-push-main",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 3,
+        "message": "workflow cancels in-progress runs of a group keyed on github.ref in a workflow that deploys from the default branch; a second push cancels a half-finished deploy"
+      },
+      "context": {
+        "expression": "github.ref",
+        "kind": "trigger",
+        "site": "group",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore concurrency-cancel-on-push-main",
+        "config": {
+          "concurrency-cancel-on-push-main": "off"
+        }
+      }
+    }
+  ]
+}

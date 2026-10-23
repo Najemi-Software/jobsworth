@@ -1,0 +1,6 @@
+description: Example
+name: Cycle B
+runs:
+  using: composite
+  steps:
+    - uses: ./.github/actions/cycle-a

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "call-input-type-decl",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 7,
+        "message": "workflow_call input 'level' has type \"choice\"; allowed: string, boolean, number (choice is workflow_dispatch-only; declare a string and validate it in the caller)"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "workflow_call"
+        ]
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore call-input-type-decl",
+        "config": {
+          "call-input-type-decl": "off"
+        }
+      }
+    }
+  ]
+}

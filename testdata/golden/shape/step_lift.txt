@@ -1,0 +1,9 @@
+steps.meta.outputs.sha
+  = String
+
+why:
+  steps.meta.outputs.sha
+    lifted from ./.github/actions/meta outputs.sha.value (line 29)
+
+accepted:
+  no member access accepted on String

@@ -1,0 +1,17 @@
+fromJSON(needs.set-vars.outputs.canary)[0].cluster
+  = String
+
+why:
+  needs.set-vars.outputs.canary
+    lifted from jobs.set-vars.outputs.canary: ${{ steps.build-clusters-matrix.outputs.canary }} (line 9)
+      written by step 'build-clusters-matrix' (line 17):  echo "canary=$CANARY_MATRIX" >>$GITHUB_OUTPUT
+        $CANARY_MATRIX (line 16):  $(yq e .canary -o=json -M $DATA_FILE | jq -c)
+          file .github/workflows/data/clusters.yml parsed as YAML: Object{canary: Array[Object{cluster: String, namespace: String}], production: Array[Object{cluster: String, namespace: String}]}
+          yq '.canary': Object{canary: Array[Object{…}], production: Array[Object{…}]} → Array[Object{cluster: String, namespace: String}]
+          jq '.' -c: Array[Object{cluster: String, namespace: String}] → Array[Object{cluster: String, namespace: String}]
+  fromJSON(String ⊂ JSON → X) = X
+  [0] → Object{cluster: String, namespace: String}
+  .cluster → String
+
+accepted:
+  no member access accepted on String

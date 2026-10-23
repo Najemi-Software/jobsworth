@@ -1,0 +1,10 @@
+name: Upload artifact
+description: Example
+inputs:
+  name:
+    required: false
+  path:
+    required: true
+runs:
+  using: node20
+  main: dist/index.js

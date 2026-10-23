@@ -1,0 +1,6 @@
+flowchart LR
+  n0[".github/workflows/ok.yml<br/>entry"]
+  n1(["actions/checkout@v4<br/>fetched 2db1d53"])
+  n0 -->|"job build / step #1"| n1
+  classDef fetched stroke:#36c
+  class n1 fetched

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "job-empty-steps",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 3,
+        "message": "job 'build' has steps: [] ; it runs, occupies a runner, and does nothing"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore job-empty-steps",
+        "config": {
+          "job-empty-steps": "off"
+        }
+      }
+    }
+  ]
+}

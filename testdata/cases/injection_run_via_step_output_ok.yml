@@ -1,0 +1,15 @@
+# expect: none
+name: A tainted step output read through env is safe
+on: issues
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        env:
+          TITLE: ${{ github.event.issue.title }}
+        run: echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+      - env:
+          T: ${{ steps.meta.outputs.title }}
+        run: echo "$T"

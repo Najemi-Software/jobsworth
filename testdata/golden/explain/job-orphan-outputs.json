@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "job-orphan-outputs",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 3,
+        "message": "job 'a' declares outputs: but no job needs it and no on.workflow_call.outputs lifts them; delete the block or lift it"
+      },
+      "context": {
+        "job": "a",
+        "kind": "structure",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "triggers": [
+          "workflow_call"
+        ]
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore job-orphan-outputs",
+        "config": {
+          "job-orphan-outputs": "off"
+        }
+      }
+    }
+  ]
+}

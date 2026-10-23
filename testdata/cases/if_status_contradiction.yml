@@ -1,0 +1,10 @@
+# expect: warning if-status-contradiction
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: success() && failure()
+        run: echo never

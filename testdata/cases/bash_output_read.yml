@@ -1,0 +1,13 @@
+# expect: error bash-output-read "cat"
+# expect: error bash-output-read "input redirect"
+# expect: error bash-output-read "[[ ]]"
+name: Reads of $GITHUB_OUTPUT in several forms
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          cat "$GITHUB_OUTPUT"
+          while read -r l; do echo "$l"; done < "$GITHUB_OUTPUT"
+          if [[ -s "$GITHUB_OUTPUT" ]]; then echo big; fi

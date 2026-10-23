@@ -1,0 +1,11 @@
+# expect: error step-input-type "with.count"
+name: Step passes text to a number input
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/typed
+        with:
+          count: many

@@ -1,0 +1,11 @@
+# expect: none
+name: Well-formed producer step
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        name: produce
+        run: echo "version=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.version }}

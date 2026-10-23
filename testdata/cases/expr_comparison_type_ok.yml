@@ -1,0 +1,14 @@
+# expect: none
+name: Numeric and boolean literals compare fine
+on:
+  workflow_call:
+    inputs:
+      count:
+        type: number
+      flag:
+        type: boolean
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.count == '3' }} ${{ inputs.flag == 'true' }} ${{ inputs.count == 3 }}

@@ -1,0 +1,11 @@
+# expect: warning runs-on-matrix
+name: Example
+on: push
+jobs:
+  build:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, ubuntu-20.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - run: echo hi

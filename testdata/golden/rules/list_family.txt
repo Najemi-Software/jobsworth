@@ -1,0 +1,12 @@
+ID                        DEFAULT  SINCE  SUMMARY
+needs-unknown             error    0.1    Job needs a job that does not exist
+needs-self                error    0.1    Job lists itself in needs
+needs-cycle               error    0.1    Needs edges form a cycle
+needs-output-job-unknown  error    0.1    Expression references outputs of a job that does not exist
+needs-output-not-needed   error    0.1    Job references outputs of a job it does not need
+needs-output-undeclared   error    0.1    Job references an output the needed job does not declare
+call-output-job-unknown   error    0.1    Workflow output references a job that does not exist
+call-output-undeclared    error    0.1    Workflow output references a job output that is not declared
+output-unused             warning  0.1    Job output is declared but nothing references it
+
+9 rules in family jobs: 8 error, 1 warning, 0 note, 0 off

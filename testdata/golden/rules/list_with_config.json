@@ -1,0 +1,3294 @@
+{
+  "schema": 1,
+  "config": "../../testdata/rules/.jobsworth.yml",
+  "rules": [
+    {
+      "id": "input-undeclared",
+      "family": "inputs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Input is referenced but not declared",
+      "aliases": [],
+      "related": [
+        "input-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "input-unused",
+      "family": "inputs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Input is declared but never referenced",
+      "aliases": [],
+      "related": [
+        "input-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": true
+    },
+    {
+      "id": "input-default-type",
+      "family": "inputs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Input default is not representable in its declared type",
+      "aliases": [],
+      "related": [
+        "call-input-type",
+        "choice-default-not-option",
+        "if-not-boolean"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "choice-default-not-option",
+      "family": "inputs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Choice input's default is not one of its options",
+      "aliases": [],
+      "related": [
+        "choice-no-options",
+        "input-default-type"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "choice-no-options",
+      "family": "inputs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Choice input declares no options",
+      "aliases": [],
+      "related": [
+        "choice-default-not-option"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-input-unknown",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Reusable workflow call supplies an input the callee does not declare",
+      "aliases": [],
+      "related": [
+        "call-input-missing",
+        "call-input-type"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-input-missing",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Reusable workflow call omits a required input",
+      "aliases": [],
+      "related": [
+        "call-input-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-input-type",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Reusable workflow call passes a literal of the wrong type",
+      "aliases": [],
+      "related": [
+        "input-default-type",
+        "call-input-type-decl"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-input-unknown",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step supplies an input the action does not declare",
+      "aliases": [],
+      "related": [
+        "step-input-missing",
+        "uses-docker-unpinned"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-input-missing",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step omits a required action input",
+      "aliases": [],
+      "related": [
+        "step-input-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-input-type",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step passes a literal of the wrong type to a typed input",
+      "aliases": [],
+      "related": [
+        "step-input-choice"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-input-choice",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step passes a literal outside a choice input's options",
+      "aliases": [],
+      "related": [
+        "step-input-type"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-with-on-run",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Run step has a with block, which the runner ignores",
+      "aliases": [],
+      "related": [
+        "step-run-and-uses"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-run-and-uses",
+      "family": "calls",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step has both run and uses",
+      "aliases": [],
+      "related": [
+        "step-with-on-run",
+        "checkout-trailing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "needs-unknown",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "warning",
+      "since": "0.1",
+      "summary": "Job needs a job that does not exist",
+      "aliases": [],
+      "related": [
+        "needs-self",
+        "needs-cycle"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": true
+    },
+    {
+      "id": "needs-self",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Job lists itself in needs",
+      "aliases": [],
+      "related": [
+        "needs-cycle"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "needs-cycle",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Needs edges form a cycle",
+      "aliases": [],
+      "related": [
+        "needs-self"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "needs-output-job-unknown",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Expression references outputs of a job that does not exist",
+      "aliases": [],
+      "related": [
+        "needs-output-not-needed",
+        "needs-output-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "needs-output-not-needed",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Job references outputs of a job it does not need",
+      "aliases": [],
+      "related": [
+        "needs-output-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "needs-output-undeclared",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Job references an output the needed job does not declare",
+      "aliases": [],
+      "related": [
+        "output-unused",
+        "jobs-mergeable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-output-job-unknown",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Workflow output references a job that does not exist",
+      "aliases": [],
+      "related": [
+        "call-output-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-output-undeclared",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Workflow output references a job output that is not declared",
+      "aliases": [],
+      "related": [
+        "call-output-job-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "output-unused",
+      "family": "jobs",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.1",
+      "summary": "Job output is declared but nothing references it",
+      "aliases": [],
+      "related": [
+        "needs-output-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-id-unknown",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step output reference names an id no step has",
+      "aliases": [],
+      "related": [
+        "step-forward-ref",
+        "step-output-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-id-duplicate",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Two steps in one scope share an id",
+      "aliases": [],
+      "related": [
+        "step-id-invalid"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-id-invalid",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step id has characters outside [A-Za-z0-9_-] or starts with a digit",
+      "aliases": [],
+      "related": [
+        "step-id-duplicate",
+        "step-output-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-forward-ref",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step references a step declared later in the scope",
+      "aliases": [],
+      "related": [
+        "step-id-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-output-unwritten",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step output is referenced but never written",
+      "aliases": [],
+      "related": [
+        "bash-output-unredirected",
+        "step-output-conditional"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-output-conditional",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.2",
+      "summary": "Step output is only written on some paths",
+      "aliases": [],
+      "related": [
+        "step-output-unwritten"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-output-action-undeclared",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step output reference names an output the action does not declare",
+      "aliases": [],
+      "related": [
+        "step-output-unwritten",
+        "uses-docker-unpinned"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-output-not-run",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Step output reference points at a step with neither run nor uses",
+      "aliases": [],
+      "related": [
+        "step-run-and-uses",
+        "step-no-action"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-output-unused",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.2",
+      "summary": "Step writes an output nothing references",
+      "aliases": [],
+      "related": [
+        "step-id-unreferenced"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-id-unreferenced",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.2",
+      "summary": "Step has an id nothing references",
+      "aliases": [],
+      "related": [
+        "step-output-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "action-output-unlifted",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Composite action output references a step output that does not exist",
+      "aliases": [],
+      "related": [
+        "step-output-unwritten",
+        "step-output-action-undeclared",
+        "bash-output-unredirected",
+        "action-output-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "action-output-unused",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.2",
+      "summary": "Composite action declares an output no local caller consumes",
+      "aliases": [],
+      "related": [
+        "output-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "composite-shell-missing",
+      "family": "steps",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Composite run step has no shell",
+      "aliases": [],
+      "related": [
+        "bash-syntax"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-syntax",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Run script does not parse as bash",
+      "aliases": [],
+      "related": [
+        "composite-shell-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-deprecated-command",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Script emits a workflow command the runner dropped in 2023",
+      "aliases": [],
+      "related": [
+        "bash-output-unredirected",
+        "step-output-unwritten"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-output-unredirected",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Echo of a referenced output key goes to the log, not $GITHUB_OUTPUT",
+      "aliases": [],
+      "related": [
+        "step-output-unwritten"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-output-read",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Script reads $GITHUB_OUTPUT, which never holds other steps' state",
+      "aliases": [],
+      "related": [
+        "bash-env-same-step"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-path-kv-line",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "KEY=VALUE line written to $GITHUB_PATH",
+      "aliases": [],
+      "related": [
+        "bash-env-bare-line"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-env-bare-line",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Line without = written to $GITHUB_ENV",
+      "aliases": [],
+      "related": [
+        "bash-path-kv-line",
+        "bash-env-bad-key"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-env-bad-key",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "$GITHUB_ENV line has an empty or invalid key",
+      "aliases": [],
+      "related": [
+        "bash-env-bare-line"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-env-reserved-key",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "$GITHUB_ENV sets a key the runner owns",
+      "aliases": [],
+      "related": [
+        "bash-env-bad-key"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "bash-env-same-step",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Script reads a variable it just wrote to $GITHUB_ENV",
+      "aliases": [],
+      "related": [
+        "bash-output-read"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "heredoc-unterminated",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "KEY\u003c\u003cDELIM opener has no matching DELIM line",
+      "aliases": [],
+      "related": [
+        "heredoc-empty-delim"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "heredoc-empty-delim",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "KEY\u003c\u003c with no delimiter",
+      "aliases": [],
+      "related": [
+        "heredoc-unterminated"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "heredoc-escaped-newline",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Multi-line value written with literal \\n in an echo without -e",
+      "aliases": [],
+      "related": [
+        "heredoc-unterminated"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "heredoc-delim-collision",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Common delimiter around a value from an opaque command",
+      "aliases": [],
+      "related": [
+        "heredoc-unterminated"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "heredoc-indented-form",
+      "family": "bash",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.2",
+      "summary": "KEY\u003c\u003c-DELIM form, which the runner does not treat specially",
+      "aliases": [],
+      "related": [
+        "heredoc-unterminated"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "local-action-no-checkout",
+      "family": "checkout",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Local action used before any checkout in the job",
+      "aliases": [],
+      "related": [
+        "local-action-after-subdir-only"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "local-action-wrong-repo",
+      "family": "checkout",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Local action will be loaded from a different repository's checkout",
+      "aliases": [],
+      "related": [
+        "local-action-no-checkout"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "local-action-sparse-miss",
+      "family": "checkout",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Sparse checkout does not cover the local action's path",
+      "aliases": [],
+      "related": [
+        "local-action-no-checkout"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "local-action-after-subdir-only",
+      "family": "checkout",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Only subdirectory checkouts precede a local action",
+      "aliases": [],
+      "related": [
+        "local-action-no-checkout"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "checkout-ref-unresolvable",
+      "family": "checkout",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.2",
+      "summary": "Checkout ref is an expression and cannot be verified",
+      "aliases": [],
+      "related": [
+        "local-action-wrong-repo",
+        "checkout-trailing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-secret-unknown",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Reusable workflow call supplies a secret the callee does not declare",
+      "aliases": [],
+      "related": [
+        "call-secret-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-secret-missing",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Reusable workflow call omits a required secret",
+      "aliases": [],
+      "related": [
+        "call-secret-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-secret-literal",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Secret passed as a bare literal in source",
+      "aliases": [],
+      "related": [
+        "call-secret-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-secret-inherit-partial",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.2",
+      "summary": "secrets: inherit on a callee that declares no secrets",
+      "aliases": [],
+      "related": [
+        "call-secret-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-undeclared",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Reusable workflow references a secret it does not declare",
+      "aliases": [],
+      "related": [
+        "secret-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-unused",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.2",
+      "summary": "Declared secret is never referenced",
+      "aliases": [],
+      "related": [
+        "secret-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-in-action",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Composite action references the secrets context, which does not exist there",
+      "aliases": [],
+      "related": [
+        "secret-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-github-token-declared",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.2",
+      "summary": "GITHUB_TOKEN declared as a secret input",
+      "aliases": [],
+      "related": [
+        "secret-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-to-output",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Output value is a secret, which consumers receive empty",
+      "aliases": [],
+      "related": [
+        "secret-in-name"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-in-name",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "Secret interpolated into a name, which is logged in clear",
+      "aliases": [],
+      "related": [
+        "secret-to-output"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-unknown-in-scope",
+      "family": "secrets",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "secrets.X referenced but no repository or organisation secret has that name",
+      "aliases": [],
+      "related": [
+        "secret-undeclared"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "value-set-mismatch",
+      "family": "values",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Comparison against a literal outside the path's documented value set",
+      "aliases": [],
+      "related": [
+        "if-always-true-string"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-always-true-string",
+      "family": "values",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "if: is a plain string, which is always truthy",
+      "aliases": [],
+      "related": [
+        "if-double-wrapped"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-double-wrapped",
+      "family": "values",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "if: joins two expression blocks into a string",
+      "aliases": [],
+      "related": [
+        "if-always-true-string"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-status-with-other",
+      "family": "values",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.2",
+      "summary": "if: combines always() with other conditions",
+      "aliases": [
+        "if-always-with-and"
+      ],
+      "related": [
+        "if-double-wrapped"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "shape-mismatch",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "Member access that cannot succeed on the value's inferred shape",
+      "aliases": [],
+      "related": [
+        "fromjson-non-string"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "fromjson-invalid-literal",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "fromJSON of a string literal that is not valid JSON",
+      "aliases": [],
+      "related": [
+        "fromjson-non-string"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "fromjson-non-string",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "fromJSON applied to a value that is already an object or array",
+      "aliases": [],
+      "related": [
+        "shape-mismatch"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "jq-syntax",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.2",
+      "summary": "jq filter in a run script does not parse",
+      "aliases": [],
+      "related": [
+        "shape-mismatch"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "shape-file-missing",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.2",
+      "summary": "Script reads a literal JSON or YAML path that does not exist in the repo",
+      "aliases": [],
+      "related": [
+        "shape-mismatch"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "matrix-empty",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Matrix axis with an empty list",
+      "aliases": [],
+      "related": [
+        "matrix-exclude-no-match",
+        "shape-mismatch"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "matrix-exclude-no-match",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Matrix exclude entry that matches no combination",
+      "aliases": [],
+      "related": [
+        "matrix-empty"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "matrix-strategy-type",
+      "family": "shapes",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "strategy.max-parallel or fail-fast of the wrong type",
+      "aliases": [],
+      "related": [
+        "matrix-empty"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "fetch-failed",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.1",
+      "summary": "Callee could not be fetched from GitHub",
+      "aliases": [
+        "uses-fetch-failed"
+      ],
+      "related": [
+        "fetch-not-found",
+        "fetch-offline"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "fetch-not-found",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Referenced repo, ref, or file does not exist on GitHub",
+      "aliases": [
+        "uses-not-action"
+      ],
+      "related": [
+        "fetch-failed",
+        "uses-not-found"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "fetch-offline",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.1",
+      "summary": "Callee is not cached and the run is offline",
+      "aliases": [],
+      "related": [
+        "fetch-failed"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-no-ref",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "External uses reference has no @ref",
+      "aliases": [],
+      "related": [
+        "uses-invalid",
+        "uses-docker-unpinned"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-invalid",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Uses reference is malformed or names the wrong kind of callee",
+      "aliases": [],
+      "related": [
+        "uses-no-ref"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-dynamic",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "off",
+      "since": "0.1",
+      "summary": "Uses reference contains an expression and cannot be followed",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": true
+    },
+    {
+      "id": "uses-not-found",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Local or linked uses reference does not exist on disk",
+      "aliases": [],
+      "related": [
+        "fetch-not-found"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "callee-unparseable",
+      "family": "fetch",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Callee is not valid YAML or is neither a workflow nor an action",
+      "aliases": [],
+      "related": [
+        "file-invalid"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "file-invalid",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Entry file is unreadable, not valid YAML, or neither a workflow nor an action",
+      "aliases": [],
+      "related": [
+        "callee-unparseable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "runs-on-unknown",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "runs-on label that no GitHub-hosted or configured runner has",
+      "aliases": [],
+      "related": [
+        "runs-on-retired",
+        "runs-on-matrix"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "runs-on-retired",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "runs-on label GitHub has retired",
+      "aliases": [],
+      "related": [
+        "runs-on-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "runs-on-matrix",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "runs-on: ${{ matrix.os }} with an unknown or retired label in the axis",
+      "aliases": [],
+      "related": [
+        "runs-on-unknown",
+        "runs-on-retired"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "runs-on-missing",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Non-uses job without runs-on:",
+      "aliases": [],
+      "related": [
+        "job-no-steps"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "runs-on-group-and-labels",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "runs-on group with no labels:",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "job-empty-steps",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "steps: [] runs a job that does nothing",
+      "aliases": [],
+      "related": [
+        "job-no-steps"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "job-no-steps",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Job with neither steps: nor uses:",
+      "aliases": [],
+      "related": [
+        "job-empty-steps",
+        "runs-on-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-null",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "null entry in a steps list",
+      "aliases": [],
+      "related": [
+        "step-no-action"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-no-action",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Step with neither run: nor uses:",
+      "aliases": [],
+      "related": [
+        "step-null",
+        "step-output-not-run"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "job-orphan-outputs",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Job outputs that nothing needs or lifts",
+      "aliases": [],
+      "related": [
+        "output-unused",
+        "needs-output-not-needed"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "job-unreachable",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Job whose needs chain passes through an if: false job",
+      "aliases": [],
+      "related": [
+        "if-literal-false"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "job-timeout-missing",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "Job without timeout-minutes:",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-continue-on-error-outputs",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "continue-on-error step whose outputs are consumed without an outcome check",
+      "aliases": [],
+      "related": [
+        "step-output-conditional"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "workflow-name-missing",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Workflow without name:",
+      "aliases": [],
+      "related": [
+        "workflow-name-duplicate"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "workflow-name-duplicate",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Two workflows in the repo share a name:",
+      "aliases": [],
+      "related": [
+        "workflow-name-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "action-name-missing",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Action without name:",
+      "aliases": [],
+      "related": [
+        "action-description-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "action-description-missing",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Action without description:",
+      "aliases": [],
+      "related": [
+        "action-name-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "input-description-missing",
+      "family": "structure",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "Input without description:",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "name-expression",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "name: with an expression, which is not evaluated there",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "environment-unknown",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "environment: names an environment the repository does not have",
+      "aliases": [],
+      "related": [
+        "environment-no-protection"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "runs-on-group-unknown",
+      "family": "structure",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "runs-on group the organisation does not have",
+      "aliases": [],
+      "related": [
+        "runs-on-unknown"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "suppress-wildcard",
+      "family": "suppress",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.1",
+      "summary": "Suppression uses * and hides future rules too",
+      "aliases": [],
+      "related": [
+        "suppress-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "suppress-unclosed",
+      "family": "suppress",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.1",
+      "summary": "jobsworth-ignore-start has no matching jobsworth-ignore-end",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "suppress-unknown-rule",
+      "family": "suppress",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.1",
+      "summary": "Suppression names a rule id that does not exist",
+      "aliases": [],
+      "related": [
+        "suppress-unused",
+        "jobs-mergeable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "suppress-unused",
+      "family": "suppress",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.1",
+      "summary": "Suppression suppressed nothing",
+      "aliases": [],
+      "related": [
+        "suppress-wildcard",
+        "jobs-mergeable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-unknown-function",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Call to a function GitHub Actions expressions do not have",
+      "aliases": [],
+      "related": [
+        "expr-arity"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-arity",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Expression function called with the wrong number of arguments",
+      "aliases": [],
+      "related": [
+        "expr-unknown-function",
+        "expr-format-placeholders"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-format-placeholders",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "format() placeholders and arguments do not line up",
+      "aliases": [],
+      "related": [
+        "expr-arity"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-contains-types",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "contains() applied to an object",
+      "aliases": [],
+      "related": [
+        "shape-mismatch"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-hashfiles-absolute",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "hashFiles() with a path outside the workspace",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-string-escape",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "String literal is double-quoted or has an unescaped quote",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-comparison-type",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Comparison between a number or boolean and a string that can never match",
+      "aliases": [],
+      "related": [
+        "value-set-mismatch"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-env-in-if-job",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "env.* used in a job-level if:, where the env context is empty",
+      "aliases": [],
+      "related": [
+        "expr-context-unavailable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-secrets-in-if",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "secrets.* used in an if:, where the secrets context is unavailable",
+      "aliases": [],
+      "related": [
+        "expr-context-unavailable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-context-unavailable",
+      "family": "expressions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "A context used where GitHub does not provide it",
+      "aliases": [],
+      "related": [
+        "expr-env-in-if-job",
+        "expr-secrets-in-if"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-missing",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Workflow has no on: block",
+      "aliases": [],
+      "related": [
+        "on-unknown-event"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-unknown-event",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "on: names an event GitHub does not have",
+      "aliases": [],
+      "related": [
+        "on-unknown-key",
+        "on-unknown-type"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-unknown-key",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Event child key the event does not accept",
+      "aliases": [],
+      "related": [
+        "on-unknown-event"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-unknown-type",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "types: entry that is not an activity type of the event",
+      "aliases": [],
+      "related": [
+        "on-unknown-event"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-filter-conflict",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Both a filter and its -ignore form on one event",
+      "aliases": [],
+      "related": [
+        "on-filter-shape"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-filter-shape",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Filter value is not a string or list of strings",
+      "aliases": [],
+      "related": [
+        "on-filter-conflict",
+        "on-filter-empty"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-filter-expression",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Expression inside an on: filter",
+      "aliases": [],
+      "related": [
+        "on-filter-glob"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-filter-glob",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Filter pattern with an unbalanced [ or trailing backslash",
+      "aliases": [],
+      "related": [
+        "on-filter-expression"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-filter-empty",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Empty branches:/paths: list matches nothing",
+      "aliases": [],
+      "related": [
+        "on-filter-shape"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-workflow-run-target",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "workflow_run without workflows:",
+      "aliases": [],
+      "related": [
+        "on-workflow-run-unknown"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-workflow-run-unknown",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "workflow_run names a workflow no local file declares",
+      "aliases": [],
+      "related": [
+        "on-workflow-run-target"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-push-tags-only",
+      "family": "triggers",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "push with tags: and no branches: no longer triggers on branch pushes",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "cron-syntax",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "schedule cron expression does not parse",
+      "aliases": [],
+      "related": [
+        "cron-too-frequent",
+        "cron-impossible-date"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "cron-too-frequent",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Schedule fires more often than every 5 minutes",
+      "aliases": [],
+      "related": [
+        "cron-syntax"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "cron-impossible-date",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Schedule names a day no listed month has",
+      "aliases": [],
+      "related": [
+        "cron-syntax"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "cron-quoted",
+      "family": "triggers",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Cron string not quoted in YAML",
+      "aliases": [],
+      "related": [
+        "cron-syntax"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "dispatch-input-type",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "workflow_dispatch input type is not one GitHub supports",
+      "aliases": [],
+      "related": [
+        "call-input-type-decl"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "call-input-type-decl",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "workflow_call input type is not string, boolean or number",
+      "aliases": [],
+      "related": [
+        "dispatch-input-type"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "dispatch-input-limit",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "More than 25 workflow_dispatch inputs",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "input-no-trigger",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "inputs.* referenced in a workflow with no input-bearing trigger",
+      "aliases": [],
+      "related": [
+        "input-undeclared"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "dispatch-input-event-spelling",
+      "family": "triggers",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "github.event.inputs.X where inputs.X would do",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "concurrency-group-static",
+      "family": "triggers",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Concurrency group without an expression serialises every run",
+      "aliases": [],
+      "related": [
+        "concurrency-cancel-on-push-main"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "concurrency-cancel-on-push-main",
+      "family": "triggers",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "cancel-in-progress on a group keyed on github.ref in a deploying workflow",
+      "aliases": [],
+      "related": [
+        "concurrency-group-static"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "on-filter-no-branch",
+      "family": "triggers",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "A literal branches: entry that does not exist",
+      "aliases": [],
+      "related": [
+        "on-filter-glob"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "injection-run",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Attacker-controlled context interpolated into a run: script",
+      "aliases": [],
+      "related": [
+        "injection-script",
+        "injection-via-input"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "injection-script",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Attacker-controlled context interpolated into github-script code",
+      "aliases": [],
+      "related": [
+        "injection-run"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "injection-via-input",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Untrusted context passed to an input the callee interpolates into a sink",
+      "aliases": [],
+      "related": [
+        "injection-run"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "prt-untrusted-checkout",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Privileged trigger checks out the pull request head",
+      "aliases": [],
+      "related": [
+        "prt-untrusted-checkout-and-run",
+        "prt-no-permissions",
+        "checkout-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "prt-untrusted-checkout-and-run",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "Privileged trigger checks out the pull request head and runs code from it",
+      "aliases": [],
+      "related": [
+        "prt-untrusted-checkout"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "prt-no-permissions",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Privileged-trigger workflow without a permissions: block",
+      "aliases": [],
+      "related": [
+        "permissions-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-unpinned",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "External action from an untrusted owner not pinned to a commit SHA",
+      "aliases": [],
+      "related": [
+        "uses-unpinned-no-comment",
+        "uses-docker-unpinned"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-unpinned-no-comment",
+      "family": "security",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "SHA-pinned action without a version comment",
+      "aliases": [],
+      "related": [
+        "uses-unpinned",
+        "checkout-trailing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-docker-unpinned",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "docker:// image without a digest",
+      "aliases": [],
+      "related": [
+        "uses-unpinned"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "permissions-write-all",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "permissions: write-all",
+      "aliases": [],
+      "related": [
+        "permissions-missing"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "permissions-missing",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "No permissions: block; the token gets the repository default",
+      "aliases": [],
+      "related": [
+        "permissions-write-all",
+        "prt-no-permissions"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "permissions-unknown-scope",
+      "family": "security",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "permissions: key that is not a documented scope",
+      "aliases": [],
+      "related": [
+        "permissions-unknown-level"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "permissions-unknown-level",
+      "family": "security",
+      "category": "correctness",
+      "status": "stable",
+      "default": "error",
+      "effective": "error",
+      "since": "0.4",
+      "summary": "permissions: value other than read, write or none",
+      "aliases": [],
+      "related": [
+        "permissions-unknown-scope"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "permissions-id-token-unused",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "id-token: write granted and nothing consumes it",
+      "aliases": [],
+      "related": [
+        "permissions-write-all"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "checkout-persist-credentials",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "Checkout keeps the token and a later step exposes the tree",
+      "aliases": [],
+      "related": [
+        "secret-to-artifact",
+        "artifact-whole-workspace"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-to-artifact",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "A secret is written to a file that an artifact upload covers",
+      "aliases": [],
+      "related": [
+        "secret-echo"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "secret-echo",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "A secret is echoed",
+      "aliases": [],
+      "related": [
+        "secret-to-artifact"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "self-hosted-pr-trigger",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Self-hosted runner on an unrestricted pull_request trigger",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "cache-poisoning-path",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Cache key built from an untrusted path on a privileged trigger",
+      "aliases": [],
+      "related": [
+        "prt-untrusted-checkout"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "environment-no-protection",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Deployment environment without protection on a privileged trigger",
+      "aliases": [],
+      "related": [
+        "environment-unknown"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-archived",
+      "family": "security",
+      "category": "security",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "The action's repository is archived",
+      "aliases": [],
+      "related": [
+        "uses-deprecated-tag",
+        "uses-unpinned"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "uses-deprecated-tag",
+      "family": "security",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "The resolved tag is more than one major behind the latest release",
+      "aliases": [],
+      "related": [
+        "uses-archived",
+        "uses-unpinned"
+      ],
+      "enrich": true,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-not-boolean",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "if: whose value is a string or number, not a boolean",
+      "aliases": [],
+      "related": [
+        "if-string-compare-bool",
+        "if-always-true-string"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-string-compare-bool",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "A string-valued step output compared with a boolean literal",
+      "aliases": [],
+      "related": [
+        "if-not-boolean"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-always-false",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "if: that is false for every value",
+      "aliases": [],
+      "related": [
+        "if-literal-false",
+        "if-status-contradiction"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-literal-false",
+      "family": "conditions",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "if: false, the deliberate disablement",
+      "aliases": [],
+      "related": [
+        "if-always-false",
+        "job-unreachable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-status-contradiction",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "Status functions that cannot hold together",
+      "aliases": [],
+      "related": [
+        "if-always-false"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-redundant-success",
+      "family": "conditions",
+      "category": "hygiene",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "if: success() alone, which is the default",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-dead-for-all-callers",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "if: false for every value any known caller passes",
+      "aliases": [],
+      "related": [
+        "if-dead-for-caller"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "if-dead-for-caller",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "if: false for one caller's values",
+      "aliases": [],
+      "related": [
+        "if-dead-for-all-callers"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-or-default-boolean",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "boolean input || default drops false",
+      "aliases": [],
+      "related": [
+        "expr-and-or-ternary-falsy"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "expr-and-or-ternary-falsy",
+      "family": "conditions",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "cond \u0026\u0026 x || y where x can be falsy",
+      "aliases": [],
+      "related": [
+        "expr-or-default-boolean"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "step-unreachable",
+      "family": "reachability",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Step whose if: is always false while its outputs are consumed",
+      "aliases": [],
+      "related": [
+        "if-always-false"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "job-needs-skipped",
+      "family": "reachability",
+      "category": "correctness",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Job silently skipped when a conditional dependency skips",
+      "aliases": [],
+      "related": [
+        "job-unreachable"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "output-behind-condition",
+      "family": "reachability",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "Job output from a conditional step consumed without a result check",
+      "aliases": [],
+      "related": [
+        "step-output-conditional"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "checkout-unused",
+      "family": "performance",
+      "category": "performance",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Checkout followed only by steps that do not touch the filesystem",
+      "aliases": [],
+      "related": [
+        "checkout-trailing",
+        "checkout-redundant"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "checkout-trailing",
+      "family": "performance",
+      "category": "performance",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Checkout as the last step",
+      "aliases": [],
+      "related": [
+        "checkout-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "checkout-redundant",
+      "family": "performance",
+      "category": "performance",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Second root checkout of the same repository and ref",
+      "aliases": [],
+      "related": [
+        "checkout-unused"
+      ],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "jobs-mergeable",
+      "family": "performance",
+      "category": "performance",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "Two jobs in a chain that could be one",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "setup-no-cache",
+      "family": "performance",
+      "category": "performance",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "setup-* without cache: in a job that installs packages",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "artifact-whole-workspace",
+      "family": "performance",
+      "category": "performance",
+      "status": "stable",
+      "default": "note",
+      "effective": "note",
+      "since": "0.4",
+      "summary": "upload-artifact of the whole workspace",
+      "aliases": [],
+      "related": [],
+      "enrich": false,
+      "available": true,
+      "changed": false
+    },
+    {
+      "id": "shellcheck-codes",
+      "family": "scripts",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "shellcheck findings, one derived id per code (shellcheck-SC2086)",
+      "aliases": [],
+      "related": [
+        "bash-syntax"
+      ],
+      "enrich": false,
+      "available": false,
+      "changed": false
+    },
+    {
+      "id": "python-syntax",
+      "family": "scripts",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "A shell: python step that python cannot parse",
+      "aliases": [],
+      "related": [
+        "pwsh-syntax"
+      ],
+      "enrich": false,
+      "available": false,
+      "changed": false
+    },
+    {
+      "id": "pwsh-syntax",
+      "family": "scripts",
+      "category": "correctness",
+      "status": "stable",
+      "default": "warning",
+      "effective": "warning",
+      "since": "0.4",
+      "summary": "A shell: pwsh step that PowerShell cannot parse",
+      "aliases": [],
+      "related": [
+        "python-syntax"
+      ],
+      "enrich": false,
+      "available": false,
+      "changed": false
+    },
+    {
+      "id": "node-syntax",
+      "family": "scripts",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "A shell: node step that node cannot parse",
+      "aliases": [],
+      "related": [
+        "ruby-syntax"
+      ],
+      "enrich": false,
+      "available": false,
+      "changed": false
+    },
+    {
+      "id": "ruby-syntax",
+      "family": "scripts",
+      "category": "correctness",
+      "status": "stable",
+      "default": "off",
+      "effective": "off",
+      "since": "0.4",
+      "summary": "A shell: ruby step that ruby cannot parse",
+      "aliases": [],
+      "related": [
+        "node-syntax"
+      ],
+      "enrich": false,
+      "available": false,
+      "changed": false
+    }
+  ]
+}

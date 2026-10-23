@@ -1,0 +1,11 @@
+# expect: warning bash-env-reserved-key "GITHUB_SHA"
+# expect: warning bash-env-reserved-key "CI"
+name: Runner-owned keys written to $GITHUB_ENV
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "GITHUB_SHA=abc" >> "$GITHUB_ENV"
+          echo "CI=false" >> "$GITHUB_ENV"

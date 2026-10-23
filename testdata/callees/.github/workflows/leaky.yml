@@ -1,0 +1,8 @@
+name: Leaky
+on:
+  workflow_call:
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: x=${{ secrets.REPO_LEVEL }}

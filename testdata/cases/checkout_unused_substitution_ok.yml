@@ -1,0 +1,12 @@
+# expect: none
+name: A command substitution after a checkout may read the tree
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          V=$(cat file.txt)
+          echo "v=$V" >> "$GITHUB_OUTPUT"

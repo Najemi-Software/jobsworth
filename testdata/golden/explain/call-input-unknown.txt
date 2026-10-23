@@ -1,0 +1,15 @@
+.github/workflows/example.yml:8:12  error  call-input-unknown
+  job 'call' calling <ROOT>/.github/workflows/reusable.yml: with.evn is supplied but the callee declares no input 'evn'
+
+context:
+  callsite       job call                             at :5
+  callee         <ROOT>/.github/workflows/reusable.yml local
+  supplied       env, evn
+  declared       env (string), count (number), strict (boolean), level (string)   (4 inputs)
+  required       env   missing: none
+    env: declared, str literal fits type string
+    evn: UNKNOWN (nearest declared: env)
+
+suppress:
+  add on line 8:    # jobsworth-ignore call-input-unknown
+  or in .jobsworth.yml:   rules: { call-input-unknown: off }

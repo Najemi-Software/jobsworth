@@ -1,0 +1,18 @@
+# expect: none
+name: Multi-line values in both targets, properly closed
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: |
+          echo "body<<EOF" >> "$GITHUB_OUTPUT"
+          echo "line one" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          {
+            echo "NOTES<<END"
+            echo "env lines"
+            echo "END"
+          } >> "$GITHUB_ENV"
+      - run: echo "${{ steps.notes.outputs.body }}"

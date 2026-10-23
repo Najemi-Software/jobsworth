@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:15  note  uses-deprecated-tag
+  someone/thing@v1 is 4 majors behind the latest release v5.0.0
+
+context:
+  step           job 'build' / step #1                at :8   uses: someone/thing@v1
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore uses-deprecated-tag
+  or in .jobsworth.yml:   rules: { uses-deprecated-tag: off }

@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:7  error  runs-on-group-unknown
+  job 'build' runs on group "huge", which organisation example does not have
+
+context:
+  job            'build'                              at :5
+  runs-on        none
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 7:    # jobsworth-ignore runs-on-group-unknown
+  or in .jobsworth.yml:   rules: { runs-on-group-unknown: off }

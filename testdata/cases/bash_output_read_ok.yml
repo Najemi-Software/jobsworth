@@ -1,0 +1,10 @@
+# expect: none
+name: Mentioning the file in a string is not a read
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "writing to $GITHUB_OUTPUT"
+          echo "k=v" >> "$GITHUB_OUTPUT"

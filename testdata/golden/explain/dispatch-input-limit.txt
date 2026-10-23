@@ -1,0 +1,9 @@
+.github/workflows/example.yml:3:3  error  dispatch-input-limit
+  workflow_dispatch declares 26 inputs; GitHub allows at most 25
+
+context:
+  triggers       workflow_dispatch
+
+suppress:
+  add on line 3:    # jobsworth-ignore dispatch-input-limit
+  or in .jobsworth.yml:   rules: { dispatch-input-limit: off }

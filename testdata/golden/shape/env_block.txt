@@ -1,0 +1,9 @@
+env.REGION
+  = String
+
+why:
+  env.REGION
+    env.REGION set at workflow: eu (line 4)
+
+accepted:
+  no member access accepted on String

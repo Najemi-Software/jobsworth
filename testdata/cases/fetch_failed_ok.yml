@@ -1,0 +1,8 @@
+# expect: none
+name: Flaky server recovers on retry
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/flaky@v1

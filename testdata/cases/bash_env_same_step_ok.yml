@@ -1,0 +1,12 @@
+# expect: none
+name: Use a shell variable in the same step and export it for later ones
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          VERSION=1.2.3
+          echo "VERSION=$VERSION" >> "$GITHUB_ENV"
+          echo "building $VERSION"
+      - run: echo "$VERSION"

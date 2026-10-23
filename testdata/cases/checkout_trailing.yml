@@ -1,0 +1,10 @@
+# expect: note checkout-trailing
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo before
+      - uses: actions/checkout@v4

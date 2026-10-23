@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:16  warning  on-filter-glob
+  on.push.branches: pattern "release/[0-9" has an unbalanced [
+
+context:
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-filter-glob
+  or in .jobsworth.yml:   rules: { on-filter-glob: off }

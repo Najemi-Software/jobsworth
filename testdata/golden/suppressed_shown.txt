@@ -1,0 +1,4 @@
+OK   .github/workflows/suppressed.yml
+  suppressed:
+    .github/workflows/suppressed.yml:6:12  error  needs-unknown  job 'build' needs unknown job 'generated'  -- job is added by a generator
+

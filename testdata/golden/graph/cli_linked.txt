@@ -1,0 +1,4 @@
+.github/workflows/linked.yml  (workflow, entry)
+└─ job tool → acme/tools/.github/workflows/x.yml@v1  (workflow, linked <TESTDATA>/repos/acme-tools)
+
+2 nodes: 1 entry, 1 linked

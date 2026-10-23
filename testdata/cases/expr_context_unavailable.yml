@@ -1,0 +1,14 @@
+# expect: error expr-context-unavailable "secrets context is not available in concurrency"
+# expect: error expr-context-unavailable "steps context is not available in runs-on"
+# expect: error expr-context-unavailable "matrix context is not available at workflow level"
+# expect: error step-id-unknown
+name: Contexts used where GitHub does not provide them
+on: push
+concurrency: ${{ secrets.LOCK }}
+env:
+  OS: ${{ matrix.os }}
+jobs:
+  build:
+    runs-on: ${{ steps.pick.outputs.label }}
+    steps:
+      - run: echo hi

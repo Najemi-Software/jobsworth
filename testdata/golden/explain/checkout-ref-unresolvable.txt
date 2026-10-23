@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:15  note  checkout-ref-unresolvable
+  checkout step 'actions/checkout@v4' uses an expression for ref:; nothing downstream can be verified against it
+
+context:
+  step           actions/checkout@v4                  at :7  (job build / step 'actions/checkout@v4')
+  checkouts seen in job 'build', in order:
+    none
+
+suppress:
+  add on line 7:    # jobsworth-ignore checkout-ref-unresolvable
+  or in .jobsworth.yml:   rules: { checkout-ref-unresolvable: off }

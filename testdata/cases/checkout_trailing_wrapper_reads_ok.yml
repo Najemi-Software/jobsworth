@@ -1,0 +1,10 @@
+# expect: none
+name: A wrapper whose own later steps read the tree is not a trailing checkout
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make prep
+      - uses: acme/wrappers/checkout-reads@v1

@@ -1,0 +1,4 @@
+rules:
+  input-unused: error
+  needs-unknown: warning
+  uses-dynamic: off

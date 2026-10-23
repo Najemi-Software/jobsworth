@@ -1,0 +1,13 @@
+# config: rules: { action-output-unused: off }
+# expect: none
+description: Example
+name: Composite output lifts a written step output
+outputs:
+  version:
+    value: ${{ steps.v.outputs.version }}
+runs:
+  using: composite
+  steps:
+    - id: v
+      shell: bash
+      run: echo "version=1" >> "$GITHUB_OUTPUT"

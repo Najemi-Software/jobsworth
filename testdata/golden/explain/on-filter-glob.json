@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "on-filter-glob",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 16,
+        "message": "on.push.branches: pattern \"release/[0-9\" has an unbalanced ["
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore on-filter-glob",
+        "config": {
+          "on-filter-glob": "off"
+        }
+      }
+    }
+  ]
+}

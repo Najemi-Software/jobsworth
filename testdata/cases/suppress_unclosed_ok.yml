@@ -1,0 +1,16 @@
+# expect: none
+name: A closed region suppresses only what it encloses
+on: push
+permissions: read-all
+jobs:
+  # jobsworth-ignore-start needs-unknown
+  a:
+    runs-on: ubuntu-latest
+    needs: nope
+    steps:
+      - run: echo ok
+  # jobsworth-ignore-end
+  b:
+    runs-on: windows-latest
+    steps:
+      - run: echo ok

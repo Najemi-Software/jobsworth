@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "input-default-type",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 40,
+        "message": "input 'retries' has type number but its default \"three\" is not a number"
+      },
+      "context": {
+        "declared": {
+          "workflow_call": [
+            "retries (:5)"
+          ]
+        },
+        "kind": "inputs"
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore input-default-type",
+        "config": {
+          "input-default-type": "off"
+        }
+      }
+    }
+  ]
+}

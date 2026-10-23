@@ -1,0 +1,30 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "runs-on-missing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 3,
+        "message": "job 'build' has no runs-on:; GitHub rejects the workflow"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore runs-on-missing",
+        "config": {
+          "runs-on-missing": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# expect: warning heredoc-escaped-newline "without -e"
+name: Multi-line value with literal backslash-n
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: echo "body<<EOF\nline\nEOF" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.notes.outputs.body }}"

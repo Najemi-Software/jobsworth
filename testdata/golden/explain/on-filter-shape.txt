@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:5  error  on-filter-shape
+  on.push.branches must be a string or a list of strings
+
+context:
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-filter-shape
+  or in .jobsworth.yml:   rules: { on-filter-shape: off }

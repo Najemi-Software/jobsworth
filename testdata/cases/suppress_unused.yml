@@ -1,0 +1,14 @@
+# expect: note suppress-unused "needs-unknown"
+# expect: note jobs-mergeable
+name: A suppression that suppresses nothing is a note
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: [ b ]  # jobsworth-ignore needs-unknown
+    steps:
+      - run: echo ok
+  b:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok

@@ -1,0 +1,6 @@
+ID             DEFAULT  EFFECTIVE  SINCE  SUMMARY
+input-unused   warning  error *    0.1    Input is declared but never referenced
+needs-unknown  error    warning *  0.1    Job needs a job that does not exist
+uses-dynamic   note     off *      0.1    Uses reference contains an expression and cannot be followed
+
+3 rules: 1 error, 1 warning, 0 note, 1 off (* changed by .jobsworth.yml)

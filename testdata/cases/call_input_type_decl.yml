@@ -1,0 +1,13 @@
+# expect: error call-input-type-decl
+name: call-input-type-decl flagged
+on:
+  workflow_call:
+    inputs:
+      level:
+        type: choice
+        options: [low, high]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.level }}

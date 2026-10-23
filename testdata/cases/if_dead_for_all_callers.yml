@@ -1,0 +1,9 @@
+# expect: warning if-dead-for-all-callers
+name: Example
+on: push
+permissions: read-all
+jobs:
+  call:
+    uses: ./.github/workflows/gated.yml
+    with:
+      env: staging

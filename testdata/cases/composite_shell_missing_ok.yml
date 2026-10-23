@@ -1,0 +1,10 @@
+# expect: none
+description: Example
+name: Composite run steps with shells
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: make
+    - shell: pwsh
+      run: Write-Output ok

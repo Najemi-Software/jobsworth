@@ -1,0 +1,5 @@
+description: Example
+name: Flaky
+runs:
+  using: composite
+  steps: [ ]

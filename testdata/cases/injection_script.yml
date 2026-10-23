@@ -1,0 +1,11 @@
+# expect: warning injection-script
+name: Example
+on: issues
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v7
+        with:
+          script: console.log("${{ github.event.issue.title }}")

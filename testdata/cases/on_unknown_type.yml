@@ -1,0 +1,10 @@
+# expect: warning on-unknown-type
+name: on-unknown-type flagged
+on:
+  pull_request:
+    types: [opened, synchronise]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

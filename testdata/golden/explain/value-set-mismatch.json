@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "value-set-mismatch",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 13,
+        "message": "runner.os is compared with \"linux\", which is not one of its values (Linux, Windows, macOS)"
+      },
+      "context": {
+        "conclusion": "\"linux\" is not in the set; did you mean \"Linux\"?",
+        "expression": "steps.t.outcome == 'sucess' \u0026\u0026 runner.os == 'linux'",
+        "kind": "values",
+        "literal": "linux",
+        "nearest": "Linux",
+        "path": "runner.os",
+        "set": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "source": "documented runner values"
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore value-set-mismatch",
+        "config": {
+          "value-set-mismatch": "off"
+        }
+      }
+    },
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "value-set-mismatch",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 13,
+        "message": "steps.t.outcome is compared with \"sucess\", which is not one of its values (success, failure, cancelled, skipped)"
+      },
+      "context": {
+        "conclusion": "\"linux\" is not in the set; did you mean \"Linux\"?",
+        "expression": "steps.t.outcome == 'sucess' \u0026\u0026 runner.os == 'linux'",
+        "kind": "values",
+        "literal": "linux",
+        "nearest": "Linux",
+        "path": "runner.os",
+        "set": [
+          "Linux",
+          "Windows",
+          "macOS"
+        ],
+        "source": "documented runner values"
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore value-set-mismatch",
+        "config": {
+          "value-set-mismatch": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# expect: none
+name: Valid keys, including leading underscore and digits later
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "_private=1" >> "$GITHUB_ENV"
+          echo "VAR2=2" >> "$GITHUB_ENV"

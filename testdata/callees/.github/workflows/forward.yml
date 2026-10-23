@@ -1,0 +1,16 @@
+name: Forward
+on:
+  workflow_call:
+    inputs:
+      title:
+        type: string
+        required: true
+permissions: read-all
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/sink
+        with:
+          text: ${{ inputs.title }}

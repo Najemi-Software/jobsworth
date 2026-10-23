@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "heredoc-unterminated",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 14,
+        "message": "step 'notes' opens body\u003c\u003cEOF to $GITHUB_OUTPUT but never writes the EOF closing line"
+      },
+      "context": {
+        "kind": "bash",
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 9,
+            "redirect": "GITHUB_OUTPUT",
+            "text": "echo \"body\u003c\u003cEOF\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "body"
+            ]
+          },
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 10,
+            "redirect": "GITHUB_OUTPUT",
+            "text": "echo \"line one\" \u003e\u003e\"$GITHUB_OUTPUT\""
+          }
+        ],
+        "step": {
+          "id": "notes",
+          "line": 8,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "targets": [
+          {
+            "heredocs": [
+              {
+                "delim": "EOF",
+                "key": "body",
+                "line": 9,
+                "opaque_lines": 0,
+                "state": "UNTERMINATED"
+              }
+            ],
+            "keys": {
+              "body": "definite"
+            },
+            "name": "GITHUB_OUTPUT",
+            "open": false,
+            "open_reason": "",
+            "stream": [
+              {
+                "dynamic": false,
+                "in_heredoc": false,
+                "line": 9,
+                "opaque": false,
+                "text": "body\u003c\u003cEOF"
+              },
+              {
+                "dynamic": false,
+                "in_heredoc": true,
+                "line": 10,
+                "opaque": false,
+                "text": "line one"
+              }
+            ]
+          },
+          {
+            "keys": {},
+            "name": "GITHUB_ENV",
+            "open": false,
+            "open_reason": ""
+          }
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore heredoc-unterminated",
+        "config": {
+          "heredoc-unterminated": "off"
+        }
+      }
+    }
+  ]
+}

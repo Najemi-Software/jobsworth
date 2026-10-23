@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:14  error  step-output-not-run
+  steps.meta.outputs.version is referenced but step 'just a name' has neither run: nor uses:
+
+context:
+  reference      steps.meta.outputs.version   at :9  (job build / step #2 / run)
+  producing step 'just a name'                        at :7   shell: bash (runner default)
+  script not analysed: shell is not bash
+
+suppress:
+  add on line 9:    # jobsworth-ignore step-output-not-run
+  or in .jobsworth.yml:   rules: { step-output-not-run: off }

@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "cron-too-frequent",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 13,
+        "message": "cron \"*/2 * * * *\" fires every 2 minute(s); GitHub throttles schedules to every 5 minutes at most"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "schedule"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore cron-too-frequent",
+        "config": {
+          "cron-too-frequent": "off"
+        }
+      }
+    }
+  ]
+}

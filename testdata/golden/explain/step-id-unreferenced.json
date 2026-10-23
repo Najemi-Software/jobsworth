@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "step-id-unreferenced",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 13,
+        "message": "step id \"build\" is never referenced"
+      },
+      "context": {
+        "kind": "step",
+        "referenced_ids": null,
+        "statements": [
+          {
+            "class": "opaque: runner make",
+            "definite": true,
+            "line": 8,
+            "open": "runner make",
+            "text": "make"
+          }
+        ],
+        "step": {
+          "id": "build",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "target": {
+          "keys": {},
+          "name": "GITHUB_OUTPUT",
+          "open": true,
+          "open_reason": "runner make"
+        }
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore step-id-unreferenced",
+        "config": {
+          "step-id-unreferenced": "off"
+        }
+      }
+    }
+  ]
+}

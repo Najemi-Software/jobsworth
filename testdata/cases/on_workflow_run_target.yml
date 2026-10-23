@@ -1,0 +1,11 @@
+# expect: error on-workflow-run-target
+name: on-workflow-run-target flagged
+on:
+  workflow_run:
+    types: [completed]
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

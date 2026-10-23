@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:5  error  on-unknown-key
+  on.push.branch is not a key the push event accepts (allowed: types, branches, branches-ignore, tags, tags-ignore, paths, paths-ignore); did you mean branches?
+
+context:
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-unknown-key
+  or in .jobsworth.yml:   rules: { on-unknown-key: off }

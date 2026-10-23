@@ -1,0 +1,8 @@
+description: Example
+name: Nested
+runs:
+  using: composite
+  steps:
+    - uses: ./.github/actions/greet
+      with:
+        name: nested

@@ -1,0 +1,6 @@
+canary:
+  - cluster: a
+    namespace: ns-a
+production:
+  - cluster: p
+    namespace: ns-p

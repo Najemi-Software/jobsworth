@@ -1,0 +1,13 @@
+# expect: none
+# shape: --at build 'steps.odd.outputs.x' => Any (opaque: outputs of step 'odd' are unknown (action not loaded, non-bash shell, or unparsed script))
+name: Outputs of a step that runs an external script are Any with the reason
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: odd
+        run: ./scripts/set-outputs.sh
+      - run: echo ${{ steps.odd.outputs.x }}

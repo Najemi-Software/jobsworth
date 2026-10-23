@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:15  warning  uses-archived
+  someone/old is archived; it will receive no fixes
+
+context:
+  step           job 'build' / step #1                at :8   uses: someone/old@v1
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore uses-archived
+  or in .jobsworth.yml:   rules: { uses-archived: off }

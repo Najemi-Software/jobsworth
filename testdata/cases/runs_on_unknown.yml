@@ -1,0 +1,8 @@
+# expect: warning runs-on-unknown
+name: Example
+on: push
+jobs:
+  build:
+    runs-on: ubunut-latest
+    steps:
+      - run: echo hi

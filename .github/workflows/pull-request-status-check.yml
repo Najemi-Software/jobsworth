@@ -1,0 +1,38 @@
+name: Pull request ~ status check
+
+on:
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+  validate:
+    name: Validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v7
+
+      - name: Set up Go
+        uses: actions/setup-go@v6
+        with:
+          go-version-file: go.mod
+
+      - name: Build
+        run: go build ./...
+
+      - name: Vet
+        run: go vet ./...
+
+      - name: Vet (windows)
+        run: GOOS=windows go vet ./...
+
+      - name: Test
+        run: go test -race -count=1 -timeout 300s -coverprofile=cover.out ./...
+
+      - name: Build summary
+        run: |
+          echo "### Go Build Successful ✅" >> "$GITHUB_STEP_SUMMARY"
+          echo >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"
+          go tool cover -func=cover.out | tail -1 >> "$GITHUB_STEP_SUMMARY"
+          echo '```' >> "$GITHUB_STEP_SUMMARY"

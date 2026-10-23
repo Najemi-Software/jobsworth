@@ -1,0 +1,22 @@
+# expect: none
+name: Shapes from bash sources that fit, and sources that must stay unknown
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cfg
+        env:
+          SEED: '{"a": 1}'
+        run: |
+          CFG=$(cat config.json)
+          echo "cfg=$(cat config.json)" >> "$GITHUB_OUTPUT"
+          echo "ids=$(jq -c '[.hosts[] | ascii_upcase]' config.json)" >> "$GITHUB_OUTPUT"
+          echo "first=$(cat config.json | jq -r '.hosts[0]')" >> "$GITHUB_OUTPUT"
+          echo "seed=$SEED" >> "$GITHUB_OUTPUT"
+          echo "dyn=$(curl -s https://example.com/x.json)" >> "$GITHUB_OUTPUT"
+          echo "mixed=prefix-$CFG" >> "$GITHUB_OUTPUT"
+          echo "slurp=$(jq -s '.' config.json)" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ fromJSON(steps.cfg.outputs.cfg).nested.deep }} ${{ fromJSON(steps.cfg.outputs.ids)[0] }} ${{ steps.cfg.outputs.first }}
+      - run: echo ${{ fromJSON(steps.cfg.outputs.seed).a }} ${{ fromJSON(steps.cfg.outputs.dyn).anything }} ${{ fromJSON(steps.cfg.outputs.mixed).x }}
+      - run: echo ${{ fromJSON(steps.cfg.outputs.slurp)[0].retries }}

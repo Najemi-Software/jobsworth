@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "expr-unknown-function",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "formatt() is not a GitHub Actions expression function; did you mean format()?"
+      },
+      "context": {
+        "expression": "formatt('{0}', github.sha)",
+        "kind": "expression",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore expr-unknown-function",
+        "config": {
+          "expr-unknown-function": "off"
+        }
+      }
+    }
+  ]
+}

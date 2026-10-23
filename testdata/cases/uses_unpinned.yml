@@ -1,0 +1,9 @@
+# expect: note uses-unpinned
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: someone/thing@v1

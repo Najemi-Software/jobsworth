@@ -1,0 +1,12 @@
+# expect: none
+description: Example
+name: Composite action entry that is well formed
+inputs:
+  name:
+    required: true
+runs:
+  using: composite
+  steps:
+    - uses: ./.github/actions/greet
+      with:
+        name: ${{ inputs.name }}

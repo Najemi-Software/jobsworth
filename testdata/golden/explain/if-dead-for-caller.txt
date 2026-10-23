@@ -1,0 +1,13 @@
+.github/workflows/gated.yml:11:9  note  if-dead-for-caller
+  job 'deploy' has a condition that is false for the values .github/workflows/example.yml:6 (job staging) passes
+
+context:
+  expression     inputs.env == 'prod'   at :11  (job deploy / if)
+  job            'deploy'                             at :9
+  runs-on        ubuntu-latest
+  if             inputs.env == 'prod'
+  triggers       workflow_call
+
+suppress:
+  add on line 11:    # jobsworth-ignore if-dead-for-caller
+  or in .jobsworth.yml:   rules: { if-dead-for-caller: off }

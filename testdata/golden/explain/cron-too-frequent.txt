@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:13  warning  cron-too-frequent
+  cron "*/2 * * * *" fires every 2 minute(s); GitHub throttles schedules to every 5 minutes at most
+
+context:
+  triggers       schedule
+
+suppress:
+  add on line 4:    # jobsworth-ignore cron-too-frequent
+  or in .jobsworth.yml:   rules: { cron-too-frequent: off }

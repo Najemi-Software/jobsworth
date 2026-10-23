@@ -1,0 +1,12 @@
+.github/workflows/example.yml:12:16  warning  cache-poisoning-path
+  cache key includes github.head_ref on a privileged trigger; a pull request can poison the cache that later runs restore
+
+context:
+  expression     github.head_ref   at :12  (job build / step 'actions/cache@v4' / key)
+  step           job 'build' / step #1                at :9   uses: actions/cache@v4
+  triggers       pull_request_target
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 12:    # jobsworth-ignore cache-poisoning-path
+  or in .jobsworth.yml:   rules: { cache-poisoning-path: off }

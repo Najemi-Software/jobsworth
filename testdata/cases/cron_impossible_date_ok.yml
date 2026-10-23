@@ -1,0 +1,10 @@
+# expect: none
+name: cron-impossible-date passes
+on:
+  schedule:
+    - cron: '0 0 28 2 *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

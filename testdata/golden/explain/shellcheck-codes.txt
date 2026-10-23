@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:14  warning  shellcheck-SC2086
+  step #1 line 8: SC2086 Double quote to prevent globbing and word splitting.
+
+context:
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore shellcheck-SC2086
+  or in .jobsworth.yml:   rules: { shellcheck-SC2086: off }

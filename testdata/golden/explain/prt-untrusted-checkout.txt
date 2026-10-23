@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:15  warning  prt-untrusted-checkout
+  job 'build' checks out github.event.pull_request.head.sha on pull_request_target; secrets and a write token are exposed to code from the pull request
+
+context:
+  step           job 'build' / step #1                at :9   uses: actions/checkout@v4
+  triggers       pull_request_target
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore prt-untrusted-checkout
+  or in .jobsworth.yml:   rules: { prt-untrusted-checkout: off }

@@ -1,0 +1,9 @@
+# expect: none
+name: concurrency-group-static passes
+on: push
+concurrency: ${{ github.workflow }}-${{ github.ref }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

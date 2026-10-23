@@ -1,0 +1,13 @@
+# unix
+# expect: warning python-syntax
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: python
+        run: |
+          def broken(:
+              pass

@@ -1,0 +1,7 @@
+# link: acme/tools = repos/acme-tools
+# expect: error uses-not-found "not found in linked checkout"
+name: Missing file in a linked checkout is an error, not a fetch
+on: push
+jobs:
+  a:
+    uses: acme/tools/.github/workflows/missing.yml@v1

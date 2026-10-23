@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  warning  expr-hashfiles-absolute
+  hashFiles("/etc/hosts") names a path outside the workspace; hashFiles only matches under GITHUB_WORKSPACE and returns an empty string
+
+context:
+  expression     hashFiles('/etc/hosts')   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore expr-hashfiles-absolute
+  or in .jobsworth.yml:   rules: { expr-hashfiles-absolute: off }

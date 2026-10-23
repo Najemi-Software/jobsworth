@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:15  note  setup-no-cache
+  actions/setup-node@v4 runs without cache: in a job that installs packages; the built-in cache saves the install
+
+context:
+  step           job 'build' / step #2                at :9   uses: actions/setup-node@v4
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore setup-no-cache
+  or in .jobsworth.yml:   rules: { setup-no-cache: off }

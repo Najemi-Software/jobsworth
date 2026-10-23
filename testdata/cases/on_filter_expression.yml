@@ -1,0 +1,10 @@
+# expect: error on-filter-expression
+name: on-filter-expression flagged
+on:
+  push:
+    branches: ['${{ github.ref }}']
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

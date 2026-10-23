@@ -1,0 +1,11 @@
+# expect: note step-continue-on-error-outputs
+name: Example
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: t
+        continue-on-error: true
+        run: echo "v=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.t.outputs.v }}

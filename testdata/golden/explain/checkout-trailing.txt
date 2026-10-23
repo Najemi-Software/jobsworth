@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:15  note  checkout-trailing
+  checkout 'actions/checkout@v4' is the last step of the job; nothing reads the tree
+
+context:
+  step           job 'build' / step #2                at :9   uses: actions/checkout@v4
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore checkout-trailing
+  or in .jobsworth.yml:   rules: { checkout-trailing: off }

@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:3  note  jobs-mergeable
+  job 'test' only exists to run after 'build' on the same runner; one job with both step lists saves a runner spin-up
+
+context:
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore jobs-mergeable
+  or in .jobsworth.yml:   rules: { jobs-mergeable: off }

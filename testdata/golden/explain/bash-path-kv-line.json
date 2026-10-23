@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "bash-path-kv-line",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1 writes \"GOFLAGS=-mod=vendor\" to $GITHUB_PATH; KEY=VALUE lines belong in $GITHUB_ENV"
+      },
+      "context": {
+        "kind": "bash",
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 7,
+            "redirect": "GITHUB_PATH",
+            "text": "echo \"GOFLAGS=-mod=vendor\" \u003e\u003e\"$GITHUB_PATH\""
+          }
+        ],
+        "step": {
+          "id": "",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "targets": [
+          {
+            "keys": {},
+            "name": "GITHUB_PATH",
+            "open": false,
+            "open_reason": "",
+            "stream": [
+              {
+                "dynamic": false,
+                "in_heredoc": false,
+                "line": 7,
+                "opaque": false,
+                "text": "GOFLAGS=-mod=vendor"
+              }
+            ]
+          }
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore bash-path-kv-line",
+        "config": {
+          "bash-path-kv-line": "off"
+        }
+      }
+    }
+  ]
+}

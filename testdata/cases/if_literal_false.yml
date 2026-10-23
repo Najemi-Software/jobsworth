@@ -1,0 +1,10 @@
+# expect: note if-literal-false
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: false
+        run: echo disabled

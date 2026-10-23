@@ -1,0 +1,12 @@
+.github/workflows/example.yml:10:13  warning  if-string-compare-bool
+  steps.x.outputs.flag is a string, and 'true' == true is false; compare with the string literal 'true'
+
+context:
+  expression     steps.x.outputs.flag == true   at :10  (job build / step #2 / if)
+  step           job 'build' / step #2                at :10   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 10:    # jobsworth-ignore if-string-compare-bool
+  or in .jobsworth.yml:   rules: { if-string-compare-bool: off }

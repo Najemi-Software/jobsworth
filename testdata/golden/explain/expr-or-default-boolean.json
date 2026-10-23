@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "expr-or-default-boolean",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 12,
+        "column": 14,
+        "message": "inputs.flag || 'default': the input is a boolean, so false falls through to the default; use inputs.flag != '' \u0026\u0026 inputs.flag || 'default'"
+      },
+      "context": {
+        "expression": "inputs.flag || 'default'",
+        "kind": "condition",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 12,
+          "uses": ""
+        },
+        "triggers": [
+          "workflow_dispatch"
+        ]
+      },
+      "suppress": {
+        "line": 12,
+        "comment": "# jobsworth-ignore expr-or-default-boolean",
+        "config": {
+          "expr-or-default-boolean": "off"
+        }
+      }
+    }
+  ]
+}

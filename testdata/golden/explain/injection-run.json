@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "injection-run",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 14,
+        "message": "github.event.pull_request.title is interpolated into a run: script; an attacker controls it and quoting does not help. Put it in env: and read the variable in the script"
+      },
+      "context": {
+        "expression": "github.event.pull_request.title",
+        "kind": "security",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "pull_request"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore injection-run",
+        "config": {
+          "injection-run": "off"
+        }
+      }
+    }
+  ]
+}

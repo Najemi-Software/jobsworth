@@ -1,0 +1,10 @@
+.github/workflows/example.yml:7:15  error  step-run-and-uses
+  step 'actions/checkout@v4' has both run: and uses:
+
+context:
+  callsite       job build / step 'actions/checkout@v4' at :7
+  step kind      both run: (:8) and uses: (:7)
+
+suppress:
+  add on line 7:    # jobsworth-ignore step-run-and-uses
+  or in .jobsworth.yml:   rules: { step-run-and-uses: off }

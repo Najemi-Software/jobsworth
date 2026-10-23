@@ -1,0 +1,20 @@
+.github/workflows/example.yml:8:14  note  heredoc-indented-form
+  step 'notes' uses body<<-EOF; the runner does not strip tabs, use body<<EOF
+
+context:
+  step           'notes'                              run: at :8   shell: bash (runner default)
+  script analysed as bash, 3 statements:
+    :9     echo "body<<-EOF" >>"$GITHUB_OUTPUT"           echo, writes GITHUB_OUTPUT key 'body' (definite)
+    :10    echo "line" >>"$GITHUB_OUTPUT"                 echo to GITHUB_OUTPUT, no key
+    :11    echo "EOF" >>"$GITHUB_OUTPUT"                  echo to GITHUB_OUTPUT, no key
+  GITHUB_OUTPUT target: closed   keys written: body (def)
+  GITHUB_OUTPUT line stream:
+    :9     body<<-EOF                                     
+    :10    line                                           in heredoc value
+    :11    EOF                                            in heredoc value
+    heredoc body<<EOF at :9  terminated, 0 opaque value line(s)
+  GITHUB_ENV target: closed   keys written: none
+
+suppress:
+  add on line 8:    # jobsworth-ignore heredoc-indented-form
+  or in .jobsworth.yml:   rules: { heredoc-indented-form: off }

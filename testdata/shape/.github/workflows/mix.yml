@@ -1,0 +1,20 @@
+name: Mix
+on:
+  workflow_dispatch:
+    inputs:
+      dry-run:
+        type: boolean
+        default: false
+      level:
+        type: choice
+        options: [low, high]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: cfg
+        run: |
+          echo 'cfg={"name":"x","tags":["a","b"],"meta":{"id":1}}' >> "$GITHUB_OUTPUT"
+      - run: echo ${{ fromJSON(steps.cfg.outputs.cfg).meta.id }} ${{ inputs.dry-run }} ${{ runner.os }}
+      - run: echo ${{ fromJSON(steps.cfg.outputs.cfg).nope }}
+permissions: read-all

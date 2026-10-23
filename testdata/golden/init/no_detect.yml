@@ -1,0 +1,13 @@
+# .jobsworth.yml — configuration for `jobsworth check`.
+# Every key is optional. Paths are relative to this file.
+schema: 1
+
+# skip:
+#   actions:
+#     - some-org/paid-action
+
+# rules:
+#   step-output-unused: off
+#   input-unused: warning
+
+# fail_on: warning

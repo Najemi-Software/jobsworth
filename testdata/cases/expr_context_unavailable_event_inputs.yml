@@ -1,0 +1,9 @@
+# expect: error expr-context-unavailable "github.event.inputs only exists under workflow_dispatch"
+name: github.event.inputs under a trigger that has none
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.count }}

@@ -1,0 +1,8 @@
+description: Example
+name: Local
+runs:
+  using: composite
+  steps:
+    - uses: acme/tools/git/checkout-with-cache@v1
+    - shell: bash
+      run: echo local

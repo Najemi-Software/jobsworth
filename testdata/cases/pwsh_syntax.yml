@@ -1,0 +1,12 @@
+# unix
+# expect: warning pwsh-syntax
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - shell: pwsh
+        run: |
+          Write-Host "unterminated

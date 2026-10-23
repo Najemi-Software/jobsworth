@@ -1,0 +1,13 @@
+# expect: none
+name: Example
+on: push
+permissions: read-all
+jobs:
+  prod:
+    uses: ./.github/workflows/gated.yml
+    with:
+      env: prod
+  dynamic:
+    uses: ./.github/workflows/gated.yml
+    with:
+      env: ${{ github.ref_name }}

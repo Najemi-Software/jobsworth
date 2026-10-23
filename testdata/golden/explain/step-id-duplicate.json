@@ -1,0 +1,55 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-id-duplicate",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 13,
+        "message": "step id \"meta\" is already used by step 'meta'"
+      },
+      "context": {
+        "kind": "step",
+        "referenced_ids": [
+          "meta"
+        ],
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 10,
+            "redirect": "GITHUB_OUTPUT",
+            "text": "echo \"a=2\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "a"
+            ]
+          }
+        ],
+        "step": {
+          "id": "meta",
+          "line": 9,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "target": {
+          "keys": {
+            "a": "definite"
+          },
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore step-id-duplicate",
+        "config": {
+          "step-id-duplicate": "off"
+        }
+      }
+    }
+  ]
+}

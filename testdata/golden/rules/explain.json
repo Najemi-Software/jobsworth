@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "id": "needs-self",
+  "family": "jobs",
+  "category": "correctness",
+  "status": "stable",
+  "default": "error",
+  "effective": "error",
+  "since": "0.1",
+  "summary": "Job lists itself in needs",
+  "aliases": [],
+  "related": [
+    "needs-cycle"
+  ],
+  "enrich": false,
+  "available": true,
+  "changed": false,
+  "config": null,
+  "doc": "# needs-self\n\n## What it checks\n\nA job lists itself in its own `needs:`.\n\n## Why it matters\n\nGitHub rejects the workflow at parse time.\n\n## Example: flagged\n\n```yaml\nname: Example\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    needs: [build]\n    steps:\n      - run: echo ok\n```\n\n## Example: passes\n\n```yaml\nname: Example\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo ok\n  test:\n    runs-on: ubuntu-latest\n    needs: [build]\n    steps:\n      - run: echo ok\n```\n\n## When it does not fire\n\nA longer cycle through other jobs is `needs-cycle`, not this rule.\n\n## Suppress\n\n`# jobsworth-ignore needs-self` on the `needs:` line, or\n`rules: { needs-self: off }` in `.jobsworth.yml`.\n\n## Related\n\n`needs-cycle`.\n",
+  "sections": {
+    "flagged": "```yaml\nname: Example\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    needs: [build]\n    steps:\n      - run: echo ok\n```",
+    "not_fire": "A longer cycle through other jobs is `needs-cycle`, not this rule.",
+    "passes": "```yaml\nname: Example\non: push\njobs:\n  build:\n    runs-on: ubuntu-latest\n    steps:\n      - run: echo ok\n  test:\n    runs-on: ubuntu-latest\n    needs: [build]\n    steps:\n      - run: echo ok\n```",
+    "suppress": "`# jobsworth-ignore needs-self` on the `needs:` line, or\n`rules: { needs-self: off }` in `.jobsworth.yml`.",
+    "what": "A job lists itself in its own `needs:`.",
+    "why": "GitHub rejects the workflow at parse time."
+  }
+}

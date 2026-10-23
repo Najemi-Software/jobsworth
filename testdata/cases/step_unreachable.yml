@@ -1,0 +1,13 @@
+# expect: note step-unreachable
+# expect: warning if-always-false
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: v
+        if: github.ref == 'a' && github.ref == 'b'
+        run: echo "version=1" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.v.outputs.version }}

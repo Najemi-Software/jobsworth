@@ -1,0 +1,10 @@
+.github/workflows/example.yml:9:9  warning  matrix-exclude-no-match
+  job 'build' matrix exclude #1 {os: macos-latest} matches no combination
+
+context:
+  detail         job 'build' matrix exclude #1 {os: macos-latest} matches no combination
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 9:    # jobsworth-ignore matrix-exclude-no-match
+  or in .jobsworth.yml:   rules: { matrix-exclude-no-match: off }

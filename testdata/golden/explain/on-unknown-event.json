@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "on-unknown-event",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 2,
+        "column": 5,
+        "message": "on: \"pushh\" is not a GitHub Actions event; did you mean push?"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "pushh"
+        ]
+      },
+      "suppress": {
+        "line": 2,
+        "comment": "# jobsworth-ignore on-unknown-event",
+        "config": {
+          "on-unknown-event": "off"
+        }
+      }
+    }
+  ]
+}

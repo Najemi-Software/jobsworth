@@ -1,0 +1,12 @@
+# expect: none
+name: Typed inputs with fitting literals and expressions
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/typed
+        with:
+          count: ${{ github.run_number }}
+          level: high

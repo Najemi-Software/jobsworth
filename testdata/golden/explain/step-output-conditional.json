@@ -1,0 +1,75 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "step-output-conditional",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 12,
+        "column": 14,
+        "message": "steps.meta.outputs.version is only written on some paths of step 'meta'; the reference may be empty"
+      },
+      "context": {
+        "conclusion": "'version' is written, but only on some paths.",
+        "kind": "step-output",
+        "producer": {
+          "index": 0,
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default",
+          "step": "meta"
+        },
+        "reference": {
+          "field": "outputs",
+          "line": 12,
+          "output": "version",
+          "site": "job build / step #2 / run",
+          "step": "meta"
+        },
+        "statements": [
+          {
+            "class": "if",
+            "definite": true,
+            "line": 9,
+            "text": "if [ -f VERSION ]; then …"
+          },
+          {
+            "class": "call [",
+            "definite": true,
+            "line": 9,
+            "text": "[ -f VERSION ]"
+          },
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 10,
+            "note": "writes 'version' (conditional)",
+            "redirect": "GITHUB_OUTPUT",
+            "relevant": true,
+            "text": "echo \"version=$(cat VERSION)\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "version"
+            ]
+          }
+        ],
+        "target": {
+          "keys": {
+            "version": "conditional"
+          },
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 12,
+        "comment": "# jobsworth-ignore step-output-conditional",
+        "config": {
+          "step-output-conditional": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+# expect: none
+name: A wrapper that hardcodes path src provides ./src references
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: acme/wrappers/checkout-src@v1
+      - uses: ./src/.github/actions/greet
+        with:
+          name: world

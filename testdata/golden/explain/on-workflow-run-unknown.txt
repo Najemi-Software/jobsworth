@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:17  warning  on-workflow-run-unknown
+  on.workflow_run.workflows names "Nope", but no workflow in this repository has that name:; did you mean "Gated"?
+
+context:
+  triggers       workflow_run
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-workflow-run-unknown
+  or in .jobsworth.yml:   rules: { on-workflow-run-unknown: off }

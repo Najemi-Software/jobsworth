@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "uses-not-found",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 15,
+        "message": "local action \"./.github/actions/missing\" not found under <ROOT>"
+      },
+      "context": {
+        "api_calls": null,
+        "kind": "fetch",
+        "reference": "./.github/actions/missing",
+        "resolution": {
+          "error": "local action \"./.github/actions/missing\" not found under <ROOT>",
+          "how": "failed",
+          "name": ""
+        },
+        "token_source": "JOBSWORTH_TOKEN"
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore uses-not-found",
+        "config": {
+          "uses-not-found": "off"
+        }
+      }
+    }
+  ]
+}

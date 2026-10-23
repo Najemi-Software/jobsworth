@@ -1,0 +1,12 @@
+# expect: none
+name: ANSI-C quoting yields real newlines in a single echo
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: jobs
+        run: |
+          GS_COMBINED="a b"
+          echo "gs_failed_jobs<<EOF"$'\n'"${GS_COMBINED}"$'\n'EOF >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.jobs.outputs.gs_failed_jobs }}"

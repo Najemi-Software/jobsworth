@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  warning  expr-contains-types
+  contains() searches strings and arrays, but its first argument is object{a} (from fromJSON literal); the result is always false
+
+context:
+  expression     contains(fromJSON('{"a":1}'), 'a')   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore expr-contains-types
+  or in .jobsworth.yml:   rules: { expr-contains-types: off }

@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:3  error  needs-cycle
+  needs form a cycle: a -> b -> a
+
+context:
+  cycle          a → b (needs at :6), b → a (needs at :11)
+  conclusion: no job in the cycle can start; break one needs: edge.
+
+suppress:
+  add on line 4:    # jobsworth-ignore needs-cycle
+  or in .jobsworth.yml:   rules: { needs-cycle: off }

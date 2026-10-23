@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "if-not-boolean",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 13,
+        "column": 13,
+        "message": "if: is a string (from input 'name' (type string)), not a boolean; any non-empty string is truthy, including 'false'; compare it, e.g. == 'true'"
+      },
+      "context": {
+        "expression": "inputs.name",
+        "kind": "condition",
+        "site": "job build / step #1 / if",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 13,
+          "uses": ""
+        },
+        "triggers": [
+          "workflow_call"
+        ]
+      },
+      "suppress": {
+        "line": 13,
+        "comment": "# jobsworth-ignore if-not-boolean",
+        "config": {
+          "if-not-boolean": "off"
+        }
+      }
+    }
+  ]
+}

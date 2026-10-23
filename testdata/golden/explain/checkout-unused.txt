@@ -1,0 +1,11 @@
+.github/workflows/example.yml:8:15  note  checkout-unused
+  checkout 'actions/checkout@v4' is followed only by steps that do not touch the filesystem; drop it and save the clone
+
+context:
+  step           job 'build' / step #1                at :8   uses: actions/checkout@v4
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore checkout-unused
+  or in .jobsworth.yml:   rules: { checkout-unused: off }

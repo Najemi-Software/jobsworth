@@ -1,0 +1,9 @@
+# expect: none
+name: Off by default
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: build
+        run: make

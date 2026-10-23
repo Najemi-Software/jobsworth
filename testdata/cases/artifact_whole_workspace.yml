@@ -1,0 +1,13 @@
+# expect: note artifact-whole-workspace
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: make build
+      - uses: actions/upload-artifact@v4
+        with:
+          path: .

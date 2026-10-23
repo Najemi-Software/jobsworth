@@ -1,0 +1,16 @@
+# expect: none
+name: Literal lines, or an uncommon delimiter around opaque output
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: log
+        run: |
+          echo "body<<EOF" >> "$GITHUB_OUTPUT"
+          echo "literal line" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+          echo "log<<JW_7f3a9c" >> "$GITHUB_OUTPUT"
+          echo "$(git log -5)" >> "$GITHUB_OUTPUT"
+          echo "JW_7f3a9c" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.log.outputs.body }} ${{ steps.log.outputs.log }}"

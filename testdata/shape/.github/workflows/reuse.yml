@@ -1,0 +1,14 @@
+name: Example
+on:
+  workflow_call:
+    inputs:
+      cfg:
+        type: string
+        default: '{"replicas": {"min": 0}}'
+      count:
+        type: number
+jobs:
+  rollout:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ fromJSON(inputs.cfg).replicas.min }} ${{ inputs.count }}

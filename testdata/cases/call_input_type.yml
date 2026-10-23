@@ -1,0 +1,17 @@
+# expect: error call-input-type "with.count"
+# expect: error call-input-type "with.strict"
+# expect: error call-input-type "with.level"
+# expect: error call-input-type-decl "choice"
+name: Caller passes literals of the wrong type
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod
+      count: three
+      strict: "true"
+  pick:
+    uses: ./.github/workflows/choosy.yml
+    with:
+      level: medium

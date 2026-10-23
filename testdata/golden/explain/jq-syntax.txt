@@ -1,0 +1,10 @@
+.github/workflows/example.yml:7:14  error  jq-syntax
+  step #1: jq filter "{version: .tag" does not parse: at 14: expected "}"
+
+context:
+  detail         step #1: jq filter "{version: .tag" does not parse: at 14: expected "}"
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 7:    # jobsworth-ignore jq-syntax
+  or in .jobsworth.yml:   rules: { jq-syntax: off }

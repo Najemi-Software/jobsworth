@@ -1,0 +1,9 @@
+# expect: error call-input-unknown "with.bogus"
+name: Caller supplies an input the reusable workflow does not declare
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod
+      bogus: 1

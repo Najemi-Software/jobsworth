@@ -1,0 +1,9 @@
+# expect: none
+description: Example
+name: Non-composite action inputs are metadata only and never flagged unused
+inputs:
+  token:
+    required: true
+runs:
+  using: node20
+  main: index.js

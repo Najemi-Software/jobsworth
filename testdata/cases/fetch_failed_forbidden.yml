@@ -1,0 +1,8 @@
+# expect: warning fetch-failed "could not fetch"
+name: Forbidden repo is a warning at the caller
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/forbidden@v1

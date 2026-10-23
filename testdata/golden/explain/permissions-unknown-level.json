@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "permissions-unknown-level",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 3,
+        "message": "workflow permissions: contents: \"readonly\" is not read, write or none"
+      },
+      "context": {
+        "kind": "security",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore permissions-unknown-level",
+        "config": {
+          "permissions-unknown-level": "off"
+        }
+      }
+    }
+  ]
+}

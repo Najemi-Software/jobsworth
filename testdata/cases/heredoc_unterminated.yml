@@ -1,0 +1,12 @@
+# expect: error heredoc-unterminated "never writes the EOF closing line"
+name: Multi-line output value without its closing delimiter
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: |
+          echo "body<<EOF" >> "$GITHUB_OUTPUT"
+          echo "line one" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.notes.outputs.body }}"

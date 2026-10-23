@@ -1,0 +1,9 @@
+# expect: none
+name: A known expression function
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ format('{0}', github.sha) }}

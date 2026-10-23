@@ -1,0 +1,12 @@
+# expect: error local-action-no-checkout
+name: A node action named checkout is opaque and does not count
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-node@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

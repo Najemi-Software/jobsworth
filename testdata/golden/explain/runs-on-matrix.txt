@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:14  warning  runs-on-matrix
+  job 'build' runs-on takes matrix.os, whose value "ubuntu-20.04" was retired by GitHub on 2025-04-15
+
+context:
+  expression     matrix.os   at :8  (job build / runs-on)
+  job            'build'                              at :4
+  runs-on        ${{ matrix.os }}
+  triggers       push
+
+suppress:
+  add on line 8:    # jobsworth-ignore runs-on-matrix
+  or in .jobsworth.yml:   rules: { runs-on-matrix: off }

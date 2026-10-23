@@ -1,0 +1,16 @@
+.github/workflows/example.yml:8:14  warning  heredoc-escaped-newline
+  step 'notes' writes body<<EOF\nline\nEOF with literal \n in an echo without -e; the value contains backslash-n, not newlines
+
+context:
+  step           'notes'                              run: at :8   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :8     echo "body<<EOF\nline\nEOF" >>"$GITHUB_OUTPUT" echo, writes GITHUB_OUTPUT key 'body' (definite)
+  GITHUB_OUTPUT target: closed   keys written: body (def)
+  GITHUB_OUTPUT line stream:
+    :8     body<<EOF\nline\nEOF                           
+    heredoc body<<EOF\nline\nEOF at :8  escaped newline, never opened, 0 opaque value line(s)
+  GITHUB_ENV target: closed   keys written: none
+
+suppress:
+  add on line 8:    # jobsworth-ignore heredoc-escaped-newline
+  or in .jobsworth.yml:   rules: { heredoc-escaped-newline: off }

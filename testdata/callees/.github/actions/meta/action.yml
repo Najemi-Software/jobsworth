@@ -1,0 +1,11 @@
+description: Example
+name: Meta
+outputs:
+  version:
+    value: ${{ steps.v.outputs.version }}
+runs:
+  using: composite
+  steps:
+    - id: v
+      shell: bash
+      run: echo "version=1" >> "$GITHUB_OUTPUT"

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "shape-file-missing",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 14,
+        "message": "step 'cfg' reads missing.json, which does not exist in the repository (it may be generated at runtime)"
+      },
+      "context": {
+        "kind": "shape"
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore shape-file-missing",
+        "config": {
+          "shape-file-missing": "off"
+        }
+      }
+    }
+  ]
+}

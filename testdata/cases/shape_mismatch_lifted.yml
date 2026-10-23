@@ -1,0 +1,16 @@
+# expect: error shape-mismatch "needs.build.outputs.meta"
+name: Job output lifted from a step's JSON write is checked downstream
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      meta: ${{ steps.m.outputs.meta }}
+    steps:
+      - id: m
+        run: echo 'meta={"version":"1","sha":"abc"}' >> "$GITHUB_OUTPUT"
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - run: echo ${{ fromJSON(needs.build.outputs.meta).version }} ${{ fromJSON(needs.build.outputs.meta).tag }}

@@ -1,0 +1,10 @@
+# graph
+# link: acme/tools = repos/acme-tools
+# expect: none
+name: A linked repository shows the checkout it resolved to
+on: push
+jobs:
+  tool:
+    uses: acme/tools/.github/workflows/x.yml@v1
+    with:
+      tool: hammer

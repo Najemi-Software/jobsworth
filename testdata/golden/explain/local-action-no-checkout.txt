@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:15  error  local-action-no-checkout
+  step './.github/actions/greet' uses local action ./.github/actions/greet but job 'build' has no checkout before it
+
+context:
+  local action   ./.github/actions/greet              at :7  (job build / step './.github/actions/greet')
+  checkouts seen in job 'build', in order:
+    none
+
+suppress:
+  add on line 7:    # jobsworth-ignore local-action-no-checkout
+  or in .jobsworth.yml:   rules: { local-action-no-checkout: off }

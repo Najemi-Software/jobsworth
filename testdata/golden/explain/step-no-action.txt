@@ -1,0 +1,10 @@
+.github/workflows/example.yml:7:9  error  step-no-action
+  job 'build' step #1 has neither run: nor uses:; GitHub rejects the workflow
+
+context:
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore step-no-action
+  or in .jobsworth.yml:   rules: { step-no-action: off }

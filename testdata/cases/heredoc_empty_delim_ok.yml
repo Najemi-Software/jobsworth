@@ -1,0 +1,13 @@
+# expect: none
+name: Opener with a delimiter
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: |
+          echo "body<<MARK" >> "$GITHUB_OUTPUT"
+          echo "line" >> "$GITHUB_OUTPUT"
+          echo "MARK" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.notes.outputs.body }}"

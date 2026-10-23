@@ -1,0 +1,15 @@
+# expect: error local-action-sparse-miss "does not cover"
+name: Sparse checkout that omits .github
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          sparse-checkout: |
+            src
+            docs
+      - uses: ./.github/actions/greet
+        with:
+          name: world

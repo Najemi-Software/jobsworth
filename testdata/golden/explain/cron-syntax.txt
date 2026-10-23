@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:13  error  cron-syntax
+  cron "0 0 * *": expected 5 fields, got 4
+
+context:
+  triggers       schedule
+
+suppress:
+  add on line 4:    # jobsworth-ignore cron-syntax
+  or in .jobsworth.yml:   rules: { cron-syntax: off }

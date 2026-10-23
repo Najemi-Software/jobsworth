@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "runs-on-group-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 7,
+        "message": "job 'build' runs on group \"huge\", which organisation example does not have"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": null,
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore runs-on-group-unknown",
+        "config": {
+          "runs-on-group-unknown": "off"
+        }
+      }
+    }
+  ]
+}

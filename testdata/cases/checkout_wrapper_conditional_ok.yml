@@ -1,0 +1,12 @@
+# expect: none
+name: A conditional checkout inside a wrapper is adopted as root when nothing else is
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-maybe@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "step-continue-on-error-outputs",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 14,
+        "message": "steps.t.outputs.v is consumed, but step 't' has continue-on-error: true and the consumer does not check its outcome; on failure the value is empty"
+      },
+      "context": {
+        "expression": "steps.t.outputs.v",
+        "kind": "structure",
+        "site": "job build / step #2 / run",
+        "step": {
+          "id": "",
+          "index": 1,
+          "job": "build",
+          "line": 10,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore step-continue-on-error-outputs",
+        "config": {
+          "step-continue-on-error-outputs": "off"
+        }
+      }
+    }
+  ]
+}

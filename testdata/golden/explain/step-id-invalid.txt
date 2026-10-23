@@ -1,0 +1,13 @@
+.github/workflows/example.yml:7:13  error  step-id-invalid
+  step id "1st.step" must match [A-Za-z_][A-Za-z0-9_-]*
+
+context:
+  step           '1st.step'                           at :7   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :8     echo "a=1" >>"$GITHUB_OUTPUT"                  echo, writes GITHUB_OUTPUT key 'a' (definite)
+  GITHUB_OUTPUT target: closed   keys written: a (def)
+  referenced ids in scope: none
+
+suppress:
+  add on line 7:    # jobsworth-ignore step-id-invalid
+  or in .jobsworth.yml:   rules: { step-id-invalid: off }

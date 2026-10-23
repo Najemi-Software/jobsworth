@@ -1,0 +1,9 @@
+# expect: error expr-arity "contains() takes 2"
+# expect: error expr-arity "toJSON() takes 1"
+name: Wrong argument counts
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ contains(github.ref) }} ${{ toJSON(github, github) }}

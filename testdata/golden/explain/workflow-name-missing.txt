@@ -1,0 +1,9 @@
+.github/workflows/example.yml:1:1  note  workflow-name-missing
+  workflow has no name:; the Actions tab shows the file path instead
+
+context:
+  triggers       push
+
+suppress:
+  add on line 1:    # jobsworth-ignore workflow-name-missing
+  or in .jobsworth.yml:   rules: { workflow-name-missing: off }

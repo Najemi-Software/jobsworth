@@ -1,0 +1,59 @@
+{
+  "schema": 1,
+  "entry": "n0",
+  "nodes": {
+    "n0": {
+      "id": "n0",
+      "kind": "workflow",
+      "source": "entry",
+      "display": ".github/workflows/ok.yml",
+      "path": "<ROOT>/.github/workflows/ok.yml"
+    },
+    "n1": {
+      "id": "n1",
+      "kind": "node-action",
+      "source": "fetched",
+      "display": "actions/checkout@v4",
+      "path": "action.yml",
+      "repo": "actions/checkout",
+      "ref": "v4",
+      "ref_kind": "tag",
+      "sha": "2db1d539fba6c56715b3e80ff0292b398ca3ed2e",
+      "cache": "miss",
+      "inputs": [
+        "persist-credentials",
+        "repository",
+        "ref",
+        "path",
+        "sparse-checkout",
+        "sparse-checkout-cone-mode",
+        "token"
+      ],
+      "outputs": [
+        "ref"
+      ]
+    }
+  },
+  "edges": [
+    {
+      "from": "n0",
+      "to": "n1",
+      "site": "job build / step #1",
+      "line": 7,
+      "uses": "actions/checkout@v4"
+    }
+  ],
+  "summary": {
+    "nodes": 2,
+    "by_source": {
+      "entry": 1,
+      "fetched": 1
+    },
+    "cache": {
+      "hit": 0,
+      "miss": 1,
+      "stale": 0
+    },
+    "api_calls": 3
+  }
+}

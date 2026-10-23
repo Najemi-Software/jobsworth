@@ -1,0 +1,10 @@
+# expect: warning on-filter-empty
+name: on-filter-empty flagged
+on:
+  push:
+    branches: []
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

@@ -1,0 +1,15 @@
+name: Checkout two repositories
+description: Example
+inputs:
+  shared-ref:
+    description: ref of the shared repo
+    default: v2
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+    - uses: actions/checkout@v4
+      with:
+        repository: acme/shared
+        ref: ${{ inputs.shared-ref }}
+        path: tools

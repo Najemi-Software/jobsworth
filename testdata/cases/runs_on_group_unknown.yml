@@ -1,0 +1,11 @@
+# enrich
+# expect: error runs-on-group-unknown
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on:
+      group: huge
+    steps:
+      - run: echo hi

@@ -1,0 +1,20 @@
+# expect: none
+name: Every write form is recognised
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: |
+          echo "a=1" >> "$GITHUB_OUTPUT"
+          printf 'b=%s\n' 2 >> $GITHUB_OUTPUT
+          { echo "c=3"; } >> "$GITHUB_OUTPUT"
+          echo "d=4" | tee -a "$GITHUB_OUTPUT"
+          cat <<EOT >> "$GITHUB_OUTPUT"
+          e=5
+          EOT
+          echo "f<<DELIM" >> "$GITHUB_OUTPUT"
+          echo "multi" >> "$GITHUB_OUTPUT"
+          echo "DELIM" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.a }} ${{ steps.meta.outputs.b }} ${{ steps.meta.outputs.c }} ${{ steps.meta.outputs.d }} ${{ steps.meta.outputs.e }} ${{ steps.meta.outputs.f }}

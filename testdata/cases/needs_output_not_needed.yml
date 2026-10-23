@@ -1,0 +1,14 @@
+# expect: error needs-output-not-needed "not in its needs"
+name: Job references outputs of a job it does not need
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: x
+    steps:
+      - run: echo ok
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ needs.build.outputs.version }}

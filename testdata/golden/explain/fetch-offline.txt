@@ -1,0 +1,12 @@
+.github/workflows/example.yml:7:15  warning  fetch-offline
+  acme/never-fetched@v1: offline, not cached, skipping
+
+context:
+  reference      acme/never-fetched@v1                at :7
+  resolution     failed: acme/never-fetched@v1: offline, not cached, skipping
+  api calls      none (served from cache, linked, skipped, or offline)
+  token source   JOBSWORTH_TOKEN
+
+suppress:
+  add on line 7:    # jobsworth-ignore fetch-offline
+  or in .jobsworth.yml:   rules: { fetch-offline: off }

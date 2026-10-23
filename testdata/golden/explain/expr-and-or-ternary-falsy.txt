@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:14  warning  expr-and-or-ternary-falsy
+  cond && x || y yields y when x is falsy; '' can be '', 0 or false
+
+context:
+  expression     github.event_name == 'push' && '' || 'other'   at :8  (job build / step #1 / run)
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore expr-and-or-ternary-falsy
+  or in .jobsworth.yml:   rules: { expr-and-or-ternary-falsy: off }

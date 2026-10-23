@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:7  error  expr-context-unavailable
+  the matrix context is not available at workflow level (outside jobs:); the expression is always empty here
+
+context:
+  expression     matrix.os   at :4  (OS)
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore expr-context-unavailable
+  or in .jobsworth.yml:   rules: { expr-context-unavailable: off }

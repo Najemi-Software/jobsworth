@@ -1,0 +1,9 @@
+# expect: warning suppress-unclosed "without a matching jobsworth-ignore-start"
+name: A jobsworth-ignore-end with no start is reported
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
+# jobsworth-ignore-end

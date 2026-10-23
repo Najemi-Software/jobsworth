@@ -1,0 +1,16 @@
+# expect: none
+name: A script run through a package runner may write any output
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: affected
+        run: uv run --no-project --with pyyaml python .github/scripts/ci/affected.py "${args[@]}" --github-output
+      - id: report
+        run: uv run tests/tavern-e2e/ci/report.py
+      - id: ts
+        run: npx tsx scripts/emit.ts
+      - id: mk
+        run: make outputs
+      - run: echo ${{ steps.affected.outputs.changed }} ${{ steps.report.outputs.summary }} ${{ steps.ts.outputs.tag }} ${{ steps.mk.outputs.version }}

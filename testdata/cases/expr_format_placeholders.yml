@@ -1,0 +1,10 @@
+# expect: error expr-format-placeholders "{2} has no argument"
+# expect: warning expr-format-placeholders "argument 2 is never used"
+name: Format placeholders out of step with arguments
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ format('{0} {2}', github.sha, github.ref) }}
+      - run: echo ${{ format('{0}', github.sha, github.ref) }}

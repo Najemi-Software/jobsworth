@@ -1,0 +1,8 @@
+# expect: warning expr-contains-types "searches strings and arrays"
+name: contains over an object
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ contains(fromJSON('{"a":1}'), 'a') }}

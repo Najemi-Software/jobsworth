@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  fromjson-non-string
+  fromJSON of a value that is already object{a} (from fromJSON literal)
+
+context:
+  expression     fromJSON(fromJSON('{"a":1}')).a   at :7  (job build / step #1 / run)
+  detail         fromJSON of a value that is already object{a} (from fromJSON literal)
+  accepted       anything unknown is 'any' and never reported; open objects accept any field
+
+suppress:
+  add on line 7:    # jobsworth-ignore fromjson-non-string
+  or in .jobsworth.yml:   rules: { fromjson-non-string: off }

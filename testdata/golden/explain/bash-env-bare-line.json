@@ -1,0 +1,58 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "bash-env-bare-line",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1 writes \"/usr/local/bin\" to $GITHUB_ENV without a =; paths belong in $GITHUB_PATH"
+      },
+      "context": {
+        "kind": "bash",
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 7,
+            "redirect": "GITHUB_ENV",
+            "text": "echo \"/usr/local/bin\" \u003e\u003e\"$GITHUB_ENV\""
+          }
+        ],
+        "step": {
+          "id": "",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "targets": [
+          {
+            "keys": {},
+            "name": "GITHUB_ENV",
+            "open": false,
+            "open_reason": "",
+            "stream": [
+              {
+                "dynamic": false,
+                "in_heredoc": false,
+                "line": 7,
+                "opaque": false,
+                "text": "/usr/local/bin"
+              }
+            ]
+          }
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore bash-env-bare-line",
+        "config": {
+          "bash-env-bare-line": "off"
+        }
+      }
+    }
+  ]
+}

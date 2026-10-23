@@ -1,0 +1,11 @@
+description: Example
+name: JSON out
+outputs:
+  meta:
+    value: ${{ steps.m.outputs.meta }}
+runs:
+  using: composite
+  steps:
+    - id: m
+      shell: bash
+      run: echo 'meta={"sha":"abc"}' >> "$GITHUB_OUTPUT"

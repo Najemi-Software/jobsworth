@@ -1,0 +1,24 @@
+ID                               DEFAULT  EFFECTIVE  SINCE  SUMMARY
+step-output-conditional          off      off        0.2    Step output is only written on some paths
+step-id-unreferenced             off      off        0.2    Step has an id nothing references
+heredoc-indented-form            off      off        0.2    KEY<<-DELIM form, which the runner does not treat specially
+checkout-ref-unresolvable        off      off        0.2    Checkout ref is an expression and cannot be verified
+call-secret-inherit-partial      off      off        0.2    secrets: inherit on a callee that declares no secrets
+shape-file-missing               off      off        0.2    Script reads a literal JSON or YAML path that does not exist in the repo
+uses-dynamic                     note     off *      0.1    Uses reference contains an expression and cannot be followed
+runs-on-group-and-labels         off      off        0.4    runs-on group with no labels:
+job-timeout-missing              off      off        0.4    Job without timeout-minutes:
+input-description-missing        off      off        0.4    Input without description:
+on-push-tags-only                off      off        0.4    push with tags: and no branches: no longer triggers on branch pushes
+dispatch-input-event-spelling    off      off        0.4    github.event.inputs.X where inputs.X would do
+concurrency-cancel-on-push-main  off      off        0.4    cancel-in-progress on a group keyed on github.ref in a deploying workflow
+uses-unpinned-no-comment         off      off        0.4    SHA-pinned action without a version comment
+checkout-persist-credentials     off      off        0.4    Checkout keeps the token and a later step exposes the tree
+if-redundant-success             off      off        0.4    if: success() alone, which is the default
+if-dead-for-caller               off      off        0.4    if: false for one caller's values
+output-behind-condition          off      off        0.4    Job output from a conditional step consumed without a result check
+setup-no-cache                   off      off        0.4    setup-* without cache: in a job that installs packages
+node-syntax (unavailable)        off      off        0.4    A shell: node step that node cannot parse
+ruby-syntax (unavailable)        off      off        0.4    A shell: ruby step that ruby cannot parse
+
+21 rules: 0 error, 0 warning, 0 note, 21 off (* changed by .jobsworth.yml)

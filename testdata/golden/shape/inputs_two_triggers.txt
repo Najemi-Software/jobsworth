@@ -1,0 +1,11 @@
+inputs.level
+  = String
+
+why:
+  inputs.level
+    declared on.workflow_call.inputs.level: type: string (line 5)
+    no callers found in entry or linked repos supplying JSON
+    declared on.workflow_dispatch.inputs.level: type: choice (line 9)
+
+accepted:
+  no member access accepted on String

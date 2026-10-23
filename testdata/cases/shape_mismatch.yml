@@ -1,0 +1,22 @@
+# expect: error shape-mismatch ".verison"
+# expect: error shape-mismatch "inputs.flag.foo"
+# expect: error shape-mismatch "matrix.os.name"
+# expect: error shape-mismatch "runner.os.name"
+# expect: error shape-mismatch "github.event.commits.message"
+name: Chains that cannot succeed on literals, typed inputs, matrix axes, static contexts, and payloads
+on:
+  push:
+  workflow_call:
+    inputs:
+      flag: { type: boolean }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: inputs.flag.foo
+    strategy:
+      matrix:
+        os: [ ubuntu, windows ]
+    steps:
+      - run: echo ${{ fromJSON('{"version":"1"}').verison }}
+      - run: echo ${{ matrix.os.name }} ${{ runner.os.name }}
+      - run: echo ${{ github.event.commits.message }}

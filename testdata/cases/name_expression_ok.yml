@@ -1,0 +1,9 @@
+# expect: none
+name: Build
+run-name: Build ${{ github.ref }}
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

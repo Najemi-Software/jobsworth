@@ -1,0 +1,16 @@
+# expect: error needs-unknown "'outside'"
+name: Region suppression hides findings between start and end only
+on: push
+jobs:
+  # jobsworth-ignore-start needs-unknown
+  a:
+    runs-on: ubuntu-latest
+    needs: nope
+    steps:
+      - run: echo ok
+  # jobsworth-ignore-end
+  b:
+    runs-on: ubuntu-latest
+    needs: outside
+    steps:
+      - run: echo ok

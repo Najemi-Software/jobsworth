@@ -1,0 +1,10 @@
+.github/actions/example/action.yml:4:3  note  action-output-unused
+  output 'version' is declared but no workflow or action in the entry repo or a linked repo consumes it
+
+context:
+  outputs        version (:4)   ← not consumed
+  consumers      every workflow and action in the entry repo and each linked repo, through ./ uses: of this action
+
+suppress:
+  add on line 4:    # jobsworth-ignore action-output-unused
+  or in .jobsworth.yml:   rules: { action-output-unused: off }

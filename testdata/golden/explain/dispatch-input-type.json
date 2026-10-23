@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "dispatch-input-type",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 7,
+        "message": "workflow_dispatch input 'count' has type \"integer\"; allowed: string, boolean, choice, environment, number"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "workflow_dispatch"
+        ]
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore dispatch-input-type",
+        "config": {
+          "dispatch-input-type": "off"
+        }
+      }
+    }
+  ]
+}

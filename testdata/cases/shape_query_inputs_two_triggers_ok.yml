@@ -1,0 +1,19 @@
+# expect: none
+# shape: 'inputs.level' => String
+name: An input declared under workflow_call and workflow_dispatch is the union of both declarations
+on:
+  workflow_call:
+    inputs:
+      level:
+        type: string
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options: [low, high]
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.level }}

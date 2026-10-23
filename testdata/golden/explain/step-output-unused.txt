@@ -1,0 +1,14 @@
+.github/workflows/example.yml:8:14  note  step-output-unused
+  step 'meta' writes output "sha" (script line 2) but nothing references steps.meta.outputs.sha
+
+context:
+  step           'meta'                               at :7   shell: bash (runner default)
+  script analysed as bash, 2 statements:
+    :9     echo "version=1" >>"$GITHUB_OUTPUT"            echo, writes GITHUB_OUTPUT key 'version' (definite)
+    :10    echo "sha=abc" >>"$GITHUB_OUTPUT"              echo, writes GITHUB_OUTPUT key 'sha' (definite)   ← named in the finding
+  GITHUB_OUTPUT target: closed   keys written: sha (def), version (def)
+  referenced ids in scope: meta
+
+suppress:
+  add on line 8:    # jobsworth-ignore step-output-unused
+  or in .jobsworth.yml:   rules: { step-output-unused: off }

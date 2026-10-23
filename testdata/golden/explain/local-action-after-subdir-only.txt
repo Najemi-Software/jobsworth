@@ -1,0 +1,11 @@
+.github/workflows/example.yml:10:15  error  local-action-after-subdir-only
+  step './.github/actions/greet' uses local action ./.github/actions/greet but the only checkouts in job 'build' use path:; the workspace root is empty
+
+context:
+  local action   ./.github/actions/greet              at :10  (job build / step './.github/actions/greet')
+  checkouts seen in job 'build', in order:
+    step #1   actions/checkout@v4                  subdir         path: src   (ignored for root)
+
+suppress:
+  add on line 10:    # jobsworth-ignore local-action-after-subdir-only
+  or in .jobsworth.yml:   rules: { local-action-after-subdir-only: off }

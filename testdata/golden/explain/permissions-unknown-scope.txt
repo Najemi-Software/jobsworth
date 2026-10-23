@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:3  error  permissions-unknown-scope
+  workflow permissions: "content" is not a permissions scope (known: actions, attestations, checks, contents, deployments, discussions, id-token, issues, models, packages, pages, pull-requests, repository-projects, security-events, statuses); GitHub rejects the workflow
+
+context:
+  triggers       push
+  permissions    {content: read} (workflow)
+
+suppress:
+  add on line 4:    # jobsworth-ignore permissions-unknown-scope
+  or in .jobsworth.yml:   rules: { permissions-unknown-scope: off }

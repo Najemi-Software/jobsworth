@@ -1,0 +1,65 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "bash-env-bad-key",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1 writes \"MY-VAR=1\" to $GITHUB_ENV; the key must match [A-Za-z_][A-Za-z0-9_]*"
+      },
+      "context": {
+        "kind": "bash",
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 7,
+            "note": "writes MY-VAR",
+            "redirect": "GITHUB_ENV",
+            "relevant": true,
+            "text": "echo \"MY-VAR=1\" \u003e\u003e\"$GITHUB_ENV\"",
+            "writes": [
+              "MY-VAR"
+            ]
+          }
+        ],
+        "step": {
+          "id": "",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "targets": [
+          {
+            "keys": {
+              "MY-VAR": "definite"
+            },
+            "name": "GITHUB_ENV",
+            "open": false,
+            "open_reason": "",
+            "stream": [
+              {
+                "dynamic": false,
+                "in_heredoc": false,
+                "line": 7,
+                "opaque": false,
+                "text": "MY-VAR=1"
+              }
+            ]
+          }
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore bash-env-bad-key",
+        "config": {
+          "bash-env-bad-key": "off"
+        }
+      }
+    }
+  ]
+}

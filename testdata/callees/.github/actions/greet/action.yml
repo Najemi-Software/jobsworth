@@ -1,0 +1,10 @@
+description: Example
+name: Greet
+inputs:
+  name:
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "hello ${{ inputs.name }}"

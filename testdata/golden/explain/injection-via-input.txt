@@ -1,0 +1,12 @@
+.github/workflows/example.yml:11:17  warning  injection-via-input
+  with.name carries github.event.pull_request.title into ./.github/actions/greet, which interpolates or forwards inputs.name into a run: sink (line 10 of the callee)
+
+context:
+  expression     github.event.pull_request.title   at :11  (job build / step './.github/actions/greet' / name)
+  step           job 'build' / step #2                at :9   uses: ./.github/actions/greet
+  triggers       pull_request
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 11:    # jobsworth-ignore injection-via-input
+  or in .jobsworth.yml:   rules: { injection-via-input: off }

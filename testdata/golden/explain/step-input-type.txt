@@ -1,0 +1,14 @@
+.github/workflows/example.yml:10:18  error  step-input-type
+  job 'build' step './.github/actions/typed' using ./.github/actions/typed: with.count is "many" but the input declares type number (expected a number)
+
+context:
+  callsite       job build / step './.github/actions/typed' at :8
+  callee         <ROOT>/.github/actions/typed/action.yml local
+  supplied       count
+  declared       count (number), level (choice)   (2 inputs)
+  required       count   missing: none
+    count: declared, str literal "many" does not fit type number (expected a number)
+
+suppress:
+  add on line 10:    # jobsworth-ignore step-input-type
+  or in .jobsworth.yml:   rules: { step-input-type: off }

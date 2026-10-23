@@ -1,0 +1,11 @@
+.github/workflows/example.yml:6:7  warning  input-unused
+  input 'verbose' is declared but never referenced
+
+context:
+  declared       workflow_call:     env (:5), verbose (:6)
+  expressions scanned (1): :11 inputs.env
+  note           github.event.inputs.X is not tracked by this rule
+
+suppress:
+  add on line 6:    # jobsworth-ignore input-unused
+  or in .jobsworth.yml:   rules: { input-unused: off }

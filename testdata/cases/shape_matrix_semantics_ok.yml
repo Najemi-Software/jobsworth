@@ -1,0 +1,40 @@
+# expect: none
+# shape: --at build 'matrix.os' => String ∈ {ubuntu-latest}
+# shape: --at objects 'matrix.target.os' => String ∈ {ubuntu, windows}
+# shape: --at objects 'matrix.target' => Object{arch: String ∈ {arm64, x64}, os: String ∈ {ubuntu, windows}}
+# shape: --at objects 'matrix.target.nope' => ✗ field "nope" not in object
+# shape: --at consume 'needs.produce.outputs.mode' => String ∈ {prod}
+name: exclude narrows the value set, object rows give object shapes, literal outputs carry values
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        exclude:
+          - os: windows-latest
+    steps:
+      - run: echo ${{ matrix.os }}
+  objects:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          - { os: ubuntu, arch: x64 }
+          - { os: windows, arch: arm64 }
+    steps:
+      - run: echo ${{ matrix.target.os }} ${{ matrix.target.arch }}
+  produce:
+    runs-on: ubuntu-latest
+    outputs:
+      mode: ${{ steps.m.outputs.mode }}
+    steps:
+      - id: m
+        run: echo "mode=prod" >> "$GITHUB_OUTPUT"
+  consume:
+    runs-on: ubuntu-latest
+    needs: produce
+    steps:
+      - run: echo ${{ needs.produce.outputs.mode }}

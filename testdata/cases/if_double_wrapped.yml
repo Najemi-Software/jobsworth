@@ -1,0 +1,9 @@
+# expect: error if-double-wrapped "always truthy"
+name: Two expression blocks joined into a string
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - if: ${{ github.event_name == 'push' }} && ${{ runner.os == 'Linux' }}
+        run: echo ok

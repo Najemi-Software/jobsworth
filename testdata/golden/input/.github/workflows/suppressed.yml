@@ -1,0 +1,9 @@
+name: Suppressed
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    needs: generated  # jobsworth-ignore needs-unknown -- job is added by a generator
+    steps:
+      - run: echo ok
+permissions: read-all

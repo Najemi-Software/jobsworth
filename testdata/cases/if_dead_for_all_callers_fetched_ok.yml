@@ -1,0 +1,9 @@
+# expect: none
+name: A fetched reusable workflow has callers this walk cannot see, so its sets are never complete
+on: push
+permissions: read-all
+jobs:
+  call:
+    uses: acme/shared/.github/workflows/gated.yml@v2
+    with:
+      action: apply

@@ -1,0 +1,16 @@
+# expect: note uses-docker-unpinned
+name: Every reference form that is valid
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet
+        with:
+          name: x
+      - uses: docker://alpine:3.19
+  b:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod

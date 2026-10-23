@@ -1,0 +1,10 @@
+# expect: none
+name: A wrapper that reads the tree itself is never an unused checkout
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-reads@v1
+      - run: echo done

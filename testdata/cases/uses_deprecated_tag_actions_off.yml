@@ -1,0 +1,11 @@
+# enrich
+# config: enrich: { actions: false }
+# expect: note uses-unpinned
+name: enrich.actions false skips the per-action lookups
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: someone/thing@v1

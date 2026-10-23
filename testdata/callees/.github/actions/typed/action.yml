@@ -1,0 +1,15 @@
+description: Example
+name: Typed
+inputs:
+  count:
+    type: number
+    required: true
+  level:
+    type: choice
+    options: [ low, high ]
+    default: low
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo "${{ inputs.count }} ${{ inputs.level }}"

@@ -1,0 +1,10 @@
+# expect: none
+name: Run step configured through env
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make $TARGET
+        env:
+          TARGET: all

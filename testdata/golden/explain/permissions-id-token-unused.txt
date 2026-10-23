@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:3  note  permissions-id-token-unused
+  id-token: write is granted but job 'build' uses no OIDC-consuming action and no step requests a token; drop the grant
+
+context:
+  triggers       push
+  permissions    {id-token: write, contents: read} (workflow)
+
+suppress:
+  add on line 4:    # jobsworth-ignore permissions-id-token-unused
+  or in .jobsworth.yml:   rules: { permissions-id-token-unused: off }

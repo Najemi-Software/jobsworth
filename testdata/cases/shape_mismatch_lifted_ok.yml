@@ -1,0 +1,14 @@
+# expect: none
+name: Lifted shapes from a local reusable workflow and a composite action
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/jsonout.yml
+  use:
+    runs-on: ubuntu-latest
+    needs: call
+    steps:
+      - uses: actions/checkout@v4
+      - id: a
+        uses: ./.github/actions/jsonout
+      - run: echo ${{ fromJSON(needs.call.outputs.meta).version }} ${{ fromJSON(steps.a.outputs.meta).sha }}

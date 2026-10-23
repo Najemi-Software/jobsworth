@@ -1,0 +1,12 @@
+# expect: error expr-context-unavailable "github.event.inputs"
+name: Every referenced input is declared
+on:
+  workflow_call:
+    inputs:
+      env: { type: string }
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    if: inputs.env == 'x'
+    steps:
+      - run: echo ${{ github.event.inputs.not_tracked }}

@@ -1,0 +1,15 @@
+.github/workflows/example.yml:11:17  error  step-input-unknown
+  job 'build' step './.github/actions/greet' using ./.github/actions/greet: with.loud is supplied but the action declares no input "loud"
+
+context:
+  callsite       job build / step './.github/actions/greet' at :8
+  callee         <ROOT>/.github/actions/greet/action.yml local
+  supplied       name, loud
+  declared       name   (1 inputs)
+  required       name   missing: none
+    name: declared
+    loud: UNKNOWN (nearest declared: name)
+
+suppress:
+  add on line 11:    # jobsworth-ignore step-input-unknown
+  or in .jobsworth.yml:   rules: { step-input-unknown: off }

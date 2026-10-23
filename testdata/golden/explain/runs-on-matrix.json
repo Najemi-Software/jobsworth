@@ -1,0 +1,35 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "runs-on-matrix",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 14,
+        "message": "job 'build' runs-on takes matrix.os, whose value \"ubuntu-20.04\" was retired by GitHub on 2025-04-15"
+      },
+      "context": {
+        "expression": "matrix.os",
+        "job": "build",
+        "kind": "structure",
+        "runs_on": [
+          "${{ matrix.os }}"
+        ],
+        "site": "job build / runs-on",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore runs-on-matrix",
+        "config": {
+          "runs-on-matrix": "off"
+        }
+      }
+    }
+  ]
+}

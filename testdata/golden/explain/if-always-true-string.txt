@@ -1,0 +1,9 @@
+.github/workflows/example.yml:8:13  error  if-always-true-string
+  if: success is a non-empty string, which is always truthy; did you mean success()?
+
+context:
+  expression     success   at :8  (job build / step #2 / if)
+
+suppress:
+  add on line 8:    # jobsworth-ignore if-always-true-string
+  or in .jobsworth.yml:   rules: { if-always-true-string: off }

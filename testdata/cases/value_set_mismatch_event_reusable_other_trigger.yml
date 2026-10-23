@@ -1,0 +1,11 @@
+# expect: warning value-set-mismatch "only declares push"
+name: With another trigger, workflow_call is dropped and the rest still bounds event_name
+on:
+  push:
+  workflow_call:
+jobs:
+  eval:
+    runs-on: ubuntu-latest
+    steps:
+      - if: github.event_name == 'schedule'
+        run: echo nightly

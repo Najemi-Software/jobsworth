@@ -1,0 +1,4 @@
+.github/workflows/ok.yml  (workflow, entry)
+└─ job build / step #1 → actions/checkout@v4  (unresolved)
+
+2 nodes: 1 entry, 1 unresolved

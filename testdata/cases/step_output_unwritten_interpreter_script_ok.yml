@@ -1,0 +1,14 @@
+# expect: none
+name: An interpreter running a script or module may write any output
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: py
+        run: python3 scripts/emit.py
+      - id: mod
+        run: python -m tool.normalize --flag
+      - id: node
+        run: node ./dist/index.js
+      - run: echo ${{ steps.py.outputs.a }} ${{ steps.mod.outputs.b }} ${{ steps.node.outputs.c }}

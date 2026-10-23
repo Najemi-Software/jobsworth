@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "call-output-undeclared",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 7,
+        "message": "workflow output 'version' references jobs.build.outputs.version, but job 'build' declares no output 'version'"
+      },
+      "context": {
+        "kind": "jobs"
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore call-output-undeclared",
+        "config": {
+          "call-output-undeclared": "off"
+        }
+      }
+    }
+  ]
+}

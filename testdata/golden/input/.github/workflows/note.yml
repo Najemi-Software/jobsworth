@@ -1,0 +1,11 @@
+name: Note
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        action: [ actions/checkout@v4 ]
+    steps:
+      - uses: ${{ matrix.action }}
+permissions: read-all

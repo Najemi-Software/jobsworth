@@ -1,0 +1,13 @@
+.github/workflows/example.yml:8:9  error  expr-env-in-if-job
+  env.* is not available in a job-level if:; the env context is empty there (it works in step-level if:)
+
+context:
+  expression     env.DEPLOY == 'true'   at :8  (job build / if)
+  job            'build'                              at :6
+  runs-on        ubuntu-latest
+  if             env.DEPLOY == 'true'
+  triggers       push
+
+suppress:
+  add on line 8:    # jobsworth-ignore expr-env-in-if-job
+  or in .jobsworth.yml:   rules: { expr-env-in-if-job: off }

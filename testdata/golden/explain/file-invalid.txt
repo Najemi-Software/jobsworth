@@ -1,0 +1,9 @@
+.github/workflows/example.yml  error  file-invalid
+  not a workflow (no top-level jobs:) or action (no runs.using)
+
+context:
+  rule           file-invalid
+  message        not a workflow (no top-level jobs:) or action (no runs.using)
+
+suppress:
+  or in .jobsworth.yml:   rules: { file-invalid: off }

@@ -1,0 +1,10 @@
+.github/workflows/example.yml:6:3  note  concurrency-cancel-on-push-main
+  workflow cancels in-progress runs of a group keyed on github.ref in a workflow that deploys from the default branch; a second push cancels a half-finished deploy
+
+context:
+  expression     github.ref   at :6  (group)
+  triggers       push
+
+suppress:
+  add on line 6:    # jobsworth-ignore concurrency-cancel-on-push-main
+  or in .jobsworth.yml:   rules: { concurrency-cancel-on-push-main: off }

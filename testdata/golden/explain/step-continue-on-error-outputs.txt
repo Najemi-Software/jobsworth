@@ -1,0 +1,11 @@
+.github/workflows/example.yml:10:14  note  step-continue-on-error-outputs
+  steps.t.outputs.v is consumed, but step 't' has continue-on-error: true and the consumer does not check its outcome; on failure the value is empty
+
+context:
+  expression     steps.t.outputs.v   at :10  (job build / step #2 / run)
+  step           job 'build' / step #2                at :10   run:
+  triggers       push
+
+suppress:
+  add on line 10:    # jobsworth-ignore step-continue-on-error-outputs
+  or in .jobsworth.yml:   rules: { step-continue-on-error-outputs: off }

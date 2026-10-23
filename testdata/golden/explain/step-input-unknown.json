@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-input-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 11,
+        "column": 17,
+        "message": "job 'build' step './.github/actions/greet' using ./.github/actions/greet: with.loud is supplied but the action declares no input \"loud\""
+      },
+      "context": {
+        "callee": {
+          "how": "local",
+          "name": "<ROOT>/.github/actions/greet/action.yml",
+          "ref": "./.github/actions/greet"
+        },
+        "callsite": {
+          "job": "build",
+          "line": 8,
+          "step": "'./.github/actions/greet'"
+        },
+        "checks": [
+          "name: declared",
+          "loud: UNKNOWN (nearest declared: name)"
+        ],
+        "declared": [
+          "name"
+        ],
+        "kind": "call",
+        "missing": null,
+        "required": [
+          "name"
+        ],
+        "supplied": [
+          {
+            "declared": true,
+            "expression": false,
+            "name": "name",
+            "value": "world"
+          },
+          {
+            "declared": false,
+            "expression": false,
+            "name": "loud",
+            "nearest": "name",
+            "value": "true"
+          }
+        ]
+      },
+      "suppress": {
+        "line": 11,
+        "comment": "# jobsworth-ignore step-input-unknown",
+        "config": {
+          "step-input-unknown": "off"
+        }
+      }
+    }
+  ]
+}

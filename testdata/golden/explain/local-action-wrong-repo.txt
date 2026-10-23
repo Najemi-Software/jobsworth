@@ -1,0 +1,11 @@
+.github/workflows/example.yml:10:15  warning  local-action-wrong-repo
+  step './.github/actions/notify' uses ./.github/actions/notify, which will be loaded from acme/shared (the root checkout), not from this repository
+
+context:
+  local action   ./.github/actions/notify             at :10  (job build / step './.github/actions/notify')
+  checkouts seen in job 'build', in order:
+    step #1   actions/checkout@v4                  root           repository: acme/shared   ← active root checkout
+
+suppress:
+  add on line 10:    # jobsworth-ignore local-action-wrong-repo
+  or in .jobsworth.yml:   rules: { local-action-wrong-repo: off }

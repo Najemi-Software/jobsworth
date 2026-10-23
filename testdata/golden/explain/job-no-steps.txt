@@ -1,0 +1,11 @@
+.github/workflows/example.yml:4:3  error  job-no-steps
+  job 'build' has neither steps: nor uses:; GitHub rejects the workflow
+
+context:
+  job            'build'                              at :4
+  runs-on        ubuntu-latest
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore job-no-steps
+  or in .jobsworth.yml:   rules: { job-no-steps: off }

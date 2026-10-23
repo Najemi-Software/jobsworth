@@ -1,0 +1,10 @@
+# expect: none
+name: Application keys that merely resemble runner names
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "MY_GITHUB_SHA=abc" >> "$GITHUB_ENV"
+          echo "CI_LEVEL=2" >> "$GITHUB_ENV"

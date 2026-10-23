@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:13  warning  if-always-false
+  job 'build' step #1 has a condition that is false for every value (github.ref == 'refs/heads/main' && github.ref == 'refs/heads/dev'); it never runs
+
+context:
+  expression     github.ref == 'refs/heads/main' && github.ref == 'refs/heads/dev'   at :8  (job build / step #1 / if)
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore if-always-false
+  or in .jobsworth.yml:   rules: { if-always-false: off }

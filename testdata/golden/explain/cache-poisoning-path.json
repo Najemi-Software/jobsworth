@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "cache-poisoning-path",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 12,
+        "column": 16,
+        "message": "cache key includes github.head_ref on a privileged trigger; a pull request can poison the cache that later runs restore"
+      },
+      "context": {
+        "expression": "github.head_ref",
+        "kind": "security",
+        "site": "job build / step 'actions/cache@v4' / key",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 9,
+          "uses": "actions/cache@v4"
+        },
+        "triggers": [
+          "pull_request_target"
+        ]
+      },
+      "suppress": {
+        "line": 12,
+        "comment": "# jobsworth-ignore cache-poisoning-path",
+        "config": {
+          "cache-poisoning-path": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+# expect: warning bash-output-unredirected "without redirecting"
+# expect: error step-output-unwritten
+name: Printf of a referenced key with no redirect
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: printf 'version=%s\n' 1
+      - run: echo ${{ steps.meta.outputs.version }}

@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:15  error  prt-untrusted-checkout-and-run
+  job 'build' checks out github.event.pull_request.head.sha on pull_request_target and step #2 then runs code from the checked-out tree; attacker code runs with the base repo's secrets and a write token
+
+context:
+  step           job 'build' / step #1                at :9   uses: actions/checkout@v4
+  triggers       pull_request_target
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore prt-untrusted-checkout-and-run
+  or in .jobsworth.yml:   rules: { prt-untrusted-checkout-and-run: off }

@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "matrix-exclude-no-match",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 9,
+        "message": "job 'build' matrix exclude #1 {os: macos-latest} matches no combination"
+      },
+      "context": {
+        "kind": "shape"
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore matrix-exclude-no-match",
+        "config": {
+          "matrix-exclude-no-match": "off"
+        }
+      }
+    }
+  ]
+}

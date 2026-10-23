@@ -1,0 +1,9 @@
+# expect: none
+name: A literal forwarded through the same chain is safe
+on: issue_comment
+permissions: read-all
+jobs:
+  call:
+    uses: ./.github/workflows/forward.yml
+    with:
+      title: release notes

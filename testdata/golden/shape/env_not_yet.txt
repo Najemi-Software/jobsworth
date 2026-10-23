@@ -1,0 +1,6 @@
+env.VERSION
+  = Any
+
+why:
+  env.VERSION
+    opaque: .VERSION: 'VERSION' is not among the known fields of an open object → Any

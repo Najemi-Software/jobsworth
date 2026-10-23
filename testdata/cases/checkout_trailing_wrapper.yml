@@ -1,0 +1,10 @@
+# expect: note checkout-trailing
+name: A wrapper whose checkout is its last step, used as the job's last step
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make prep
+      - uses: acme/wrappers/checkout-cached@v1

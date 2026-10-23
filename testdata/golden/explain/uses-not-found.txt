@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:15  error  uses-not-found
+  local action "./.github/actions/missing" not found under <ROOT>
+
+context:
+  reference      ./.github/actions/missing            at :8
+  resolution     failed: local action "./.github/actions/missing" not found under <ROOT>
+  api calls      none (served from cache, linked, skipped, or offline)
+  token source   JOBSWORTH_TOKEN
+
+suppress:
+  add on line 8:    # jobsworth-ignore uses-not-found
+  or in .jobsworth.yml:   rules: { uses-not-found: off }

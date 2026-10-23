@@ -1,0 +1,4 @@
+.github/workflows/note.yml  (workflow, entry)
+└─ job build / step #1 → ${{ matrix.action }}  (unresolved: dynamic reference)
+
+2 nodes: 1 entry, 1 unresolved

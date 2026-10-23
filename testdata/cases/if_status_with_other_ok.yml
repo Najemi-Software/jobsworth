@@ -1,0 +1,12 @@
+# expect: none
+name: always() alone, or !cancelled() combined
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+      - if: always()
+        run: echo a
+      - if: "!cancelled() && github.ref == 'refs/heads/main'"
+        run: echo b

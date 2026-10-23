@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "output-unused",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 7,
+        "message": "job 'build' declares output 'sha' but nothing references it"
+      },
+      "context": {
+        "consumers": [
+          "needs.build.outputs.version at :15"
+        ],
+        "kind": "jobs"
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore output-unused",
+        "config": {
+          "output-unused": "off"
+        }
+      }
+    }
+  ]
+}

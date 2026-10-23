@@ -1,0 +1,13 @@
+# expect: error step-output-unwritten "run-d"
+# expect: note step-output-unused x3
+name: A key outside the loop's literal items is still unwritten
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: gen
+        run: |
+          for k in a b c; do echo "run-$k=1" >> "$GITHUB_OUTPUT"; done
+      - run: echo ${{ steps.gen.outputs.run-d }}

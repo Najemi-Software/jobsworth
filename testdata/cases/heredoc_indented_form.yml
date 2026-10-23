@@ -1,0 +1,14 @@
+# config: rules: { heredoc-indented-form: note }
+# expect: note heredoc-indented-form "<<-"
+name: The <<- form with the rule enabled
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: notes
+        run: |
+          echo "body<<-EOF" >> "$GITHUB_OUTPUT"
+          echo "line" >> "$GITHUB_OUTPUT"
+          echo "EOF" >> "$GITHUB_OUTPUT"
+      - run: echo "${{ steps.notes.outputs.body }}"

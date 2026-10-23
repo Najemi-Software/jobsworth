@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "local-action-sparse-miss",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 11,
+        "column": 15,
+        "message": "step './.github/actions/greet' uses ./.github/actions/greet but the root checkout's sparse-checkout list (src) does not cover it"
+      },
+      "context": {
+        "action": {
+          "job": "build",
+          "line": 11,
+          "step": "'./.github/actions/greet'",
+          "uses": "./.github/actions/greet"
+        },
+        "checkouts": [
+          {
+            "active": true,
+            "line": 7,
+            "path": "",
+            "repository": "",
+            "target": "root",
+            "uses": "actions/checkout@v4"
+          }
+        ],
+        "conclusion": "action path '.github/actions/greet' is not covered: 'src' does not cover it.",
+        "kind": "checkout",
+        "sparse": {
+          "covered": false,
+          "entries": [
+            "src"
+          ]
+        }
+      },
+      "suppress": {
+        "line": 11,
+        "comment": "# jobsworth-ignore local-action-sparse-miss",
+        "config": {
+          "local-action-sparse-miss": "off"
+        }
+      }
+    }
+  ]
+}

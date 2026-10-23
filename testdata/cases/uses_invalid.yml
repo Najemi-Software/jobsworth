@@ -1,0 +1,14 @@
+# expect: error uses-no-ref "no @ref"
+# expect: error uses-invalid "must reference a reusable workflow"
+# expect: error uses-invalid "must reference an action"
+# expect: error local-action-no-checkout
+name: External reference without a ref, and kind mismatches
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout
+      - uses: ./.github/workflows/reusable.yml
+  b:
+    uses: ./.github/actions/greet

@@ -1,0 +1,11 @@
+# expect: none
+name: Required inputs supplied; defaults cover the rest
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/typed
+        with:
+          count: 2

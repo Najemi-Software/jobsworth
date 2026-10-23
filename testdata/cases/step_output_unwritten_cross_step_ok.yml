@@ -1,0 +1,17 @@
+# expect: none
+# shape: --at build 'steps.out.outputs.release' => String ∈ {1}
+name: A variable set in an earlier step through GITHUB_ENV names the key in a later one
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      FROM_ENV: static
+    steps:
+      - run: echo "KEY=release" >> "$GITHUB_ENV"
+      - id: out
+        run: |
+          echo "$KEY=1" >> "$GITHUB_OUTPUT"
+          echo "$FROM_ENV=2" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.out.outputs.release }} ${{ steps.out.outputs.static }}

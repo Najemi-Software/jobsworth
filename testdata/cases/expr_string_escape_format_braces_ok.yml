@@ -1,0 +1,15 @@
+# expect: none
+name: Escaped braces inside a format string do not end the expression
+on:
+  workflow_call:
+    inputs:
+      runner:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include: ${{ fromJSON(format('[{{"arch":"amd64","runner":"{0}"}}]', inputs.runner)) }}
+    steps:
+      - run: echo ${{ matrix.arch }} ${{ format('it''s {0}', 'x') }} ${{ matrix.runner }}

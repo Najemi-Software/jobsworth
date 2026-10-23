@@ -1,0 +1,34 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "uses-dynamic",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 15,
+        "message": "uses: \"${{ matrix.action }}\" is dynamic and cannot be followed"
+      },
+      "context": {
+        "api_calls": null,
+        "kind": "fetch",
+        "reference": "${{ matrix.action }}",
+        "resolution": {
+          "error": "uses: \"${{ matrix.action }}\" is dynamic and cannot be followed",
+          "how": "dynamic",
+          "name": ""
+        },
+        "token_source": "JOBSWORTH_TOKEN"
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore uses-dynamic",
+        "config": {
+          "uses-dynamic": "off"
+        }
+      }
+    }
+  ]
+}

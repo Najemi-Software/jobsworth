@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:14  warning  bash-output-unredirected
+  step 'meta' echoes "version=..." without redirecting to $GITHUB_OUTPUT, but steps.meta.outputs.version is referenced
+
+context:
+  step           'meta'                               run: at :8   shell: bash (runner default)
+  script analysed as bash, 1 statements:
+    :8     echo "version=1"                               echo, NO REDIRECT   ← key 'version' echoed here, not redirected
+  GITHUB_OUTPUT target: closed   keys written: none
+
+suppress:
+  add on line 8:    # jobsworth-ignore bash-output-unredirected
+  or in .jobsworth.yml:   rules: { bash-output-unredirected: off }

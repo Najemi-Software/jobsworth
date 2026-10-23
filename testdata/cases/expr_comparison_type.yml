@@ -1,0 +1,15 @@
+# expect: warning expr-comparison-type "non-numeric string 'many'"
+# expect: warning expr-comparison-type "boolean"
+name: Comparisons that can never match
+on:
+  workflow_call:
+    inputs:
+      count:
+        type: number
+      flag:
+        type: boolean
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.count == 'many' }} ${{ inputs.flag == 'yes' }}

@@ -1,0 +1,9 @@
+# config: rules: { job-timeout-missing: note }
+# expect: note job-timeout-missing
+name: Example
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

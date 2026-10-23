@@ -1,0 +1,9 @@
+.github/workflows/example.yml:2:5  warning  prt-no-permissions
+  workflow runs on pull_request_target with a write token and declares no permissions: block; set the least privilege it needs
+
+context:
+  triggers       pull_request_target
+
+suppress:
+  add on line 2:    # jobsworth-ignore prt-no-permissions
+  or in .jobsworth.yml:   rules: { prt-no-permissions: off }

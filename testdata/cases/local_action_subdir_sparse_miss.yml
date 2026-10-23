@@ -1,0 +1,15 @@
+# expect: error local-action-sparse-miss "checkout into src"
+name: A subdirectory checkout's sparse list is checked against the path inside it
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+          sparse-checkout: |
+            docs
+      - uses: ./src/.github/actions/greet
+        with:
+          name: world

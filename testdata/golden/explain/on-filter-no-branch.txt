@@ -1,0 +1,10 @@
+.github/workflows/example.yml:4:16  note  on-filter-no-branch
+  on.push.branches names "release", which example/app does not have
+
+context:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 4:    # jobsworth-ignore on-filter-no-branch
+  or in .jobsworth.yml:   rules: { on-filter-no-branch: off }

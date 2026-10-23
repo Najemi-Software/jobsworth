@@ -1,0 +1,12 @@
+.github/workflows/example.yml:9:9  error  input-undeclared
+  inputs.dry_run is referenced but input 'dry_run' is not declared
+
+context:
+  declared       workflow_call:     env (:5)
+  reference      inputs.dry_run   at :9  (job deploy / if)
+  nearest        env
+  conclusion: 'dry_run' is not declared; nearest declared input is 'env'.
+
+suppress:
+  add on line 9:    # jobsworth-ignore input-undeclared
+  or in .jobsworth.yml:   rules: { input-undeclared: off }

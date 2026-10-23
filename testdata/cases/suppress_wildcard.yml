@@ -1,0 +1,9 @@
+# expect: note suppress-wildcard
+name: Wildcard suppression hides everything on the line and is noted
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: [ nope, a ]  # jobsworth-ignore *
+    steps:
+      - run: echo ok

@@ -1,0 +1,9 @@
+# expect: none
+name: A dual-trigger callee can be dispatched by hand with the other boolean value
+on: push
+permissions: read-all
+jobs:
+  call:
+    uses: ./.github/workflows/dual-gated.yml
+    with:
+      flag: true

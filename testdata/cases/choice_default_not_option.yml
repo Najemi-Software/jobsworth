@@ -1,0 +1,12 @@
+# expect: error choice-default-not-option "not one of its options"
+name: Choice default outside options
+on:
+  workflow_dispatch:
+    inputs:
+      level: { type: choice, options: [ low, high ], default: medium }
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: inputs.level == 'high'
+    steps:
+      - run: echo ok

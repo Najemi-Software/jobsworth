@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "checkout-redundant",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 15,
+        "message": "checkout 'actions/checkout@v4' repeats step #1's checkout of the same repository and ref to the root; the first already provides everything this one does"
+      },
+      "context": {
+        "kind": "performance",
+        "step": {
+          "id": "",
+          "index": 2,
+          "job": "build",
+          "line": 10,
+          "uses": "actions/checkout@v4"
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore checkout-redundant",
+        "config": {
+          "checkout-redundant": "off"
+        }
+      }
+    }
+  ]
+}

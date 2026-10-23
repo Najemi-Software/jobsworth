@@ -1,0 +1,11 @@
+# expect: none
+name: jq filters that parse, including flags, defs, and interpolation
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          jq -r --arg v "$V" '.items[] | select(.name == $v) | "\(.id): \(.tag)"' data.json
+          jq -n 'def f: .a; {x: 1} | f'
+          jq "$DYNAMIC" data.json

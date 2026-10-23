@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "if-string-compare-bool",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 10,
+        "column": 13,
+        "message": "steps.x.outputs.flag is a string, and 'true' == true is false; compare with the string literal 'true'"
+      },
+      "context": {
+        "expression": "steps.x.outputs.flag == true",
+        "kind": "condition",
+        "site": "job build / step #2 / if",
+        "step": {
+          "id": "",
+          "index": 1,
+          "job": "build",
+          "line": 10,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 10,
+        "comment": "# jobsworth-ignore if-string-compare-bool",
+        "config": {
+          "if-string-compare-bool": "off"
+        }
+      }
+    }
+  ]
+}

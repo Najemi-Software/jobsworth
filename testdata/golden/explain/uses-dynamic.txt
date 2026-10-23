@@ -1,0 +1,12 @@
+.github/workflows/example.yml:10:15  note  uses-dynamic
+  uses: "${{ matrix.action }}" is dynamic and cannot be followed
+
+context:
+  reference      ${{ matrix.action }}                 at :10
+  resolution     dynamic: uses: "${{ matrix.action }}" is dynamic and cannot be followed
+  api calls      none (served from cache, linked, skipped, or offline)
+  token source   JOBSWORTH_TOKEN
+
+suppress:
+  add on line 10:    # jobsworth-ignore uses-dynamic
+  or in .jobsworth.yml:   rules: { uses-dynamic: off }

@@ -1,0 +1,14 @@
+# expect: none
+name: Example
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        exclude:
+          - os: windows-latest
+    steps:
+      - run: echo ${{ matrix.os }}

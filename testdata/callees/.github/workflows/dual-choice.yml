@@ -1,0 +1,20 @@
+name: Dual choice
+on:
+  workflow_call:
+    inputs:
+      level:
+        type: string
+        default: low
+  workflow_dispatch:
+    inputs:
+      level:
+        type: choice
+        options: [low, high]
+        default: low
+permissions: read-all
+jobs:
+  loud:
+    runs-on: ubuntu-latest
+    if: inputs.level == 'high'
+    steps:
+      - run: echo loud

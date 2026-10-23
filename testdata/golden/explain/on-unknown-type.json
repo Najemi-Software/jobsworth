@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "on-unknown-type",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 21,
+        "message": "on.pull_request.types: \"synchronise\" is not an activity type of pull_request (allowed: assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, synchronize, converted_to_draft, locked, unlocked, enqueued, dequeued, milestoned, demilestoned, ready_for_review, review_requested, review_request_removed, auto_merge_enabled, auto_merge_disabled); did you mean synchronize?; GitHub ignores it and the workflow never fires for the intended type"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "pull_request"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore on-unknown-type",
+        "config": {
+          "on-unknown-type": "off"
+        }
+      }
+    }
+  ]
+}

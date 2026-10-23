@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "if-always-false",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 13,
+        "message": "job 'build' step #1 has a condition that is false for every value (github.ref == 'refs/heads/main' \u0026\u0026 github.ref == 'refs/heads/dev'); it never runs"
+      },
+      "context": {
+        "expression": "github.ref == 'refs/heads/main' \u0026\u0026 github.ref == 'refs/heads/dev'",
+        "kind": "condition",
+        "site": "job build / step #1 / if",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 8,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore if-always-false",
+        "config": {
+          "if-always-false": "off"
+        }
+      }
+    }
+  ]
+}

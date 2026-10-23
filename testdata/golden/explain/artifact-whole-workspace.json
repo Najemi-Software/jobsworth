@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "artifact-whole-workspace",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 12,
+        "column": 17,
+        "message": "step 'actions/upload-artifact@v4' uploads the whole workspace (path: .); name the files the artifact needs"
+      },
+      "context": {
+        "kind": "performance",
+        "step": {
+          "id": "",
+          "index": 2,
+          "job": "build",
+          "line": 10,
+          "uses": "actions/upload-artifact@v4"
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 12,
+        "comment": "# jobsworth-ignore artifact-whole-workspace",
+        "config": {
+          "artifact-whole-workspace": "off"
+        }
+      }
+    }
+  ]
+}

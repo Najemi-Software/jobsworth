@@ -1,0 +1,14 @@
+# expect: none
+name: A root checkout alongside subdirectory checkouts
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: other
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/greet
+        with:
+          name: world

@@ -1,0 +1,15 @@
+# config: bash: { runner_commands: [mytool] }
+# expect: none
+name: A script argument or a configured runner opens the output target
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: a
+        run: hyperfine --runs 1 python bench.py
+      - id: b
+        run: ourwrap scripts/emit.py --github-output
+      - id: c
+        run: mytool build
+      - run: echo ${{ steps.a.outputs.mean }} ${{ steps.b.outputs.sha }} ${{ steps.c.outputs.artifact }}

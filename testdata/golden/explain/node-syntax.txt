@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:14  warning  node-syntax
+  step #1: node does not parse the script: SyntaxError: Unexpected token '('
+
+context:
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore node-syntax
+  or in .jobsworth.yml:   rules: { node-syntax: off }

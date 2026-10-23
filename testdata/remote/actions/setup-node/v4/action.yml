@@ -1,0 +1,10 @@
+name: Setup Node
+description: Example
+inputs:
+  node-version:
+    required: false
+  cache:
+    required: false
+runs:
+  using: node20
+  main: dist/index.js

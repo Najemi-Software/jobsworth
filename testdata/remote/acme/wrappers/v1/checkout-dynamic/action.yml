@@ -1,0 +1,12 @@
+name: Dynamic checkout
+description: Example
+inputs:
+  p:
+    description: prefix
+    default: work
+runs:
+  using: composite
+  steps:
+    - uses: actions/checkout@v4
+      with:
+        path: ${{ format('{0}/x', inputs.p) }}

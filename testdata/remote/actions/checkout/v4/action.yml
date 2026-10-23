@@ -1,0 +1,23 @@
+description: Example
+name: Checkout
+inputs:
+  persist-credentials:
+    required: false
+  repository:
+    default: ${{ github.repository }}
+  ref:
+    description: ref
+  path:
+    description: relative path
+  sparse-checkout:
+    description: sparse list
+  sparse-checkout-cone-mode:
+    default: true
+  token:
+    default: ${{ github.token }}
+outputs:
+  ref:
+    description: the ref
+runs:
+  using: node20
+  main: dist/index.js

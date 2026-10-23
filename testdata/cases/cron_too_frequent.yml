@@ -1,0 +1,10 @@
+# expect: warning cron-too-frequent
+name: cron-too-frequent flagged
+on:
+  schedule:
+    - cron: '*/2 * * * *'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "if-status-with-other",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 13,
+        "message": "if: combines always() with \u0026\u0026 so the step still runs on cancel; use !cancelled() instead of always()"
+      },
+      "context": {
+        "expression": "always() \u0026\u0026 github.ref == 'refs/heads/main'",
+        "kind": "values"
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore if-status-with-other",
+        "config": {
+          "if-status-with-other": "off"
+        }
+      }
+    }
+  ]
+}

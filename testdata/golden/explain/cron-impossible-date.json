@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "cron-impossible-date",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 13,
+        "message": "cron \"0 0 31 2 *\" names a day of month that no listed month has; it never fires"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "schedule"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore cron-impossible-date",
+        "config": {
+          "cron-impossible-date": "off"
+        }
+      }
+    }
+  ]
+}

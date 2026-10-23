@@ -1,0 +1,9 @@
+.github/workflows/ci.yml  job 'build'
+checkouts seen in job 'build', in order:
+  step #1   acme/wrappers/checkout-cached@v1     root           sparse: []   ← active root checkout
+           via actions/checkout@v4 at its step 2
+           path:         caller's with.path             (inputs.path, default '')
+           repository:   caller's with.repository       (inputs.repository, default github.repository)
+           ref:          caller's with.ref              (inputs.ref, default '')
+           sparse:       caller's with.sparse-checkout  (inputs.sparse-checkout, default '')
+at the end of the job: root checkout from step #1 (acme/wrappers/checkout-cached@v1)

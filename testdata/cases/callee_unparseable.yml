@@ -1,0 +1,6 @@
+# expect: error callee-unparseable "cannot parse"
+name: Malformed callee YAML is attributed to the callee
+on: push
+jobs:
+  a:
+    uses: ./.github/workflows/broken.yml

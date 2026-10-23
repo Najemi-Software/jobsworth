@@ -1,0 +1,12 @@
+# expect: warning input-unused "'verbose'"
+name: Declared input is never referenced
+on:
+  workflow_call:
+    inputs:
+      env: { type: string }
+      verbose: { type: boolean }
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ inputs.env }}

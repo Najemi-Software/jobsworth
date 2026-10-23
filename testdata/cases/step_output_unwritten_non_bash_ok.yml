@@ -1,0 +1,14 @@
+# expect: none
+name: Non-bash shells are not analysed
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: ps
+        shell: pwsh
+        run: Write-Output "x=1"
+      - id: py
+        shell: python
+        run: print("y=1")
+      - run: echo ${{ steps.ps.outputs.x }} ${{ steps.py.outputs.y }}

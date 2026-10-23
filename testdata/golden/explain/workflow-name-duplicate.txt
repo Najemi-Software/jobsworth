@@ -1,0 +1,9 @@
+.github/workflows/example.yml:1:7  note  workflow-name-duplicate
+  workflow name "Choosy" is also used by .github/workflows/choosy.yml; the Actions tab cannot tell them apart
+
+context:
+  triggers       push
+
+suppress:
+  add on line 1:    # jobsworth-ignore workflow-name-duplicate
+  or in .jobsworth.yml:   rules: { workflow-name-duplicate: off }

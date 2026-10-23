@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "fromjson-non-string",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "fromJSON of a value that is already object{a} (from fromJSON literal)"
+      },
+      "context": {
+        "expression": "fromJSON(fromJSON('{\"a\":1}')).a",
+        "kind": "shape"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore fromjson-non-string",
+        "config": {
+          "fromjson-non-string": "off"
+        }
+      }
+    }
+  ]
+}

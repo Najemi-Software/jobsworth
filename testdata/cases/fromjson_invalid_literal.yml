@@ -1,0 +1,9 @@
+# expect: error fromjson-invalid-literal "not valid JSON"
+name: fromJSON of a broken literal
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "${{ fromJSON('{version: 1}').version }}"

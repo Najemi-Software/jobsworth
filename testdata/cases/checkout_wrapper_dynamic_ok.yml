@@ -1,0 +1,12 @@
+# expect: none
+name: A wrapper with a dynamic path makes the checkout state unknown, so nothing is reported
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/wrappers/checkout-dynamic@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

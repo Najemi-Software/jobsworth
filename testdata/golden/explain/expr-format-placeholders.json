@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "expr-format-placeholders",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "format(): placeholder {2} has no argument (2 argument(s) given)"
+      },
+      "context": {
+        "expression": "format('{0} and {2}', github.sha, github.ref)",
+        "kind": "expression",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore expr-format-placeholders",
+        "config": {
+          "expr-format-placeholders": "off"
+        }
+      }
+    }
+  ]
+}

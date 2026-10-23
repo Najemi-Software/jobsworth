@@ -1,0 +1,10 @@
+.github/workflows/example.yml:6:13  error  needs-self
+  job 'build' lists itself in needs
+
+context:
+  job 'build'   needs 'build'   at :6
+  jobs in file:  [build]
+
+suppress:
+  add on line 6:    # jobsworth-ignore needs-self
+  or in .jobsworth.yml:   rules: { needs-self: off }

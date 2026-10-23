@@ -1,0 +1,9 @@
+.github/workflows/example.yml:4:1  warning  suppress-unclosed
+  jobsworth-ignore-start has no matching jobsworth-ignore-end; runs to end of file
+
+context:
+  directive      jobsworth-ignore-start needs-unknown   at :4   applies to lines 4-10
+
+suppress:
+  add on line 4:    # jobsworth-ignore suppress-unclosed
+  or in .jobsworth.yml:   rules: { suppress-unclosed: off }

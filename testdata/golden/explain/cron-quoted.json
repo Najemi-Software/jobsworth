@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "cron-quoted",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 13,
+        "message": "cron 0 0 * * * is not quoted; `* * * * *` would not parse as YAML, quoting is the convention"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "schedule"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore cron-quoted",
+        "config": {
+          "cron-quoted": "off"
+        }
+      }
+    }
+  ]
+}

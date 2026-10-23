@@ -1,0 +1,12 @@
+.github/workflows/example.yml:6:15  warning  self-hosted-pr-trigger
+  job 'build' runs on a self-hosted runner for pull_request without a branches: restriction; pull requests from forks execute on that machine
+
+context:
+  job            'build'                              at :5
+  runs-on        self-hosted, linux
+  triggers       pull_request
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 6:    # jobsworth-ignore self-hosted-pr-trigger
+  or in .jobsworth.yml:   rules: { self-hosted-pr-trigger: off }

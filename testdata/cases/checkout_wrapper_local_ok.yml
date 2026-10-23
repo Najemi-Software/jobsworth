@@ -1,0 +1,15 @@
+# expect: none
+name: A local composite wrapper counts once the repository is checked out
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/checkout-cached
+        with:
+          path: again
+      - uses: ./again/.github/actions/greet
+        with:
+          name: world

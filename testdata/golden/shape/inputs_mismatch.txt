@@ -1,0 +1,12 @@
+fromJSON(inputs.cfg).replicas.count
+  ✗ field "count" not in object (declared: min)
+    at: .replicas
+    shape there: Object{min: Number}
+
+why:
+  inputs.cfg
+    declared on.workflow_call.inputs.cfg: type: string (line 5)
+    default on inputs.cfg: {"replicas": {"min": 0}} (parsed as JSON) (line 7)
+    no callers found in entry or linked repos supplying JSON
+  fromJSON(String ⊂ JSON → X) = X
+  .replicas → Object{min: Number}

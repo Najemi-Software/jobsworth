@@ -1,0 +1,71 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-input-choice",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 11,
+        "column": 18,
+        "message": "job 'build' step './.github/actions/typed' using ./.github/actions/typed: with.level is \"medium\" but the input declares type choice (expected one of the declared options (low, high))"
+      },
+      "context": {
+        "callee": {
+          "how": "local",
+          "name": "<ROOT>/.github/actions/typed/action.yml",
+          "ref": "./.github/actions/typed"
+        },
+        "callsite": {
+          "job": "build",
+          "line": 8,
+          "step": "'./.github/actions/typed'"
+        },
+        "checks": [
+          "count: declared, int literal fits type number",
+          "level: declared, str literal \"medium\" does not fit type choice (expected one of the declared options (low, high))"
+        ],
+        "declared": [
+          "count (number)",
+          "level (choice)"
+        ],
+        "kind": "call",
+        "missing": null,
+        "required": [
+          "count"
+        ],
+        "supplied": [
+          {
+            "declared": true,
+            "expression": false,
+            "kind": "int",
+            "name": "count",
+            "type": "number",
+            "value": "1"
+          },
+          {
+            "declared": true,
+            "expected": "one of the declared options (low, high)",
+            "expression": false,
+            "kind": "str",
+            "name": "level",
+            "options": [
+              "low",
+              "high"
+            ],
+            "type": "choice",
+            "value": "medium"
+          }
+        ]
+      },
+      "suppress": {
+        "line": 11,
+        "comment": "# jobsworth-ignore step-input-choice",
+        "config": {
+          "step-input-choice": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# expect: none
+name: Example
+description: Example
+inputs:
+  who:
+    description: who to greet
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo ${{ inputs.who }}

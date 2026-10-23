@@ -1,0 +1,15 @@
+# expect: none
+name: inputs is available in concurrency at both levels
+on:
+  workflow_dispatch:
+    inputs:
+      env:
+        type: string
+concurrency: ${{ inputs.env }}-${{ github.ref }}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: deploy-${{ inputs.env }}
+    steps:
+      - run: echo ${{ inputs.env }}

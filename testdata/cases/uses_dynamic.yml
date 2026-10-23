@@ -1,0 +1,11 @@
+# expect: note uses-dynamic "dynamic"
+name: Dynamic uses is noted and not followed
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        action: [ actions/checkout@v4 ]
+    steps:
+      - uses: ${{ matrix.action }}

@@ -1,0 +1,13 @@
+FAIL .github/workflows/fail.yml
+  .github/workflows/fail.yml:13:21  error  needs-unknown
+    job 'deploy' needs unknown job 'nope'
+  .github/workflows/fail.yml:15:14  error  needs-output-undeclared
+    job 'deploy' references needs.build.outputs.sha, but job 'build' declares no output 'sha'
+  .github/workflows/fail.yml:7:7  warning  output-unused
+    job 'build' declares output 'version' but nothing references it
+
+OK   .github/workflows/ok.yml
+  .github/workflows/ok.yml:7:15  note  checkout-unused
+    checkout 'actions/checkout@v4' is followed only by steps that do not touch the filesystem; drop it and save the clone
+
+2 entries, 1 failed, 2 errors, 1 warning, 1 note

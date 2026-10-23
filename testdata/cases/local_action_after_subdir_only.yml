@@ -1,0 +1,13 @@
+# expect: error local-action-after-subdir-only "path:"
+name: Only a subdirectory checkout before the local action
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: src
+      - uses: ./.github/actions/greet
+        with:
+          name: world

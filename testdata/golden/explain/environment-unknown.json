@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "environment-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 18,
+        "message": "job 'build' names environment \"prodution\", which example/app does not have"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": [
+          "ubuntu-latest"
+        ],
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore environment-unknown",
+        "config": {
+          "environment-unknown": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+# expect: note if-literal-false
+name: Example
+on: push
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    if: false
+    steps:
+      - run: echo gate
+  build:
+    runs-on: ubuntu-latest
+    needs: gate
+    if: always()
+    steps:
+      - run: echo hi

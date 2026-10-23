@@ -1,0 +1,19 @@
+# expect: warning injection-run "needs.meta.outputs.title"
+name: A job output carrying a tainted step output is untrusted in a dependant job
+on: issues
+permissions: read-all
+jobs:
+  meta:
+    runs-on: ubuntu-latest
+    outputs:
+      title: ${{ steps.t.outputs.title }}
+    steps:
+      - id: t
+        env:
+          TITLE: ${{ github.event.issue.title }}
+        run: echo "title=$TITLE" >> "$GITHUB_OUTPUT"
+  build:
+    runs-on: ubuntu-latest
+    needs: meta
+    steps:
+      - run: echo "${{ needs.meta.outputs.title }}"

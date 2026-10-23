@@ -1,0 +1,11 @@
+# expect: error step-no-action
+# expect: error step-output-not-run "neither run: nor uses:"
+name: Reference to a malformed step
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        name: nothing here
+      - run: echo ${{ steps.meta.outputs.version }}

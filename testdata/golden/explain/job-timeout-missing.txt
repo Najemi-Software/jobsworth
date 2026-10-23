@@ -1,0 +1,11 @@
+.github/workflows/example.yml:4:3  note  job-timeout-missing
+  job 'build' has no timeout-minutes:; the default is 360
+
+context:
+  job            'build'                              at :4
+  runs-on        ubuntu-latest
+  triggers       push
+
+suppress:
+  add on line 4:    # jobsworth-ignore job-timeout-missing
+  or in .jobsworth.yml:   rules: { job-timeout-missing: off }

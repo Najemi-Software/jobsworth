@@ -1,0 +1,23 @@
+# .jobsworth.yml — configuration for `jobsworth check`.
+# Every key is optional. Paths are relative to this file.
+schema: 1
+
+repos:
+  acme/tools: ../acme-tools  # detected: origin matches
+  # acme/forbidden: <path>   # referenced in 1 file, no local checkout found
+  # acme/nope: <path>        # referenced in 1 file, no local checkout found
+  # acme/shared: <path>      # referenced in 1 file, no local checkout found
+
+# skip:
+#   actions:
+#     - some-org/paid-action
+
+# 1 step uses a shell other than bash and will not be analysed by the bash rules.
+# bash:
+#   opaque_commands: []
+
+# rules:
+#   step-output-unused: off
+#   input-unused: warning
+
+# fail_on: warning

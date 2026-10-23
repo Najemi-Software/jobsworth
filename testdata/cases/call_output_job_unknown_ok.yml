@@ -1,0 +1,14 @@
+# expect: none
+name: Workflow output references an existing job output
+on:
+  workflow_call:
+    outputs:
+      v:
+        value: ${{ jobs.build.outputs.version }}
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      version: x
+    steps:
+      - run: echo ok

@@ -1,0 +1,23 @@
+name: jobsworth
+
+on:
+  pull_request:
+    paths:
+      - '.github/**'
+      - '.jobsworth.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: najemi-software/jobsworth-action@b860e9384edd5578593486c8d17a984176b39587 # v0, the release matching this binary (v0.1.0)
+        with:
+          # Needed to fetch private reusable workflows and actions.
+          # The default GITHUB_TOKEN only reads the current repo.
+          # Detected private repos: acme/tools. GITHUB_TOKEN cannot fetch them;
+          # use a PAT or a GitHub App token with read access to those repos.
+          token: ${{ secrets.GITHUB_TOKEN }}

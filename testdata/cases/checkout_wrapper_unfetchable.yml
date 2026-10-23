@@ -1,0 +1,12 @@
+# expect: warning fetch-failed
+name: A step whose action could not be fetched might be a checkout; later local actions are not reported
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/forbidden/checkout@v1
+      - uses: ./.github/actions/greet
+        with:
+          name: world

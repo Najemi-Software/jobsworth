@@ -1,0 +1,12 @@
+.github/workflows/example.yml:10:19  warning  injection-script
+  github.event.issue.title is interpolated into actions/github-script code; read it with core.getInput or from env: instead
+
+context:
+  expression     github.event.issue.title   at :10  (job build / step 'actions/github-script@v7' / script)
+  step           job 'build' / step #1                at :8   uses: actions/github-script@v7
+  triggers       issues
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 10:    # jobsworth-ignore injection-script
+  or in .jobsworth.yml:   rules: { injection-script: off }

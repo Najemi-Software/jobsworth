@@ -1,0 +1,10 @@
+# expect: none
+name: A suppression that suppresses something is silent
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: [ nope ]  # jobsworth-ignore needs-unknown
+    steps:
+      - run: echo ok

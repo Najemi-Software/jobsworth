@@ -1,0 +1,25 @@
+{
+  "root": "<ROOT>/v1",
+  "schema": 1,
+  "refs": 3,
+  "tags": 2,
+  "branches": 1,
+  "expired": 0,
+  "files": 3,
+  "size_bytes": 1428,
+  "shas": 3,
+  "unreferenced_shas": 0,
+  "unreferenced_bytes": 0,
+  "oldest_seconds": 180,
+  "newest_seconds": 180,
+  "other_schemas": [],
+  "last_run": {
+    "command": "check",
+    "at": "2026-10-21T12:00:00Z",
+    "hits": 39,
+    "misses": 2,
+    "stale": 3,
+    "api_calls": 5,
+    "fetched_bytes": 48120
+  }
+}

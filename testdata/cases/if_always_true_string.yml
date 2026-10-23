@@ -1,0 +1,10 @@
+# expect: error if-always-true-string "success"
+name: if with a bare word
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: make
+      - if: success
+        run: echo ok

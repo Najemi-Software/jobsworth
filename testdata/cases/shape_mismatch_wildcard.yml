@@ -1,0 +1,8 @@
+# expect: error shape-mismatch "on the elements of the array"
+name: A field after .* that the elements do not have
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ fromJSON('{"items":[{"id":1}]}').items.*.name }}

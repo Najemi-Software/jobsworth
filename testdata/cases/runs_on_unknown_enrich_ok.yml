@@ -1,0 +1,10 @@
+# enrich
+# expect: none
+name: A label the organisation's runners expose is not unknown
+on: push
+permissions: read-all
+jobs:
+  build:
+    runs-on: gpu
+    steps:
+      - run: echo hi

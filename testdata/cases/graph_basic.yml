@@ -1,0 +1,25 @@
+# expect: note uses-docker-unpinned
+# graph
+# config: skip: { actions: [hashicorp/vault-action] }
+# expect: note uses-dynamic
+# expect: warning fetch-failed "403"
+name: Every node source in one entry
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: greet
+        uses: ./.github/actions/greet
+        with:
+          name: world
+      - uses: ./.github/actions/nested
+      - uses: docker://alpine:3.19
+      - uses: ${{ matrix.action }}
+      - uses: hashicorp/vault-action@v3
+      - uses: acme/forbidden@v1
+  call:
+    uses: ./.github/workflows/reusable.yml
+    with:
+      env: prod

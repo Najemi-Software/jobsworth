@@ -1,0 +1,48 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "bash-output-read",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "step #1 reads $GITHUB_OUTPUT (cat); it is append-only and never holds other steps' outputs"
+      },
+      "context": {
+        "kind": "bash",
+        "statements": [
+          {
+            "class": "cat",
+            "definite": true,
+            "line": 7,
+            "text": "cat \"$GITHUB_OUTPUT\""
+          }
+        ],
+        "step": {
+          "id": "",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "targets": [
+          {
+            "keys": {},
+            "name": "GITHUB_OUTPUT",
+            "open": false,
+            "open_reason": ""
+          }
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore bash-output-read",
+        "config": {
+          "bash-output-read": "off"
+        }
+      }
+    }
+  ]
+}

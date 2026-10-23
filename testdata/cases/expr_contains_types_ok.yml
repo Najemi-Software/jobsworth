@@ -1,0 +1,9 @@
+# expect: none
+name: contains over a string
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ contains(github.ref, 'refs/tags') }}

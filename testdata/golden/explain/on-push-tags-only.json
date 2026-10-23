@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "on-push-tags-only",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 3,
+        "column": 3,
+        "message": "on.push has tags: but no branches:, so branch pushes no longer trigger this workflow; add branches: if both were meant"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 3,
+        "comment": "# jobsworth-ignore on-push-tags-only",
+        "config": {
+          "on-push-tags-only": "off"
+        }
+      }
+    }
+  ]
+}

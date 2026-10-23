@@ -1,0 +1,15 @@
+# expect: none
+name: Example
+on:
+  workflow_call:
+    outputs:
+      x:
+        value: ${{ jobs.a.outputs.x }}
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    outputs:
+      x: ${{ steps.s.outputs.x }}
+    steps:
+      - id: s
+        run: echo "x=1" >> "$GITHUB_OUTPUT"

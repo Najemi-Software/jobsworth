@@ -1,0 +1,10 @@
+# config: rules: { runs-on-group-and-labels: note }
+# expect: note runs-on-group-and-labels
+name: Example
+on: push
+jobs:
+  build:
+    runs-on:
+      group: big
+    steps:
+      - run: echo hi

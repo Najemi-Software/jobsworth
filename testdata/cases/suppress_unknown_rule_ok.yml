@@ -1,0 +1,10 @@
+# expect: none
+name: A correctly spelt suppression protects the line
+on: push
+permissions: read-all
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    needs: nope  # jobsworth-ignore needs-unknown
+    steps:
+      - run: echo ok

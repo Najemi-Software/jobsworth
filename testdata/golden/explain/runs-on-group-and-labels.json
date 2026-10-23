@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "runs-on-group-and-labels",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 6,
+        "column": 7,
+        "message": "job 'build' runs-on names a group with no labels:; fine, but often a leftover"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": null,
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore runs-on-group-and-labels",
+        "config": {
+          "runs-on-group-and-labels": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+# expect: note step-output-unused "sha"
+name: A written output nothing references
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: |
+          echo "version=1" >> "$GITHUB_OUTPUT"
+          echo "sha=abc" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.version }}

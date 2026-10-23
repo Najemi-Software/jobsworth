@@ -1,0 +1,14 @@
+# expect: none
+name: An open target accepts unknown keys
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: dyn
+        run: echo "$key=1" >> "$GITHUB_OUTPUT"
+      - id: script
+        run: ./scripts/emit.sh
+      - id: py
+        run: python -c "print('x=1')" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.dyn.outputs.a }} ${{ steps.script.outputs.b }} ${{ steps.py.outputs.c }}

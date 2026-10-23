@@ -1,0 +1,10 @@
+.github/workflows/example.yml:1:7  warning  name-expression
+  workflow name: contains ${{ }}, which is not evaluated there; the Actions tab shows it verbatim (run-name: does evaluate expressions)
+
+context:
+  expression     github.ref   at :1  (name)
+  triggers       push
+
+suppress:
+  add on line 1:    # jobsworth-ignore name-expression
+  or in .jobsworth.yml:   rules: { name-expression: off }

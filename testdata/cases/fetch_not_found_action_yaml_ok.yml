@@ -1,0 +1,8 @@
+# expect: none
+name: action.yaml fallback is accepted
+on: push
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: acme/yamlaction@v1

@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "checkout-ref-unresolvable",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 15,
+        "message": "checkout step 'actions/checkout@v4' uses an expression for ref:; nothing downstream can be verified against it"
+      },
+      "context": {
+        "action": {
+          "job": "build",
+          "line": 7,
+          "step": "'actions/checkout@v4'",
+          "uses": "actions/checkout@v4"
+        },
+        "checkouts": null,
+        "kind": "checkout"
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore checkout-ref-unresolvable",
+        "config": {
+          "checkout-ref-unresolvable": "off"
+        }
+      }
+    }
+  ]
+}

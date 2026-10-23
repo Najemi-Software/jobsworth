@@ -1,0 +1,9 @@
+# expect: none
+name: A checkout wrapper
+description: The caller's later steps read the tree, so a trailing checkout in a composite action is fine
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo preparing
+    - uses: actions/checkout@v4

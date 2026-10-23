@@ -1,0 +1,14 @@
+# expect: warning if-status-with-other
+name: A negated group mixing a status with something else still warns
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
+  retry:
+    runs-on: ubuntu-latest
+    needs: build
+    if: ${{ always() && !(needs.build.result == 'failure' && github.run_attempt < 3) }}
+    steps:
+      - run: echo ok

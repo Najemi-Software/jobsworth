@@ -1,0 +1,13 @@
+.github/workflows/example.yml:8:15  error  step-input-missing
+  job 'build' step './.github/actions/greet' using ./.github/actions/greet: required input "name" is not supplied
+
+context:
+  callsite       job build / step './.github/actions/greet' at :8
+  callee         <ROOT>/.github/actions/greet/action.yml local
+  supplied       none
+  declared       name   (1 inputs)
+  required       name   missing: name
+
+suppress:
+  add on line 8:    # jobsworth-ignore step-input-missing
+  or in .jobsworth.yml:   rules: { step-input-missing: off }

@@ -1,0 +1,12 @@
+# expect: none
+name: dispatch-input-limit passes
+on:
+  workflow_dispatch:
+    inputs:
+      a:
+        type: string
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi

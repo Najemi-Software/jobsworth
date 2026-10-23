@@ -1,0 +1,12 @@
+# expect: none
+name: Choice value within the options
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/typed
+        with:
+          count: 1
+          level: low

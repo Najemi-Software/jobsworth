@@ -1,0 +1,3 @@
+# expect: error file-invalid "not a workflow"
+name: Entry that is neither a workflow nor an action
+description: this file has no jobs and no runs block

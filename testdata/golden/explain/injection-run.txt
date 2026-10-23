@@ -1,0 +1,12 @@
+.github/workflows/example.yml:8:14  warning  injection-run
+  github.event.pull_request.title is interpolated into a run: script; an attacker controls it and quoting does not help. Put it in env: and read the variable in the script
+
+context:
+  expression     github.event.pull_request.title   at :8  (job build / step #1 / run)
+  step           job 'build' / step #1                at :8   run:
+  triggers       pull_request
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 8:    # jobsworth-ignore injection-run
+  or in .jobsworth.yml:   rules: { injection-run: off }

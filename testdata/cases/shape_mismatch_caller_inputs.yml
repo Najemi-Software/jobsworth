@@ -1,0 +1,8 @@
+# expect: error shape-mismatch "fromJSON(inputs.cfg).sha"
+name: A callee's fromJSON(inputs.x) is checked against what callers pass
+on: push
+jobs:
+  call:
+    uses: ./.github/workflows/jsonin.yml
+    with:
+      cfg: '{"version": "1"}'

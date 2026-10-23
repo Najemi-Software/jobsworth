@@ -1,0 +1,12 @@
+# expect: error step-id-duplicate "already used"
+name: Two steps share an id
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - id: meta
+        run: echo "a=1" >> "$GITHUB_OUTPUT"
+      - id: meta
+        run: echo "a=2" >> "$GITHUB_OUTPUT"
+      - run: echo ${{ steps.meta.outputs.a }}

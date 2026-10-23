@@ -1,0 +1,15 @@
+# expect: none
+name: always() with an or-group of status checks is still only status checks
+on: push
+jobs:
+  resolve-rc-version:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ok
+  deploy:
+    runs-on: ubuntu-latest
+    needs: resolve-rc-version
+    if: ${{ always() && (needs.resolve-rc-version.result == 'success' || needs.resolve-rc-version.result == 'skipped') }}
+    steps:
+      - if: always() && !(needs.resolve-rc-version.result == 'failure')
+        run: echo deploy

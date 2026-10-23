@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/actions/example/action.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "composite-shell-missing",
+        "file": "<ROOT>/.github/actions/example/action.yml",
+        "line": 6,
+        "column": 12,
+        "message": "composite step #1 has run: but no shell:; every composite run step must set one"
+      },
+      "context": {
+        "kind": "step",
+        "referenced_ids": null,
+        "step": {
+          "id": "",
+          "line": 6,
+          "shell": "",
+          "shell_source": "missing"
+        }
+      },
+      "suppress": {
+        "line": 6,
+        "comment": "# jobsworth-ignore composite-shell-missing",
+        "config": {
+          "composite-shell-missing": "off"
+        }
+      }
+    }
+  ]
+}

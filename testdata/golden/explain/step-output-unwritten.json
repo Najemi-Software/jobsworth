@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-output-unwritten",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 14,
+        "message": "steps.meta.outputs.version is referenced but step 'meta' never writes \"version\" to $GITHUB_OUTPUT (no $GITHUB_OUTPUT writes in the 1 statement analysed)"
+      },
+      "context": {
+        "conclusion": "'version' is not among the keys written; nothing is written to GITHUB_OUTPUT.",
+        "kind": "step-output",
+        "producer": {
+          "index": 0,
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default",
+          "step": "meta"
+        },
+        "reference": {
+          "field": "outputs",
+          "line": 9,
+          "output": "version",
+          "site": "job build / step #2 / run",
+          "step": "meta"
+        },
+        "see_also": [
+          {
+            "rule": "bash-output-unredirected",
+            "line": 8
+          }
+        ],
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 8,
+            "note": "key 'version' seen here, not written",
+            "relevant": true,
+            "text": "echo \"version=1.2.3\""
+          }
+        ],
+        "target": {
+          "keys": {},
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore step-output-unwritten",
+        "config": {
+          "step-output-unwritten": "off"
+        }
+      }
+    }
+  ]
+}

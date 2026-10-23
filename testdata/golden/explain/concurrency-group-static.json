@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "concurrency-group-static",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 3,
+        "column": 14,
+        "message": "workflow concurrency group \"ci\" has no expression, so every run across all branches queues behind or cancels every other; ${{ github.workflow }}-${{ github.ref }} is the usual group"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 3,
+        "comment": "# jobsworth-ignore concurrency-group-static",
+        "config": {
+          "concurrency-group-static": "off"
+        }
+      }
+    }
+  ]
+}

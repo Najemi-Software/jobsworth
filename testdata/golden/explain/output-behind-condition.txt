@@ -1,0 +1,12 @@
+.github/workflows/example.yml:17:14  note  output-behind-condition
+  needs.a.outputs.v comes from step 's', which has an if:; the value may be empty and nothing checks needs.a.result
+
+context:
+  expression     needs.a.outputs.v   at :17  (job b / step #1 / run)
+  step           job 'a' / step 's'                   at :10   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 17:    # jobsworth-ignore output-behind-condition
+  or in .jobsworth.yml:   rules: { output-behind-condition: off }

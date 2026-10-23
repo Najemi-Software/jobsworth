@@ -1,0 +1,11 @@
+# expect: error step-output-action-undeclared "declares no output"
+name: Reference to an output the action does not declare
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: meta
+        uses: ./.github/actions/meta
+      - run: echo ${{ steps.meta.outputs.sha }} ${{ steps.meta.outputs.version }}

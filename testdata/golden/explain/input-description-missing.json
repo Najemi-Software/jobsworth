@@ -1,0 +1,26 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/actions/example/action.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "input-description-missing",
+        "file": "<ROOT>/.github/actions/example/action.yml",
+        "line": 4,
+        "column": 3,
+        "message": "input 'who' has no description:"
+      },
+      "context": {
+        "kind": "structure"
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore input-description-missing",
+        "config": {
+          "input-description-missing": "off"
+        }
+      }
+    }
+  ]
+}

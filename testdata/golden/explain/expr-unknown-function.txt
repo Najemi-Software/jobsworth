@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  expr-unknown-function
+  formatt() is not a GitHub Actions expression function; did you mean format()?
+
+context:
+  expression     formatt('{0}', github.sha)   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore expr-unknown-function
+  or in .jobsworth.yml:   rules: { expr-unknown-function: off }

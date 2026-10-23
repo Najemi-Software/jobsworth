@@ -1,0 +1,12 @@
+name: JSON in
+on:
+  workflow_call:
+    inputs:
+      cfg:
+        type: string
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ fromJSON(inputs.cfg).version }} ${{ fromJSON(inputs.cfg).sha }}

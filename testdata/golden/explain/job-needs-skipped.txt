@@ -1,0 +1,11 @@
+.github/workflows/example.yml:12:12  note  job-needs-skipped
+  job 'build' needs 'gate', whose if: can be false; when 'gate' is skipped this job is skipped silently. Add always() or !cancelled() with a needs.gate.result check if it should run anyway
+
+context:
+  step           job 'gate' / step #1                 at :9   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 12:    # jobsworth-ignore job-needs-skipped
+  or in .jobsworth.yml:   rules: { job-needs-skipped: off }

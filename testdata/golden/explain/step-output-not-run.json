@@ -1,0 +1,40 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "step-output-not-run",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 9,
+        "column": 14,
+        "message": "steps.meta.outputs.version is referenced but step 'just a name' has neither run: nor uses:"
+      },
+      "context": {
+        "kind": "step-output",
+        "producer": {
+          "index": 0,
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default",
+          "step": "meta"
+        },
+        "reference": {
+          "field": "outputs",
+          "line": 9,
+          "output": "version",
+          "site": "job build / step #2 / run",
+          "step": "meta"
+        }
+      },
+      "suppress": {
+        "line": 9,
+        "comment": "# jobsworth-ignore step-output-not-run",
+        "config": {
+          "step-output-not-run": "off"
+        }
+      }
+    }
+  ]
+}

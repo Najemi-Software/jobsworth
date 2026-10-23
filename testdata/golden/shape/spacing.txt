@@ -1,0 +1,5 @@
+fromJSON(steps.build-clusters-matrix.outputs.canary)[0].cluster
+  = String
+
+accepted:
+  no member access accepted on String

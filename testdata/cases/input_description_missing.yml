@@ -1,0 +1,12 @@
+# config: rules: { input-description-missing: note }
+# expect: note input-description-missing
+name: Example
+description: Example
+inputs:
+  who:
+    required: true
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      run: echo ${{ inputs.who }}

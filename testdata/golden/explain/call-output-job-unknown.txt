@@ -1,0 +1,8 @@
+.github/workflows/example.yml:5:7  error  call-output-job-unknown
+  workflow output 'version' references jobs.biuld.outputs.version, but job 'biuld' does not exist
+
+context:
+
+suppress:
+  add on line 5:    # jobsworth-ignore call-output-job-unknown
+  or in .jobsworth.yml:   rules: { call-output-job-unknown: off }

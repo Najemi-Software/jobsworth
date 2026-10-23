@@ -1,0 +1,13 @@
+# expect: none
+name: Every declared input is referenced
+on:
+  workflow_call:
+    inputs:
+      env: { type: string }
+      verbose: { type: boolean }
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    if: inputs.verbose
+    steps:
+      - run: echo ${{ inputs['env'] }}

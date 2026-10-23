@@ -1,0 +1,8 @@
+name: Linked
+on: push
+jobs:
+  tool:
+    uses: acme/tools/.github/workflows/x.yml@v1
+    with:
+      tool: hammer
+permissions: read-all

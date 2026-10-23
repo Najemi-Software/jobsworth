@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "expr-string-escape",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 7,
+        "column": 14,
+        "message": "double-quoted strings are not valid in GitHub expressions; use single quotes ('...')"
+      },
+      "context": {
+        "expression": "github.ref == \"refs/heads/main\"",
+        "kind": "expression",
+        "site": "job build / step #1 / run",
+        "step": {
+          "id": "",
+          "index": 0,
+          "job": "build",
+          "line": 7,
+          "uses": ""
+        },
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 7,
+        "comment": "# jobsworth-ignore expr-string-escape",
+        "config": {
+          "expr-string-escape": "off"
+        }
+      }
+    }
+  ]
+}

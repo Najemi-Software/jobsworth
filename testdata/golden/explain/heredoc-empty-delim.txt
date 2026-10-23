@@ -1,0 +1,18 @@
+.github/workflows/example.yml:8:14  error  heredoc-empty-delim
+  step 'notes' writes body<< with no delimiter to $GITHUB_OUTPUT
+
+context:
+  step           'notes'                              run: at :8   shell: bash (runner default)
+  script analysed as bash, 2 statements:
+    :9     echo "body<<" >>"$GITHUB_OUTPUT"               echo, writes GITHUB_OUTPUT key 'body' (definite)
+    :10    echo "line" >>"$GITHUB_OUTPUT"                 echo to GITHUB_OUTPUT, no key
+  GITHUB_OUTPUT target: closed   keys written: body (def)
+  GITHUB_OUTPUT line stream:
+    :9     body<<                                         
+    :10    line                                           
+    heredoc body<< at :9  empty delimiter, 0 opaque value line(s)
+  GITHUB_ENV target: closed   keys written: none
+
+suppress:
+  add on line 8:    # jobsworth-ignore heredoc-empty-delim
+  or in .jobsworth.yml:   rules: { heredoc-empty-delim: off }

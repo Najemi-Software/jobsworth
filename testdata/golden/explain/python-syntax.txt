@@ -1,0 +1,11 @@
+.github/workflows/example.yml:9:14  warning  python-syntax
+  step #1: python does not parse the script (line 10): SyntaxError: invalid syntax (<unknown>, line 1)
+
+context:
+  step           job 'build' / step #1                at :8   run:
+  triggers       push
+  permissions    read-all (workflow)
+
+suppress:
+  add on line 9:    # jobsworth-ignore python-syntax
+  or in .jobsworth.yml:   rules: { python-syntax: off }

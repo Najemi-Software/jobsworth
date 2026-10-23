@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "note",
+        "rule": "step-output-unused",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 8,
+        "column": 14,
+        "message": "step 'meta' writes output \"sha\" (script line 2) but nothing references steps.meta.outputs.sha"
+      },
+      "context": {
+        "kind": "step",
+        "referenced_ids": [
+          "meta"
+        ],
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 9,
+            "redirect": "GITHUB_OUTPUT",
+            "text": "echo \"version=1\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "version"
+            ]
+          },
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 10,
+            "note": "named in the finding",
+            "redirect": "GITHUB_OUTPUT",
+            "relevant": true,
+            "text": "echo \"sha=abc\" \u003e\u003e\"$GITHUB_OUTPUT\"",
+            "writes": [
+              "sha"
+            ]
+          }
+        ],
+        "step": {
+          "id": "meta",
+          "line": 7,
+          "shell": "bash",
+          "shell_source": "runner default"
+        },
+        "target": {
+          "keys": {
+            "sha": "definite",
+            "version": "definite"
+          },
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 8,
+        "comment": "# jobsworth-ignore step-output-unused",
+        "config": {
+          "step-output-unused": "off"
+        }
+      }
+    }
+  ]
+}

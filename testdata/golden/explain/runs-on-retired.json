@@ -1,0 +1,33 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "runs-on-retired",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 5,
+        "column": 14,
+        "message": "runner label \"ubuntu-20.04\" was retired by GitHub on 2025-04-15; the job will never schedule"
+      },
+      "context": {
+        "job": "build",
+        "kind": "structure",
+        "runs_on": [
+          "ubuntu-20.04"
+        ],
+        "triggers": [
+          "push"
+        ]
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore runs-on-retired",
+        "config": {
+          "runs-on-retired": "off"
+        }
+      }
+    }
+  ]
+}

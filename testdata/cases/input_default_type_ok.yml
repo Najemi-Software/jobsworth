@@ -1,0 +1,18 @@
+# expect: none
+name: Defaults that fit their declared type
+on:
+  workflow_call:
+    inputs:
+      n: { type: number, default: 3 }
+      b: { type: boolean, default: true }
+      s: { type: string, default: 42 }
+      e: { type: number, default: "${{ github.run_number }}" }
+  workflow_dispatch:
+    inputs:
+      c: { type: choice, options: [ a, b ], default: b }
+jobs:
+  a:
+    runs-on: ubuntu-latest
+    if: inputs.n && inputs.b && inputs.c && inputs.s && inputs.e
+    steps:
+      - run: echo ok

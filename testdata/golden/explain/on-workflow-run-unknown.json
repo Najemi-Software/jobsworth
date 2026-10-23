@@ -1,0 +1,29 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/workflows/example.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "warning",
+        "rule": "on-workflow-run-unknown",
+        "file": "<ROOT>/.github/workflows/example.yml",
+        "line": 4,
+        "column": 17,
+        "message": "on.workflow_run.workflows names \"Nope\", but no workflow in this repository has that name:; did you mean \"Gated\"?"
+      },
+      "context": {
+        "kind": "trigger",
+        "triggers": [
+          "workflow_run"
+        ]
+      },
+      "suppress": {
+        "line": 4,
+        "comment": "# jobsworth-ignore on-workflow-run-unknown",
+        "config": {
+          "on-workflow-run-unknown": "off"
+        }
+      }
+    }
+  ]
+}

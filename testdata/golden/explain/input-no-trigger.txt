@@ -1,0 +1,11 @@
+.github/workflows/example.yml:7:14  error  input-no-trigger
+  inputs.name is referenced but the workflow has neither workflow_call nor workflow_dispatch; the inputs context is always empty
+
+context:
+  expression     inputs.name   at :7  (job build / step #1 / run)
+  step           job 'build' / step #1                at :7   run:
+  triggers       push
+
+suppress:
+  add on line 7:    # jobsworth-ignore input-no-trigger
+  or in .jobsworth.yml:   rules: { input-no-trigger: off }

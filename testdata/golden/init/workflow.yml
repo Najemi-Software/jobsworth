@@ -1,0 +1,26 @@
+schema: 1
+repos:
+  acme/tools: ../acme-tools
+
+# --- .github/workflows/jobsworth.yml ---
+name: jobsworth
+
+on:
+  pull_request:
+    paths:
+      - '.github/**'
+      - '.jobsworth.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: najemi-software/jobsworth-action@v0          # the release matching this binary (v0.1.0); pin to a commit SHA before merging
+        with:
+          # Needed to fetch private reusable workflows and actions.
+          # The default GITHUB_TOKEN only reads the current repo.
+          token: ${{ secrets.GITHUB_TOKEN }}

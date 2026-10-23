@@ -1,0 +1,9 @@
+.github/workflows/example.yml:8:13  warning  if-status-with-other
+  if: combines always() with && so the step still runs on cancel; use !cancelled() instead of always()
+
+context:
+  expression     always() && github.ref == 'refs/heads/main'   at :8  (job build / step #2 / if)
+
+suppress:
+  add on line 8:    # jobsworth-ignore if-status-with-other
+  or in .jobsworth.yml:   rules: { if-status-with-other: off }

@@ -1,0 +1,11 @@
+description: Example
+name: GitHub Script
+inputs:
+  script:
+    required: true
+outputs:
+  result:
+    description: the script's return value
+runs:
+  using: node20
+  main: dist/index.js

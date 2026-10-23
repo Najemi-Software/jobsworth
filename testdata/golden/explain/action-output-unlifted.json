@@ -1,0 +1,63 @@
+{
+  "schema": 1,
+  "file": "<ROOT>/.github/actions/example/action.yml",
+  "findings": [
+    {
+      "finding": {
+        "severity": "error",
+        "rule": "action-output-unlifted",
+        "file": "<ROOT>/.github/actions/example/action.yml",
+        "line": 5,
+        "column": 12,
+        "message": "steps.v.outputs.version is referenced but step 'v' never writes \"version\" to $GITHUB_OUTPUT (no $GITHUB_OUTPUT writes in the 1 statement analysed)"
+      },
+      "context": {
+        "conclusion": "'version' is not among the keys written; nothing is written to GITHUB_OUTPUT.",
+        "kind": "step-output",
+        "producer": {
+          "index": 0,
+          "line": 9,
+          "shell": "bash",
+          "shell_source": "step",
+          "step": "v"
+        },
+        "reference": {
+          "field": "outputs",
+          "line": 5,
+          "output": "version",
+          "site": "value",
+          "step": "v"
+        },
+        "see_also": [
+          {
+            "rule": "bash-output-unredirected",
+            "line": 11
+          }
+        ],
+        "statements": [
+          {
+            "class": "echo",
+            "definite": true,
+            "line": 11,
+            "note": "key 'version' seen here, not written",
+            "relevant": true,
+            "text": "echo \"version=1\""
+          }
+        ],
+        "target": {
+          "keys": {},
+          "name": "GITHUB_OUTPUT",
+          "open": false,
+          "open_reason": ""
+        }
+      },
+      "suppress": {
+        "line": 5,
+        "comment": "# jobsworth-ignore action-output-unlifted",
+        "config": {
+          "action-output-unlifted": "off"
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+# expect: none
+name: on-unknown-type passes
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo hi
